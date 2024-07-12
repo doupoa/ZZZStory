@@ -12,7 +12,7 @@ export default defineConfig({
 
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
-    // ['link', { rel: 'icon', type: 'image/png', href: '/vitepress-logo-mini.png' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
     ["meta", { name: "theme-color", content: "#5f67ee" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:locale", content: "zh-Hans" }],
@@ -35,16 +35,27 @@ export default defineConfig({
   ],
 
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
     logo: "/logo.png",
     nav: [
       { text: "主页", link: "/" },
+      { text: "开始", link: "/started" },
       { text: "关于", link: "/markdown-examples" },
     ],
+    sidebar: {
+      '/main-line/': [{
+        text: "开始",
+        link: "/main-line/",
+      }],
+
+      '/inter-knot/': [{
+        text: "开始",
+        link: "/inter-knot/",
+      }]
+    },
     footer: {
       message:
         "本站所有内容（除 <a href='https://www.mihoyo.com/'>miHoYo</a> 拥有的及另外声明的）均以遵循<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'> CC BY-NC-SA 4.0 </a>协议授权",
-      copyright: "Copyright © 2024 CP77 Text Database",
+      copyright: "Copyright © 2024 ZZZStory",
     },
     docFooter: {
       prev: "上一页",
@@ -65,67 +76,38 @@ export default defineConfig({
         timeStyle: "medium",
       },
     },
-
     search: {
-      provider: "local",
-      placeholder: "搜索文档",
-      translations: {
-        button: {
-          buttonText: "搜索文档",
-          buttonAriaLabel: "搜索文档",
-        },
-        modal: {
-          searchBox: {
-            resetButtonTitle: "清除查询条件",
-            resetButtonAriaLabel: "清除查询条件",
-            cancelButtonText: "取消",
-            cancelButtonAriaLabel: "取消",
-          },
-          startScreen: {
-            recentSearchesTitle: "搜索历史",
-            noRecentSearchesText: "没有搜索历史",
-            saveRecentSearchButtonTitle: "保存至搜索历史",
-            removeRecentSearchButtonTitle: "从搜索历史中移除",
-            favoriteSearchesTitle: "收藏",
-            removeFavoriteSearchButtonTitle: "从收藏中移除",
-          },
-          errorScreen: {
-            titleText: "无法获取结果",
-            helpText: "你可能需要检查你的网络连接",
-          },
-          footer: {
-            selectText: "选择",
-            navigateText: "切换",
-            closeText: "关闭",
-            searchByText: "搜索提供者",
-          },
-          noResultsScreen: {
-            noResultsText: "无法找到相关结果",
-            suggestedQueryText: "你可以尝试查询",
-            reportMissingResultsText: "你认为该查询应该有结果？",
-            reportMissingResultsLinkText: "点击反馈",
-          },
-        },
-      },
+      provider: 'local',
+      options: {
+        locales: {
+          zh: {
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
+              },
+              modal: {
+                noResultsText: '无法找到相关结果',
+                resetButtonTitle: '清除查询条件',
+                footer: {
+                  selectText: '选择',
+                  navigateText: '切换'
+                }
+              }
+            }
+          }
+        }
+      }
     },
+    socialLinks: [
+      { icon: "github", link: "https://github.com/doupoa/ZZZStory" },
+    ],
     returnToTopLabel: "回到顶部",
     sidebarMenuLabel: "菜单",
     darkModeSwitchLabel: "主题",
     lightModeSwitchTitle: "切换到浅色模式",
     darkModeSwitchTitle: "切换到深色模式",
 
-    sidebar: [
-      {
-        text: "Examples",
-        items: [
-          { text: "Markdown Examples", link: "/markdown-examples" },
-          { text: "Runtime API Examples", link: "/api-examples" },
-        ],
-      },
-    ],
 
-    socialLinks: [
-      { icon: "github", link: "https://github.com/doupoa/ZZZStory" },
-    ],
-  },
+  }
 });
