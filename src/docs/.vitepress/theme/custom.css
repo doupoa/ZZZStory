@@ -12,6 +12,14 @@
     #ee7309 50%
   );
   --vp-home-hero-image-filter: blur(44px);
+  
+  --main-color-1:#ee7309;
+  --main-color-2:#b45400;
+  --vp-button-brand-bg: var(--main-color-1);
+  --vp-c-brand-1:var(--main-color-1);
+  --vp-c-brand-2:var(--main-color-2);
+  --vp-button-brand-hover-bg: var(--main-color-2)
+
 }
 
 @media (min-width: 640px) {

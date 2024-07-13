@@ -24,6 +24,11 @@ export default defineConfig({
       },
     ],
     ["meta", { property: "og:site_name", content: "ZZZStory" }],
+    ["script",{},`(function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "n6sgjs4k0v");`] // Microsoft Clarity 自行部署时请移除
     // [
     //   "meta",
     //   {
@@ -48,7 +53,18 @@ export default defineConfig({
         },
         {
           text: "绳网",
-          items: [{ text: "开始", link: "/inter-knot" }],
+          items: [{
+            text: "闲聊灌水",
+            link: "/inter-knot/chat"
+          },
+          {
+            text: "委托",
+            link: "/inter-knot/entrust"
+          },
+          {
+            text: "公告",
+            link: "inter-knot/notice"
+          }],
         },
         {
           text: "资料库",
@@ -57,26 +73,41 @@ export default defineConfig({
       ],
       "/main-line/": [
         {
-          text: "开始",
-          link: "/main-line",
-        },
+          text: "返回索引",
+          link: "/started"
+        }
       ],
 
       "/inter-knot/": [
         {
-          text: "开始",
-          link: "/inter-knot",
+          text: "绳网",
+          items: [{
+            text: "闲聊灌水",
+            link: "/inter-knot/chat"
+          },
+          {
+            text: "委托",
+            link: "/inter-knot/entrust"
+          },
+          {
+            text: "公告",
+            link: "inter-knot/notice"
+          }]
         },
+        {
+          text: "返回索引",
+          link: "/started"
+        }
       ],
       "/information/": [
-        {
-          text: "开始",
-          link: "/information",
-        },
         {
           text: "新艾利都入住指南",
           link: "/information/New-Ailidu-Accommodation-Guide",
         },
+        {
+          text: "返回索引",
+          link: "/started"
+        }
       ],
     },
     footer: {
