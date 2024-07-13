@@ -18,10 +18,8 @@ hero:
     alt: logo
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: 独特音画，沉浸体验！
+  - title: 各方势力，错综复杂！
+  - title: 双重身份，别样生活！
+  - title: 小队组合，高速激斗！
 ---
