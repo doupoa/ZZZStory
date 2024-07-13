@@ -12,7 +12,7 @@ export default defineConfig({
 
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
-    ['link', { rel: 'icon', type: 'image/png', href: '/logo.png' }],
+    ["link", { rel: "icon", type: "image/png", href: "/logo.png" }],
     ["meta", { name: "theme-color", content: "#5f67ee" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:locale", content: "zh-Hans" }],
@@ -37,20 +37,47 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.png",
     nav: [
-      { text: "主页", link: "/" },
-      { text: "开始", link: "/started" },
-      { text: "关于", link: "/markdown-examples" },
+      { text: "索引", link: "/started" },
+      { text: "关于", link: "/about" },
     ],
     sidebar: {
-      '/main-line/': [{
-        text: "开始",
-        link: "/main-line/",
-      }],
+      "/started": [
+        {
+          text: "主线剧情",
+          items: [{ text: "开始", link: "/main-line" }],
+        },
+        {
+          text: "绳网",
+          items: [{ text: "开始", link: "/inter-knot" }],
+        },
+        {
+          text: "资料库",
+          items: [{ text: "开始", link: "/information" }],
+        },
+      ],
+      "/main-line/": [
+        {
+          text: "开始",
+          link: "/main-line",
+        },
+      ],
 
-      '/inter-knot/': [{
-        text: "开始",
-        link: "/inter-knot/",
-      }]
+      "/inter-knot/": [
+        {
+          text: "开始",
+          link: "/inter-knot",
+        },
+      ],
+      "/information/": [
+        {
+          text: "开始",
+          link: "/information",
+        },
+        {
+          text: "新艾利都入住指南",
+          link: "/information/New-Ailidu-Accommodation-Guide",
+        },
+      ],
     },
     footer: {
       message:
@@ -65,8 +92,7 @@ export default defineConfig({
       label: "页面导航",
     },
     editLink: {
-      pattern:
-        "https://github.com/doupoa/ZZZStory/edit/main/docs/:path",
+      pattern: "https://github.com/doupoa/ZZZStory/edit/main/docs/:path",
       text: "在 GitHub 上编辑此页",
     },
     lastUpdated: {
@@ -77,27 +103,27 @@ export default defineConfig({
       },
     },
     search: {
-      provider: 'local',
+      provider: "local",
       options: {
         locales: {
           zh: {
             translations: {
               button: {
-                buttonText: '搜索文档',
-                buttonAriaLabel: '搜索文档'
+                buttonText: "搜索文档",
+                buttonAriaLabel: "搜索文档",
               },
               modal: {
-                noResultsText: '无法找到相关结果',
-                resetButtonTitle: '清除查询条件',
+                noResultsText: "无法找到相关结果",
+                resetButtonTitle: "清除查询条件",
                 footer: {
-                  selectText: '选择',
-                  navigateText: '切换'
-                }
-              }
-            }
-          }
-        }
-      }
+                  selectText: "选择",
+                  navigateText: "切换",
+                },
+              },
+            },
+          },
+        },
+      },
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/doupoa/ZZZStory" },
@@ -107,7 +133,5 @@ export default defineConfig({
     darkModeSwitchLabel: "主题",
     lightModeSwitchTitle: "切换到浅色模式",
     darkModeSwitchTitle: "切换到深色模式",
-
-
-  }
+  },
 });
