@@ -1,3 +1,5 @@
+# 关于ZZZStory
+
 <p align="center">
   <a href="/"><img src="/logo.png" width="200" height="200" alt="ZZZStory"></a>
 </p>
@@ -15,17 +17,21 @@
 **窥视空洞之人，祝你得偿所愿。**
 
 ## 状态
+
 项目正在积极开发中
 
 ## 其他Story
+
 [CP77Story](https://github.com/doupoa/CP77Story) - 项目搁置中
 
 ## 声明
+
 本站所有内容 [miHoYo](https://www.mihoyo.com/) 拥有的及另外声明的）均以遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议授权
 
 本项目并非 绝区零 官方网站，与 miHoYo 亦无从属关系。
 
 ## 致谢
+
 [miHoYo](https://www.mihoyo.com/)
 
 [绝区零](https://zzz.mihoyo.com/main/)

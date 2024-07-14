@@ -1,0 +1,9 @@
+{
+    "MD033": false, // 为false时允许使用Html
+    "MD024": {
+        "siblings_only": true
+    }, // 默认为false，设为true时，不同标题下的子标题内容可以重复
+    "MD026":{
+        "punctuation": ".,;:。，；：" // 忽略感叹号及问号
+    }
+}
