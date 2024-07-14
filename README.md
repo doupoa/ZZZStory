@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://zzzstory.doupoa.site"><img src="https://zzz.mihoyo.com/_nuxt/img/logo.1e072ee.png#/" width="200" height="200" alt="ZZZStory"></a>
+  <a href="https://zzzstory.doupoa.site"><img src="https://zzzstory.doupoa.site/logo.png" width="200" height="200" alt="ZZZStory"></a>
 </p>
 
 <div align="center">

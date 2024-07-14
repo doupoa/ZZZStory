@@ -9,6 +9,9 @@ export default defineConfig({
   srcExclude: ["**/README.md", "**/TODO.md"],
   metaChunk: true,
   appearance: "dark",
+  sitemap: {
+    hostname: 'https://zzzstory.doupoa.site'
+  },
 
   head: [
     ["link", { rel: "icon", type: "image/svg+xml", href: "/logo.svg" }],
@@ -24,7 +27,7 @@ export default defineConfig({
       },
     ],
     ["meta", { property: "og:site_name", content: "ZZZStory" }],
-    ["script",{},`(function(c,l,a,r,i,t,y){
+    ["script", {}, `(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
@@ -134,27 +137,27 @@ export default defineConfig({
       },
     },
     search: {
-      provider: "local",
+      provider: 'local',
       options: {
         locales: {
           zh: {
             translations: {
               button: {
-                buttonText: "搜索文档",
-                buttonAriaLabel: "搜索文档",
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索文档'
               },
               modal: {
-                noResultsText: "无法找到相关结果",
-                resetButtonTitle: "清除查询条件",
+                noResultsText: '无法找到相关结果',
+                resetButtonTitle: '清除查询条件',
                 footer: {
-                  selectText: "选择",
-                  navigateText: "切换",
-                },
-              },
-            },
-          },
-        },
-      },
+                  selectText: '选择',
+                  navigateText: '切换'
+                }
+              }
+            }
+          }
+        }
+      }
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/doupoa/ZZZStory" },
