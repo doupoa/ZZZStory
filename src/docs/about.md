@@ -34,9 +34,11 @@
 
 ## 声明
 
-本站所有内容 [miHoYo](https://www.mihoyo.com/) 拥有的及另外声明的）均以遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议授权
+1. 本站所有内容 [miHoYo](https://www.mihoyo.com/) 拥有的及另外声明的）均以遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议授权
 
-本项目并非 绝区零 官方网站，与 miHoYo 亦无从属关系。
+2. 为适应本站排版及内容完整合理性，收录的内容可能有所修改。
+
+3. 本项目并非 绝区零 官方网站，与 miHoYo 亦无从属关系。
 
 ## 致谢
 

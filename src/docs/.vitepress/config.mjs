@@ -56,7 +56,12 @@ export default defineConfig({
         },
         {
           text: "绳网",
-          items: [{
+          items: [
+          {
+            text: "公告",
+            link: "inter-knot/notice"
+          },
+          {
             text: "闲聊灌水",
             link: "/inter-knot/chat"
           },
@@ -65,13 +70,27 @@ export default defineConfig({
             link: "/inter-knot/entrust"
           },
           {
-            text: "公告",
-            link: "inter-knot/notice"
-          }],
+            text: "情报",
+            link: "inter-knot/intelligence"
+          },
+          {
+            text: "求助",
+            link: "inter-knot/seek-help"
+          }
+            , {
+            text: "避雷",
+            link: "inter-knot/steering-clear-of"
+          }
+          ],
         },
         {
           text: "资料库",
-          items: [{ text: "开始", link: "/information" }],
+          items: [
+            {
+              text: "新艾利都入住指南",
+              link: "/information/New-Ailidu-Accommodation-Guide",
+            },
+          ],
         },
       ],
       "/main-line/": [
@@ -85,6 +104,10 @@ export default defineConfig({
         {
           text: "绳网",
           items: [{
+            text: "公告",
+            link: "inter-knot/notice"
+          },
+          {
             text: "闲聊灌水",
             link: "/inter-knot/chat"
           },
@@ -93,8 +116,16 @@ export default defineConfig({
             link: "/inter-knot/entrust"
           },
           {
-            text: "公告",
-            link: "inter-knot/notice"
+            text: "情报",
+            link: "inter-knot/intelligence"
+          },
+          {
+            text: "求助",
+            link: "inter-knot/seek-help"
+          }
+            , {
+            text: "避雷",
+            link: "inter-knot/steering-clear-of"
           }]
         },
         {
