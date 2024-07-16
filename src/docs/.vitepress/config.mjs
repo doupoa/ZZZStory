@@ -10,7 +10,12 @@ export default defineConfig({
   metaChunk: true,
   appearance: "dark",
   sitemap: {
-    hostname: 'https://zzzstory.doupoa.site'
+    hostname: "https://zzzstory.doupoa.site",
+  },
+  markdown: {
+    image: {
+      lazyLoading: true,
+    },
   },
 
   head: [
@@ -19,27 +24,26 @@ export default defineConfig({
     ["meta", { name: "theme-color", content: "#5f67ee" }],
     ["meta", { property: "og:type", content: "website" }],
     ["meta", { property: "og:locale", content: "zh-Hans" }],
+    ["meta", { property: "og:title", content: "ZZZStory | 绝区零故事汇" }],
+    ["meta", { property: "og:site_name", content: "ZZZStory" }],
     [
       "meta",
       {
-        property: "og:title",
-        content: "ZZZStory | 绝区零故事汇",
+        property: "og:image",
+        content: "https://zzzstory.doupoa.site/zzzstory-og.jpg",
       },
     ],
-    ["meta", { property: "og:site_name", content: "ZZZStory" }],
-    ["script", {}, `(function(c,l,a,r,i,t,y){
+    ["meta", { property: "og:url", content: "https://zzzstory.doupoa.site" }],
+
+    [
+      "script",
+      {},
+      `(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "n6sgjs4k0v");`] // Microsoft Clarity 自行部署时请移除
-    // [
-    //   "meta",
-    //   {
-    //     property: "og:image",
-    //     content: "https://vitepress.dev/vitepress-og.jpg",
-    //   },
-    // ],
-    // ["meta", { property: "og:url", content: "https://vitepress.dev/" }],
+    })(window, document, "clarity", "script", "n6sgjs4k0v");`,
+    ], // Microsoft Clarity 自行部署时请移除
   ],
 
   themeConfig: {
@@ -57,30 +61,30 @@ export default defineConfig({
         {
           text: "绳网",
           items: [
-          {
-            text: "公告",
-            link: "inter-knot/notice"
-          },
-          {
-            text: "闲聊灌水",
-            link: "/inter-knot/chat"
-          },
-          {
-            text: "委托",
-            link: "/inter-knot/entrust"
-          },
-          {
-            text: "情报",
-            link: "inter-knot/intelligence"
-          },
-          {
-            text: "求助",
-            link: "inter-knot/seek-help"
-          }
-            , {
-            text: "避雷",
-            link: "inter-knot/steering-clear-of"
-          }
+            {
+              text: "公告",
+              link: "inter-knot/notice",
+            },
+            {
+              text: "闲聊灌水",
+              link: "/inter-knot/chat",
+            },
+            {
+              text: "委托",
+              link: "/inter-knot/entrust",
+            },
+            {
+              text: "情报",
+              link: "inter-knot/intelligence",
+            },
+            {
+              text: "求助",
+              link: "inter-knot/seek-help",
+            },
+            {
+              text: "避雷",
+              link: "inter-knot/steering-clear-of",
+            },
           ],
         },
         {
@@ -96,42 +100,44 @@ export default defineConfig({
       "/main-line/": [
         {
           text: "返回索引",
-          link: "/started"
-        }
+          link: "/started",
+        },
       ],
 
       "/inter-knot/": [
         {
           text: "绳网",
-          items: [{
-            text: "公告",
-            link: "inter-knot/notice"
-          },
-          {
-            text: "闲聊灌水",
-            link: "/inter-knot/chat"
-          },
-          {
-            text: "委托",
-            link: "/inter-knot/entrust"
-          },
-          {
-            text: "情报",
-            link: "inter-knot/intelligence"
-          },
-          {
-            text: "求助",
-            link: "inter-knot/seek-help"
-          }
-            , {
-            text: "避雷",
-            link: "inter-knot/steering-clear-of"
-          }]
+          items: [
+            {
+              text: "公告",
+              link: "inter-knot/notice",
+            },
+            {
+              text: "闲聊灌水",
+              link: "/inter-knot/chat",
+            },
+            {
+              text: "委托",
+              link: "/inter-knot/entrust",
+            },
+            {
+              text: "情报",
+              link: "inter-knot/intelligence",
+            },
+            {
+              text: "求助",
+              link: "inter-knot/seek-help",
+            },
+            {
+              text: "避雷",
+              link: "inter-knot/steering-clear-of",
+            },
+          ],
         },
         {
           text: "返回索引",
-          link: "/started"
-        }
+          link: "/started",
+        },
       ],
       "/information/": [
         {
@@ -140,8 +146,8 @@ export default defineConfig({
         },
         {
           text: "返回索引",
-          link: "/started"
-        }
+          link: "/started",
+        },
       ],
     },
     footer: {
@@ -168,27 +174,27 @@ export default defineConfig({
       },
     },
     search: {
-      provider: 'local',
+      provider: "local",
       options: {
         locales: {
           zh: {
             translations: {
               button: {
-                buttonText: '搜索文档',
-                buttonAriaLabel: '搜索文档'
+                buttonText: "搜索文档",
+                buttonAriaLabel: "搜索文档",
               },
               modal: {
-                noResultsText: '无法找到相关结果',
-                resetButtonTitle: '清除查询条件',
+                noResultsText: "无法找到相关结果",
+                resetButtonTitle: "清除查询条件",
                 footer: {
-                  selectText: '选择',
-                  navigateText: '切换'
-                }
-              }
-            }
-          }
-        }
-      }
+                  selectText: "选择",
+                  navigateText: "切换",
+                },
+              },
+            },
+          },
+        },
+      },
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/doupoa/ZZZStory" },
