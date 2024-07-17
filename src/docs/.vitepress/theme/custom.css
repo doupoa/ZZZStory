@@ -5,20 +5,26 @@
     #d8fa00 30%,
     #ee7309
   );
-
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
     #d8fa00 50%,
     #ee7309 50%
   );
   --vp-home-hero-image-filter: blur(44px);
-
   --main-color-1: #ee7309;
   --main-color-2: #b45400;
   --vp-button-brand-bg: var(--main-color-1);
   --vp-c-brand-1: var(--main-color-1);
   --vp-c-brand-2: var(--main-color-2);
   --vp-button-brand-hover-bg: var(--main-color-2);
+}
+
+.dark {
+  --main-color-1: #d8fa00 !important;
+  --main-color-2: #a2bb02 !important;
+  .VPButton.brand {
+    color: black;
+  }
 }
 
 @media (min-width: 640px) {
@@ -37,4 +43,42 @@
   text-indent: 2em; /* 设定正文首行缩进 */
   line-height: 24px; /* 设定正文行高 */
   margin: 8px 0; /* 设定正文段落间距 */
+}
+
+@media only screen and (min-width: 900px) {
+  html.dark .Layout {
+    /* 黑暗模式显示特定背景 */
+    background-image: url(/pc-page-bg.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+}
+
+@media (min-width: 960px) {
+  /* 首页标题栏高斯模糊及背景色设置 */
+  html.dark .VPNavBar:not(.has-sidebar):not(.home.top),
+  html.dark .VPNavBar:not(.top) {
+    background-color: rgba(27, 27, 31, 0.3) !important;
+  }
+
+  html .VPNavBar:not(.has-sidebar):not(.home.top),
+  html .VPNavBar:not(.top) {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  /* 提取共享样式 */
+  .VPNavBar:not(.top) .content-body {
+    position: relative;
+    -webkit-backdrop-filter: saturate(50%) blur(8px);
+    backdrop-filter: saturate(50%) blur(8px);
+  }
+
+  /* 根据明暗主题分别设置背景色 */
+  html .VPNavBar:not(.top) .content-body {
+    background-color: rgba(255, 255, 255, 0.3) !important;
+  }
+
+  html.dark .VPNavBar:not(.top) .content-body {
+    background-color: rgba(27, 27, 31, 0.3) !important;
+  }
 }
