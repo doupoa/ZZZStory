@@ -88,7 +88,11 @@ export default defineConfig({
           items: [
             {
               text: "新艾利都入住指南",
-              link: "/information/New-Ailidu-Accommodation-Guide",
+              link: "/information/new-eridu-accommodation-guide",
+            },
+            {
+              text: "都市快报",
+              link: "/information/urban-express",
             },
           ],
         },
@@ -136,7 +140,11 @@ export default defineConfig({
       "/information/": [
         {
           text: "新艾利都入住指南",
-          link: "/information/New-Ailidu-Accommodation-Guide",
+          link: "/information/new-eridu-accommodation-guide",
+        },
+        {
+          text: "都市快报",
+          link: "/information/urban-express",
         },
         {
           text: "返回索引",
