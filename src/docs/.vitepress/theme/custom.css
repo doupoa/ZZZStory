@@ -22,6 +22,8 @@
 .dark {
   --main-color-1: #d8fa00 !important;
   --main-color-2: #a2bb02 !important;
+
+  --vp-c-text-1: #c0bab2 !important;
   .VPButton.brand {
     color: black;
   }
@@ -33,14 +35,8 @@
   }
 }
 
-@media (min-width: 960px) {
-  :root {
-    --vp-home-hero-image-filter: blur(68px);
-  }
-}
-
 .vp-doc p {
-  text-indent: 2em; /* 设定正文首行缩进 */
+  /*text-indent: 2em;  设定正文首行缩进 待考据 暂时移除 */
   line-height: 24px; /* 设定正文行高 */
   margin: 8px 0; /* 设定正文段落间距 */
 }
@@ -55,6 +51,14 @@
 }
 
 @media (min-width: 960px) {
+  .vp-doc p {
+    text-indent: 2em; /* 桌面端设定正文首行缩进 */
+  }
+
+  :root {
+    --vp-home-hero-image-filter: blur(68px);
+  }
+
   /* 首页标题栏高斯模糊及背景色设置 */
   html.dark .VPNavBar:not(.has-sidebar):not(.home.top),
   html.dark .VPNavBar:not(.top) {
