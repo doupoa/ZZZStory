@@ -17,6 +17,8 @@
   --vp-c-brand-1: var(--main-color-1);
   --vp-c-brand-2: var(--main-color-2);
   --vp-button-brand-hover-bg: var(--main-color-2);
+
+  scroll-behavior: smooth;
 }
 
 .dark {
@@ -86,3 +88,33 @@
     background-color: rgba(27, 27, 31, 0.3) !important;
   }
 }
+
+/* 对话框样式 使用时应当在frontmatter添加以下根类*/
+.knockChat{
+  .contacts {
+      color: #2155e2;
+      text-indent: 0em !important;
+  }
+
+  .me {
+      color: #ffa900;
+      text-indent: 0em !important;
+  }
+
+  .main p:not(.contacts):not(.me) {
+      text-indent: 0em;
+      margin-left: 2em;
+      padding: 10px 12px;
+      border-radius: 8px 8px 8px 8px;
+      background-color: #eff0f1;
+      max-width: calc(100% - 100px);
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+      width: fit-content;
+  }
+}
+
+html.dark .knockChat .main p:not(.contacts):not(.me) {
+      background-color:#262626;
+  }

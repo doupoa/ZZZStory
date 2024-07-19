@@ -88,6 +88,19 @@ export default defineConfig({
           ],
         },
         {
+          text: "Knock Knock",
+          items: [
+            {
+              text: "私聊",
+              link: "/knock-knock/private-message",
+            },
+            {
+              text: "群聊",
+              link: "/knock-knock/group-message",
+            },
+          ],
+        },
+        {
           text: "资料库",
           items: [
             {
@@ -151,6 +164,20 @@ export default defineConfig({
         {
           text: "都市快报",
           link: "/information/urban-express",
+        },
+        {
+          text: "返回索引",
+          link: "/started",
+        },
+      ],
+      "/knock-knock": [
+        {
+          text: "私聊",
+          link: "/knock-knock/private-message",
+        },
+        {
+          text: "群聊",
+          link: "/knock-knock/group-message",
         },
         {
           text: "返回索引",
