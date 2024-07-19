@@ -1,23 +1,24 @@
 <!-- .vitepress/theme/Layout.vue -->
 
 <script setup lang="ts">
-import { useData } from 'vitepress'
-import DefaultTheme from 'vitepress/theme'
-import { nextTick, provide } from 'vue'
-import error_404 from '/error-404.png'
+import { useData } from "vitepress";
+import DefaultTheme from "vitepress/theme";
+import { nextTick, provide } from "vue";
+import error_404 from "/error-404.png";
+import error_404_dark from "/error-404-dark.png";
 
-const { Layout } = DefaultTheme
+const { Layout } = DefaultTheme;
 
-const { isDark } = useData()
+const { isDark } = useData();
 
 const enableTransitions = () =>
-  'startViewTransition' in document &&
-  window.matchMedia('(prefers-reduced-motion: no-preference)').matches
+  "startViewTransition" in document &&
+  window.matchMedia("(prefers-reduced-motion: no-preference)").matches;
 
-provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
+provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
   if (!enableTransitions()) {
-    isDark.value = !isDark.value
-    return
+    isDark.value = !isDark.value;
+    return;
   }
 
   const clipPath = [
@@ -25,23 +26,23 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     `circle(${Math.hypot(
       Math.max(x, innerWidth - x),
       Math.max(y, innerHeight - y)
-    )}px at ${x}px ${y}px)`
-  ]
+    )}px at ${x}px ${y}px)`,
+  ];
 
   await document.startViewTransition(async () => {
-    isDark.value = !isDark.value
-    await nextTick()
-  }).ready
+    isDark.value = !isDark.value;
+    await nextTick();
+  }).ready;
 
   document.documentElement.animate(
     { clipPath: isDark.value ? clipPath.reverse() : clipPath },
     {
-      duration: 300,
-      easing: 'ease-in',
-      pseudoElement: `::view-transition-${isDark.value ? 'old' : 'new'}(root)`
+      duration: 500,
+      easing: "ease-in-out",
+      pseudoElement: `::view-transition-${isDark.value ? "old" : "new"}(root)`,
     }
-  )
-})
+  );
+});
 </script>
 
 <template>
@@ -49,12 +50,13 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
     <template #not-found>
       <!-- 修改自 vitepress/src/client/theme-default/NotFound.vue -->
       <div class="NotFound">
-        <img :src="error_404" alt="404" class="error_img" />
+        <img :src="error_404" alt="404" class="error_img" v-if="!isDark" />
+        <img :src="error_404_dark" alt="404" class="error_img" v-else />
         <p class="error_code">嗯呢嗯呢呢!（资料不见啦！）</p>
         <h1 class="error_title">PAGE NOT FOUND</h1>
         <div class="error_divider"></div>
         <div class="error_action">
-          <a class="error_link" href="/started" aria-label='go to started'>
+          <a class="error_link" href="/started" aria-label="go to started">
             回到索引
           </a>
         </div>
@@ -120,7 +122,6 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   background-color: var(--vp-c-divider);
 }
 
-
 .error_action {
   padding-top: 20px;
 }
@@ -133,9 +134,7 @@ provide('toggle-appearance', async ({ clientX: x, clientY: y }: MouseEvent) => {
   font-size: 16px;
   font-weight: 500;
   color: var(--vp-c-brand-1);
-  transition:
-    border-color 0.25s,
-    color 0.25s;
+  transition: border-color 0.25s, color 0.25s;
 }
 
 .error_link:hover {
