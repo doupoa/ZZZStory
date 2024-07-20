@@ -4,7 +4,7 @@ pageClass: knockChat
 
 # Knock Knock - 群聊
 
-## 塔维斯进货Q&A
+## 塔维斯进货 Q&A
 
 **塔维斯**：{.contacts}
 
@@ -22,7 +22,7 @@ pageClass: knockChat
 
 **塔维斯**：{.contacts}
 
-你是哪位?
+你是哪位？
 
 **哲**：{.me}
 
@@ -38,7 +38,7 @@ pageClass: knockChat
 
 **玲**：{.me}
 
-我们是六分街录像店Random Play的店主…
+我们是六分街录像店 Random Play 的店主…
 
 **塔维斯**：{.contacts}
 
@@ -108,8 +108,8 @@ pageClass: knockChat
 
 **哲**：{.me}
 
-拜托了Fairy!
+拜托了 Fairy！
 
 **Fairy**：{.me}
 
-了解，我将在HDD系统处同步搜索结论。
+了解，我将在 HDD 系统处同步搜索结论。
