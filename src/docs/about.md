@@ -1,4 +1,4 @@
-# 关于ZZZStory
+# 关于 ZZZStory
 
 <p align="center">
   <a href="/"><img src="/logo.png" width="200" height="200" alt="ZZZStory"></a>
@@ -18,17 +18,17 @@
 
 ## 状态
 
-项目正在积极开发中
+项目正在积极开发中（慢更新）。
 
-## 关于本站Logo设计
+## 关于本站 Logo 设计
 
 为了避免与绝区零官方网站混淆，因此对原图标稍微进行了修改。
 
-高亮的颜色刚好形成“<font color=#ee7309>**S**</font>”，对应本站ZZZStory的Story主题。
+高亮的颜色刚好形成“<font color=#ee7309>**S**</font>”，对应本站 ZZZStory 的 Story 主题。
 
 如有侵权请联系修改。
 
-## 其他Story
+## 其他 Story
 
 [CP77Story](https://github.com/doupoa/CP77Story) - 项目搁置中
 
@@ -47,3 +47,5 @@
 [绝区零](https://zzz.mihoyo.com/main/)
 
 [VitePress](https://vitepress.dev/)
+
+[绳网情报站 - 绝区零 WIKI](https://baike.mihoyo.com/zzz/wiki/)
