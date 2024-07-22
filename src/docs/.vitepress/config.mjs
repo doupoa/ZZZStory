@@ -3,7 +3,8 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "ZZZStory",
-  description: "绝区零故事汇",
+  description:
+    "绝区零故事汇 | Zenless Zone Zero Story | ZZZStory旨在为剧情爱好者及资深游戏玩家提供完整的故事剧情，为非盈利公共项目。很高兴你能对该项目感兴趣，当然也非常希望您能参与项目共同补充完整的《绝区零》剧情故事。",
   lang: "zh-Hans",
   cleanUrls: true,
   srcExclude: ["**/README.md", "**/TODO.md"],
