@@ -73,7 +73,7 @@ export default defineConfig({
           items: [
             {
               text: "公告",
-              link: "inter-knot/notice",
+              link: "/inter-knot/notice",
             },
             {
               text: "闲聊灌水",
@@ -85,15 +85,15 @@ export default defineConfig({
             },
             {
               text: "情报",
-              link: "inter-knot/intelligence",
+              link: "/inter-knot/intelligence",
             },
             {
               text: "求助",
-              link: "inter-knot/seek-help",
+              link: "/inter-knot/seek-help",
             },
             {
               text: "避雷",
-              link: "inter-knot/steering-clear-of",
+              link: "/inter-knot/steering-clear-of",
             },
           ],
         },
@@ -154,7 +154,7 @@ export default defineConfig({
           items: [
             {
               text: "公告",
-              link: "inter-knot/notice",
+              link: "/inter-knot/notice",
             },
             {
               text: "闲聊灌水",
@@ -166,15 +166,15 @@ export default defineConfig({
             },
             {
               text: "情报",
-              link: "inter-knot/intelligence",
+              link: "/inter-knot/intelligence",
             },
             {
               text: "求助",
-              link: "inter-knot/seek-help",
+              link: "/inter-knot/seek-help",
             },
             {
               text: "避雷",
-              link: "inter-knot/steering-clear-of",
+              link: "/inter-knot/steering-clear-of",
             },
           ],
         },

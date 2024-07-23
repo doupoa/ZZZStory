@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 登入绳网
-      link: /inter-knot
+      link: /inter-knot/index
     - theme: alt
       text: 阅读剧情
-      link: /main-line
+      link: /main-line/index
     - theme: alt
       text: 获取游戏
       link: https://zzz.mihoyo.com/main
