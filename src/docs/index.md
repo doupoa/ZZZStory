@@ -11,18 +11,12 @@ hero:
       text: 登入绳网
       link: /inter-knot/index
     - theme: alt
-      text: 阅读剧情
-      link: /main-line/index
+      text: 阅读引导
+      link: /started
     - theme: alt
       text: 获取游戏
       link: https://zzz.mihoyo.com/main
   image:
     src: /logo.png
     alt: logo
-
-features:
-  - title: 独特音画，沉浸体验！
-  - title: 各方势力，错综复杂！
-  - title: 双重身份，别样生活！
-  - title: 小队组合，高速激斗！
 ---
