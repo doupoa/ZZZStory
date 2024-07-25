@@ -119,14 +119,19 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   background-color: #262626;
 }
 
-details img {
-  width: 50px;
-  height: auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid #000;
-  vertical-align: middle;
-  object-fit: cover;
-  display: inline-block;
-  box-shadow: 0 0 10px #ccc;
+.archive {
+  details img {
+    width: 5rem;
+    height: auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #000;
+    vertical-align: middle;
+    object-fit: cover;
+    display: inline-block;
+    box-shadow: 0 0 10px #ccc;
+  }
+  table img {
+    max-width: 10rem;
+  }
 }
