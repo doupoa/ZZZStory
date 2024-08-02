@@ -59,7 +59,11 @@ export default defineConfig({
   themeConfig: {
     logo: "/logo.png",
     nav: [
-      { text: "索引", link: "/started" },
+      { text: "开始", link: "/started" },
+      { text: "剧情", link: "/main-line/index" },
+      { text: "绳网", link: "/inter-knot/index" },
+      { text: "敲敲", link: "/knock-knock/index" },
+      { text: "资料库", link: "/information/index" },
       { text: "关于", link: "/about" },
     ],
     sidebar: {
