@@ -45,10 +45,23 @@
 
 @media only screen and (min-width: 900px) {
   html.dark .Layout {
-    /* 黑暗模式显示特定背景 */
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* 使用伪元素固定背景 */
+  html.dark .Layout::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background-image: url(/pc-page-bg.png);
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-position: center top;
+    background-size: auto;
+    z-index: -1; /* 让背景在所有内容之下 */
   }
 }
 
