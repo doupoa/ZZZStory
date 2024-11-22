@@ -88,10 +88,6 @@ export default defineConfig({
               link: "/inter-knot/entrust",
             },
             {
-              text: "资讯",
-              link: "/inter-knot/information",
-            },
-            {
               text: "情报",
               link: "/inter-knot/intelligence",
             },
@@ -171,10 +167,6 @@ export default defineConfig({
             {
               text: "委托",
               link: "/inter-knot/entrust",
-            },
-            {
-              text: "资讯",
-              link: "/inter-knot/information",
             },
             {
               text: "情报",
