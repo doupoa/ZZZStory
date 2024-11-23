@@ -31,22 +31,32 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 如果未启用 lastUpdated，则不需要
+          path: src/
+          
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm # 或 pnpm / yarn
+          path: src/
+          
       - name: Setup Pages
         uses: actions/configure-pages@v4
+        with:
+          path: src/
+        
       - name: Install dependencies
         run: npm ci # 或 pnpm install / yarn install / bun install
-      - name: Build with VitePress
         working-directory: ./src # 指定工作目录
+        
+      - name: Build with VitePress
         run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        working-directory: ./src # 指定工作目录
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: src/docs/.vitepress/dist
 
   # 部署工作
   deploy:
