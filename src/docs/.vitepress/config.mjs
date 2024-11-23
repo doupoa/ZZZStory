@@ -126,6 +126,10 @@ export default defineConfig({
               link: "/information/urban-express",
             },
             {
+              text: "世界观",
+              link: "/information/worldview",
+            },
+            {
               text: "工作台",
               items: [
                 {
@@ -195,6 +199,10 @@ export default defineConfig({
         {
           text: "都市快报",
           link: "/information/urban-express",
+        },
+        {
+          text: "世界观",
+          link: "/information/worldview",
         },
         {
           text: "工作台",
