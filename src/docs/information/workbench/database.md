@@ -1,8 +1,13 @@
+---
+pageClass: database
+---
+
 # 法厄同图鉴
 
 ## 以太异形
 
 ### 提尔锋
+<img align="right" width="128" src="/workbench-img/enemy/etheral/tyrfing.jpg">
 
 空洞调查协会一直在研究提尔锋的行为模式。其看似摇晃歪斜的不平衡姿态，事实上是随时可以发起连续斩击的高效蓄力姿态。
 
