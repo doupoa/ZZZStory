@@ -7,13 +7,15 @@ pageClass: database
 ## 以太异形
 
 ### 提尔锋
-<img align="right" width="128" src="/workbench-img/enemy/etheral/tyrfing.jpg">
+<img align="right" src="/workbench-img/enemy/etheral/tyrfing.jpg">
 
 空洞调查协会一直在研究提尔锋的行为模式。其看似摇晃歪斜的不平衡姿态，事实上是随时可以发起连续斩击的高效蓄力姿态。
 
 提尔锋以其高出现频率、强攻击性而被评定为空洞中最易造成伤亡的以骸之一。对于某些空洞勤务人员来说尤为如此。
 
 在遇上持盾的敌人时，它们会狂躁地发起无休无止的攻击，直至敌我双方一方倒下为止。
+
+---
 
 「或许……他们不是讨厌我们，而只是把我们当成了练习木桩？」
 
