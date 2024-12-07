@@ -50,7 +50,6 @@
 @media only screen and (min-width: 900px) {
   html.dark .Layout {
     position: relative;
-    overflow: hidden;
   }
 
   /* 使用伪元素固定背景 */
@@ -79,6 +78,11 @@
   :root {
     --vp-home-hero-image-filter: blur(68px);
   }
+
+/* 文章背景压暗亮度 */
+html.dark #VPContent:not(.is-home) {
+  background: rgba(27, 27, 31, 0.7);
+}
 
   /* 首页标题栏高斯模糊及背景色设置 */
   html.dark .VPNavBar:not(.has-sidebar):not(.home.top),
@@ -138,6 +142,7 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   background-color: #262626;
 }
 
+/* 合作者档案样式 */
 .archive {
   details img {
     width: 5rem;
@@ -152,7 +157,7 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   }
 
   table img {
-    max-width: 10rem;
+    max-width: 8rem;
   }
 }
 
@@ -211,9 +216,11 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   }
 }
 
-/* 文章背景压暗亮度添加高斯 */
-html.dark #VPContent:not(.is-home) {
-  background: rgba(22, 22, 24, 0.5);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+.database {
+  img {
+    width: 128px;
+    margin: 10px;
+    border: #000 5px solid;
+    border-radius: 5px;
+  }
 }
