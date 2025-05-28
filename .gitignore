@@ -9,6 +9,7 @@
 .vite_opt_cache
 .vscode
 dist
+.cache
 cache
 temp
 examples-temp
@@ -17,3 +18,4 @@ pnpm-global
 TODOs.md
 *.timestamp-*.mjs
 dist.zip
+.github

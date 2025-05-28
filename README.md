@@ -18,14 +18,6 @@
 
 [ZZZStory](https://zzzstory.doupoa.site)
 
-## 状态
-
-项目正在积极开发中
-
-## 其他Story
-
-[CP77Story](https://github.com/doupoa/CP77Story) - 项目搁置中
-
 ## 声明
 
 本站所有内容 [miHoYo](https://www.mihoyo.com/) 拥有的及另外声明的）均以遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议授权
