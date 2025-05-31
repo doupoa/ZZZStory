@@ -150,6 +150,15 @@ export default defineConfig({
         },
       ],
       "/main-line/": [
+      {
+        text:"1.0",
+        items:[
+          {
+            text:"生意 X 诡异 X 道义",
+            link:"/main-line/1.0/Business_x_Strangeness_x_Justness"
+          }
+        ]
+      },
         {
           text: "返回索引",
           link: "/started",

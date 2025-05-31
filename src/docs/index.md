@@ -11,7 +11,7 @@ hero:
       text: 登入绳网
       link: /inter-knot/index
     - theme: alt
-      text: 阅读引导
+      text: 开始
       link: /started
     - theme: alt
       text: 获取游戏
