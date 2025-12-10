@@ -1,6 +1,16 @@
-import { defineConfig } from "vitepress";
+import { defineConfig,UserConfig } from "vitepress";
+import tailwindcss from '@tailwindcss/vite'
+
+const config: UserConfig = {
+  // ... other config
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  // ... rest of config
+};
 
 // https://vitepress.dev/reference/site-config
+
 export default defineConfig({
   title: "ZZZStory",
   description:
@@ -13,6 +23,7 @@ export default defineConfig({
   sitemap: {
     hostname: "https://zzzstory.doupoa.site",
   },
+
   markdown: {
     image: {
       lazyLoading: true,
@@ -64,6 +75,7 @@ export default defineConfig({
       { text: "绳网", link: "/inter-knot/index" },
       { text: "敲敲", link: "/knock-knock/index" },
       { text: "资料库", link: "/information/index" },
+      {text:"编辑器",link:"/editor/StoryEditor"},
       { text: "关于", link: "/about" },
     ],
     sidebar: {
@@ -150,15 +162,15 @@ export default defineConfig({
         },
       ],
       "/main-line/": [
-      {
-        text:"第0章",
-        items:[
-          {
-            text:"生意 X 诡异 X 道义",
-            link:"/main-line/chapter0/Business_x_Strangeness_x_Justness"
-          }
-        ]
-      },
+        {
+          text: "第0章",
+          items: [
+            {
+              text: "生意 X 诡异 X 道义",
+              link: "/main-line/chapter0/Business_x_Strangeness_x_Justness",
+            },
+          ],
+        },
         {
           text: "返回索引",
           link: "/started",
@@ -253,7 +265,7 @@ export default defineConfig({
     footer: {
       message:
         "本站所有内容（除 <a href='https://www.mihoyo.com/'>miHoYo</a> 拥有的及另外声明的）均以遵循<a href='https://creativecommons.org/licenses/by-nc-sa/4.0/'> CC BY-NC-SA 4.0 </a>协议授权",
-      copyright: "Copyright © 2024 ZZZStory",
+      copyright: `Copyright © ${new Date().getFullYear()} ZZZStory`,
     },
     docFooter: {
       prev: "上一页",
@@ -304,5 +316,12 @@ export default defineConfig({
     darkModeSwitchLabel: "主题",
     lightModeSwitchTitle: "切换到浅色模式",
     darkModeSwitchTitle: "切换到深色模式",
+  },
+
+  vite: {
+    plugins: [
+      // vueDevTools(),
+      // tailwindcss(),
+    ],
   },
 });

@@ -5,6 +5,11 @@
     "docs:preview": "vitepress preview docs"
   },
   "devDependencies": {
-    "vitepress": "^1.2.3"
+    "@tailwindcss/postcss": "^4.1.17",
+    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/vite": "^4.1.17",
+    "tailwindcss": "^4.1.17",
+    "vitepress": "^1.2.3",
+    "vitepress-plugin-comment-with-giscus": "^1.1.15"
   }
 }

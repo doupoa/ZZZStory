@@ -4,13 +4,25 @@
 import { computed } from 'vue';
 
 const roles = {// 第一个值为主色,第二个值为背景色
-    "random_play": { "铃": ["#254fff", "#fd802dbf"], "哲": ["#ffffff", "#fd802dbf"],"(蓝发少女)":["#254fff", "#fd802dbf"],"(灰发少年)":["#ffffff", "#fd802dbf"] },//录像店
-    "cunning_hares": { "安比": ["#b3cc58", "#C8E16C33"], "比利": ["#cc4f4b", "#AF3E3A33"], "妮可": ["#cd8583", "#E6ADAA33"],"(粉毛长发少女)":["#cd8583", "#E6ADAA33"],"(白毛短发少女)":["#cc4f4b", "#AF3E3A33"]}, //狡兔屋
+    "random_play": { //录像店
+        "铃": ["#254fff", "#fd802dbf"],
+        "哲": ["#ffffff", "#fd802dbf"],
+        "(蓝发少女)": ["#254fff", "#fd802dbf"],
+        "(灰发少年)": ["#ffffff", "#fd802dbf"]
+    },
+
+    "cunning_hares": { //狡兔屋
+        "安比": ["#b3cc58", "#C8E16C33"],
+        "比利": ["#cc4f4b", "#AF3E3A33"],
+        "妮可": ["#cd8583", "#E6ADAA33"],
+        "(粉毛长发少女)": ["#cd8583", "#E6ADAA33"],
+        "(白毛短发少女)": ["#cc4f4b", "#AF3E3A33"]
+    },
     "belobog_heavy_industries": {}, // 白祇重工
     "sons_of_calydon": {},// 卡吕冬之子
     "mockingbird": {}, //反舌鸟
 
-    "other":{"npc":["dodgerblue","#7c7c7c46"]} //其他角色
+    "other": { "npc": ["dodgerblue", "#7c7c7c46"] } //其他角色
 
 }
 export default {

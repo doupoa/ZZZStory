@@ -1,8 +1,8 @@
 # 关于 ZZZStory
 
-<p align="center">
-  <a href="/"><img src="/logo.png" width="200" height="200" alt="ZZZStory"></a>
-</p>
+<div class="flex items-center mt-6 size-5">
+ <img src="/logo.png" width="200" height="200" alt="ZZZStory">
+</div>
 
 <div align="center">
 <h1>ZZZStory - 绝区零故事汇</h1>
