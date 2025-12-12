@@ -1,12 +1,10 @@
 import DefaultTheme from "vitepress/theme";
 import Layout from "./Layout.vue";
 import "./custom.css";
-import './tailwind.postcss';
 import giscusTalk from "vitepress-plugin-comment-with-giscus";
 import { useData, useRoute } from "vitepress";
-import Dialogue from "../../components/Dialogue.vue";
-import Action from "../../components/Action.vue";
-import Scene from "../../components/Scene.vue";
+import { Action, Dialogue, Scene } from "@/components/style/index.ts";
+import { EyeIcon } from "../../components/icons";
 
 export default {
   extends: DefaultTheme,
@@ -39,5 +37,7 @@ export default {
     app.component("Dialogue", Dialogue);
     app.component("Action", Action);
     app.component("Scene", Scene);
+
+    app.component("EyeIcon", EyeIcon);
   },
 };

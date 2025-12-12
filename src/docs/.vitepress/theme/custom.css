@@ -1,6 +1,16 @@
-@import url("https://api.fontshare.com/v2/css?f[]=general-sans@400,600,700&f[]=azeret-mono@400&display=swap");
-@import "tailwindcss" source(".");
+
+@import "tailwindcss";
+@config "../../tailwind.config.cjs";
 @plugin "@tailwindcss/typography";
+@source '../../../../src/**/*.md';
+@source '../../../**/*.{vue,ts}';
+@custom-variant dark (&:is(.dark *));
+
+@font-face{
+  font-family: Outfit;
+  font-display: auto;
+  src:url("Outfit-VariableFont_wght.woff") format("woff")
+}
 
 .prose {
   --tw-prose-headings: var(--foreground-color);
@@ -28,9 +38,6 @@
   --vp-button-brand-hover-bg: var(--main-color-2);
 
   scroll-behavior: smooth;
-
-  --font-sans: "General Sans", sans-serif;
-  --font-mono: "Azeret Mono", monospace;
 }
 
 /* 暗黑模式细节调整 */

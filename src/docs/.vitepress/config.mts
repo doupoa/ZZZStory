@@ -1,17 +1,19 @@
-import { defineConfig,UserConfig } from "vitepress";
-import tailwindcss from '@tailwindcss/vite'
-
-const config: UserConfig = {
-  // ... other config
-  vite: {
-    plugins: [tailwindcss()],
-  },
-  // ... rest of config
-};
+import { defineConfig } from "vitepress";
+import Tailwind from '@tailwindcss/vite'
+import { fileURLToPath, URL } from 'node:url'
 
 // https://vitepress.dev/reference/site-config
 
 export default defineConfig({
+  vite:{
+    plugins: [Tailwind()],
+      resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('../', import.meta.url)),
+    },
+  }
+  },
+
   title: "ZZZStory",
   description:
     "绝区零故事汇 | Zenless Zone Zero Story | ZZZStory旨在为剧情爱好者及资深游戏玩家提供完整的故事剧情，为非盈利公共项目。很高兴你能对该项目感兴趣，当然也非常希望您能参与项目共同补充完整的《绝区零》剧情故事。",
@@ -316,12 +318,5 @@ export default defineConfig({
     darkModeSwitchLabel: "主题",
     lightModeSwitchTitle: "切换到浅色模式",
     darkModeSwitchTitle: "切换到深色模式",
-  },
-
-  vite: {
-    plugins: [
-      // vueDevTools(),
-      // tailwindcss(),
-    ],
   },
 });

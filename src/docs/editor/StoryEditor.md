@@ -1,54 +1,61 @@
 ---
 title: 剧情编辑器
+layout: page
 ---
 
-# 剧情编辑器
-
-这是一个专为剧情创作设计的编辑器，可以帮助您更高效地编写和格式化剧情内容。
-
-
-<span class="text-error-500">TEST</span>
-<div class="editor-container">
-  <div class="editor-layout">
-<!-- 左侧编辑区域 -->
-<div class="editor-panel">
-  <div class="panel-header">
-<h2>文本编辑区</h2>
-<div class="toolbar" v-if="selectionRange.start !== selectionRange.end">
-  <select v-model="selectedComponent" @change="insertComponent(selectedComponent)">
-<option value="" disabled>选择组件</option>
-<option v-for="comp in components" :key="comp.name" :value="comp.name">
-  {{ comp.label }}
-</option>
-  </select>
-  <select v-if="selectedComponent === 'Dialogue'" @change="insertRole($event.target.value)">
-<option value="" disabled selected>选择角色</option>
-<option v-for="role in dialogueRoles" :key="role" :value="role">
-  {{ role }}
-</option>
-  </select>
-</div>
-  </div>
-  <textarea
-v-model="rawText"
-@mouseup="handleTextSelection"
-@keyup="handleTextSelection"
-@touchend="handleTextSelection"
-placeholder="在此输入或粘贴剧情文本...">
-  </textarea>
-  <div class="selection-info" v-if="selectionRange.start !== selectionRange.end">
-已选择: {{ selectionRange.start }} - {{ selectionRange.end }} ({{ selectionRange.end - selectionRange.start }} 字符)
-  </div>
-</div>
-<!-- 右侧预览区域 -->
-<div class="preview-panel">
-  <div class="panel-header">
-<h2>实时预览</h2>
-  </div>
-  <div class="preview-content Story">
-<div v-html="renderPreview"></div>
-  </div>
-</div>
+<div class="w-full min-h-screen  p-4 md:p-6">
+  <div class="flex flex-col lg:flex-row gap-6 h-full">
+    <!-- 左侧编辑区域 -->
+    <div class="flex-1 flex flex-col bg-white rounded-xl shadow-lg overflow-hidden">
+      <div class="bg-linear-to-r from-blue-500 to-indigo-600 p-4 text-white">
+        <h2 class="text-xl font-bold">文本编辑区</h2>
+        <div class="mt-2 flex flex-wrap gap-2" v-if="selectionRange.start !== selectionRange.end">
+          <select
+            v-model="selectedComponent"
+            @change="insertComponent(selectedComponent)"
+            class="bg-white text-gray-800 px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            <option value="" disabled>选择组件</option>
+            <option v-for="comp in components" :key="comp.name" :value="comp.name">
+              {{ comp.label }}
+            </option>
+          </select>
+          <select
+            v-if="selectedComponent === 'Dialogue'"
+            @change="insertRole($event.target.value)"
+            class="bg-white text-gray-800 px-3 py-1 rounded-md text-sm font-medium focus:outline-none focus:ring-2 focus:ring-white"
+          >
+            <option value="" disabled selected>选择角色</option>
+            <option v-for="role in dialogueRoles" :key="role" :value="role">
+              {{ role }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <textarea
+        v-model="rawText"
+        @mouseup="handleTextSelection"
+        @keyup="handleTextSelection"
+        @touchend="handleTextSelection"
+        placeholder="在此输入或粘贴剧情文本..."
+        class="flex-1 w-full p-6 text-gray-700 text-base font-mono resize-none focus:outline-none"
+      ></textarea>
+      <div
+        class="px-6 py-3 bg-gray-100 border-t border-gray-200 text-sm" 
+        v-if="selectionRange.start !== selectionRange.end"
+      >
+        已选择: {{ selectionRange.start }} - {{ selectionRange.end }} ({{ selectionRange.end - selectionRange.start }} 字符)
+      </div>
+    </div>
+    <!-- 右侧预览区域 -->
+    <div class="flex-1 flex flex-col rounded-xl shadow-lg overflow-hidden">
+      <div class="bg-linear-to-r from-green-500 to-emerald-600 p-4 text-white">
+        <h2 class="text-xl font-bold">实时预览</h2>
+      </div>
+      <div class="flex-1 overflow-auto p-6 ">
+        <div class="Story prose max-w-none" v-html="renderPreview"></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -224,55 +231,6 @@ return html
 </script>
 
 <style module>
-.editor-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 20px 0;
-}
-
-.editor-layout {
-  display: flex;
-  gap: 20px;
-  height: calc(100vh - 200px);
-}
-
-.editor-panel, .preview-panel {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.panel-header {
-  padding: 12px 16px;
-  background-color: var(--vp-c-bg-soft);
-  border-bottom: 1px solid var(--vp-c-divider);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.panel-header h2 {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.toolbar {
-  display: flex;
-  gap: 8px;
-}
-
-.toolbar select {
-  padding: 4px 8px;
-  border-radius: 4px;
-  border: 1px solid var(--vp-c-divider);
-  background-color: var(--vp-c-bg);
-  color: var(--vp-c-text-1);
-}
-
 textarea {
   flex: 1;
   padding: 16px;
@@ -287,32 +245,6 @@ textarea {
 
 textarea:focus {
   outline: none;
-}
-
-.preview-content {
-  flex: 1;
-  padding: 16px;
-  overflow-y: auto;
-  background-color: var(--vp-c-bg);
-}
-
-.selection-info {
-  padding: 8px 16px;
-  background-color: var(--vp-c-bg-soft);
-  border-top: 1px solid var(--vp-c-divider);
-  font-size: 12px;
-  color: var(--vp-c-text-2);
-}
-
-@media (max-width: 768px) {
-  .editor-layout {
-flex-direction: column;
-height: auto;
-  }
-  
-  .editor-panel, .preview-panel {
-min-height: 300px;
-  }
 }
 
 .action {

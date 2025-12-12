@@ -1,10 +1,10 @@
 # 关于 ZZZStory
 
-<div class="flex items-center mt-6 size-5">
+<div class="flex flex-wrap my-10 gap-4 sm:items-center sm:justify-center">
  <img src="/logo.png" width="200" height="200" alt="ZZZStory">
 </div>
 
-<div align="center">
+<div class="flex flex-wrap sm:items-center sm:justify-center">
 <h1>ZZZStory - 绝区零故事汇</h1>
 </div>
 
