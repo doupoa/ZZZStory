@@ -3,11 +3,7 @@
   <Layout>
     <template #not-found>
       <div class="py-16 md:py-24 text-center">
-        <img
-          :src="isDark ? error_404_dark : error_404"
-          class="mx-auto w-64"
-          alt="404"
-        />
+        <img :src="isDark ? error_404_dark : error_404" class="mx-auto w-64" alt="404" />
 
         <p class="mt-8 text-2xl font-semibold">嗯呢嗯呢呢!（资料不见啦！）</p>
 
@@ -15,10 +11,8 @@
 
         <div class="mx-auto my-6 h-px w-16 bg-(--vp-c-divider)" />
 
-        <a
-          href="/started"
-          class="inline-block rounded-full border border-(--vp-c-brand-1) px-4 py-1 text-base font-medium text-(--vp-c-brand-1) transition hover:border-(--vp-c-brand-2) hover:text-(--vp-c-brand-2)"
-        >
+        <a href="/started"
+          class="inline-block rounded-full border border-(--vp-c-brand-1) px-4 py-1 text-base font-medium text-(--vp-c-brand-1) transition hover:border-(--vp-c-brand-2) hover:text-(--vp-c-brand-2)">
           回到索引
         </a>
       </div>
@@ -48,7 +42,7 @@ provide("toggle-appearance", async ({ clientX: x, clientY: y }: MouseEvent) => {
   }
 
   const clipPath = [
-    `circle(0px at ${x + 330}px ${y}px)`,
+    `circle(0px at ${x}px ${y}px)`,
     `circle(${Math.hypot(innerWidth, innerHeight) * 1.05}px at ${x}px ${y}px)`,
   ];
 

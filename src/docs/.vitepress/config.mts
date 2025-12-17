@@ -1,17 +1,36 @@
 import { defineConfig } from "vitepress";
-import Tailwind from '@tailwindcss/vite'
-import { fileURLToPath, URL } from 'node:url'
+import Tailwind from "@tailwindcss/vite";
+import { fileURLToPath, URL } from "node:url";
 
 // https://vitepress.dev/reference/site-config
 
 export default defineConfig({
-  vite:{
+  vite: {
     plugins: [Tailwind()],
-      resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('../', import.meta.url)),
+    resolve: {
+      alias: {
+        "@": fileURLToPath(new URL("../", import.meta.url)),
+      },
     },
-  }
+  },
+  transformHead({ assets }) {
+    const fontFile = assets.find((file) =>
+      /font-name\.[\w-]+\.woff/.test(file)
+    );
+    if (fontFile) {
+      return [
+        [
+          "link",
+          {
+            rel: "preload",
+            as: "font",
+            type: "font/woff",
+            href: fontFile,
+            crossorigin: "anonymous",
+          },
+        ],
+      ];
+    }
   },
 
   title: "ZZZStory",
@@ -77,7 +96,7 @@ export default defineConfig({
       { text: "绳网", link: "/inter-knot/index" },
       { text: "敲敲", link: "/knock-knock/index" },
       { text: "资料库", link: "/information/index" },
-      {text:"编辑器",link:"/editor/StoryEditor"},
+      { text: "编辑器", link: "/editor/StoryEditor" },
       { text: "关于", link: "/about" },
     ],
     sidebar: {
