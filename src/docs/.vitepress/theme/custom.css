@@ -18,15 +18,16 @@
 }
 
 :root {
+  --vp-font-family-base:Outfit;
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #d8fa00 30%,
+    #c8e700 30%,
     #ee7309
   );
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #d8fa00 50%,
+    #c8e700 50%,
     #ee7309 50%
   );
   --vp-home-hero-image-filter: blur(44px);
@@ -60,10 +61,11 @@
 
 .vp-doc p {
   /*text-indent: 2em;  设定正文首行缩进 待考据 暂时移除 */
-  line-height: 24px;
+  line-height: 26px;
   /* 设定正文行高 */
-  margin: 8px 0;
+  margin: 12px 0;
   /* 设定正文段落间距 */
+  font-size: 18px;
 }
 
 @media only screen and (min-width: 900px) {
@@ -231,7 +233,7 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
 }
 
 .database {
-  img {
+  img:not(.VPImage, .logo) {
     width: 128px;
     margin: 10px;
     border: #000 5px solid;

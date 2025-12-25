@@ -1,10 +1,10 @@
-import DefaultTheme from "vitepress/theme";
+import { Action, Dialogue, Scene } from "@/components/style/index.ts";
+import { useData, useRoute } from "vitepress";
+import giscusTalk from "vitepress-plugin-comment-with-giscus";
+import DefaultTheme from "vitepress/theme-without-fonts";
+import { EyeIcon } from "../../components/icons";
 import Layout from "./Layout.vue";
 import "./custom.css";
-import giscusTalk from "vitepress-plugin-comment-with-giscus";
-import { useData, useRoute } from "vitepress";
-import { Action, Dialogue, Scene } from "@/components/style/index.ts";
-import { EyeIcon } from "../../components/icons";
 
 export default {
   extends: DefaultTheme,

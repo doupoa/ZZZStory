@@ -57,31 +57,3 @@ export default {
         <slot></slot>
     </div>
 </template>
-
-<style scoped>
-.dialogue {
-    margin: 1.2em 0;
-    position: relative;
-    padding-left: 1.5rem;
-    font-weight: bold;
-}
-
-.dialogue::before {
-    content: "“";
-    position: absolute;
-    left: 0;
-    top: -0.5rem;
-    font-size: 2.5rem;
-    color: var(--main-color-1);
-    font-family: Georgia, serif;
-}
-
-.character {
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 0.5rem;
-}
-</style>
