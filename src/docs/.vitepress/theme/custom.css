@@ -314,6 +314,16 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   /* document.getElementsByClassName("entry-scroll")[0].style.cssText.replace(";","").split(": ")[1] */
   /* 背景色直接通过主色加33(20%透明度) */
 
+  /* Fairy */
+  .Fairy {
+    background: #1e3c7233;
+    color: #1e3c72;
+  }
+   /* 猫又 */
+  .nekomoto {
+    background: #A0351C33;
+    color: #A0351C;
+  }
   /* 安比 */
   .anby {
     background: #c8e16c33;
