@@ -172,6 +172,9 @@ let isRecordingHistory = false
 
 // 角色列表
 const dialogueRoles = [
+  '玲',
+  '哲',
+  'Fairy',
   '(正在直播的电视)',
   '(蓝发少女)',
   '(灰发少年)',
@@ -186,6 +189,7 @@ const roles = {
   "random_play": {
     "铃": ["#254fff", "#fd802dbf"],
     "哲": ["#ffffff", "#fd802dbf"],
+    "Fairy": ["#1e3c72", "#1e3c7233"],
     "(蓝发少女)": ["#254fff", "#fd802dbf"],
     "(灰发少年)": ["#ffffff", "#fd802dbf"]
   },
@@ -193,6 +197,7 @@ const roles = {
     "安比": ["#b3cc58", "#C8E16C33"],
     "比利": ["#cc4f4b", "#AF3E3A33"],
     "妮可": ["#cd8583", "#E6ADAA33"],
+    "猫又": ["#A0351C", "#A0351C33"],
     "(粉毛长发少女)": ["#cd8583", "#E6ADAA33"],
     "(白毛短发少女)": ["#cc4f4b", "#AF3E3A33"]
   },
