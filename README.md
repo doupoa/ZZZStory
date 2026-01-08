@@ -18,6 +18,27 @@
 
 [ZZZStory](https://zzzstory.doupoa.site)
 
+## 近期重要内容更新
+- [都市快报 - 重磅消息 (2026/01/08) ](https://github.com/doupoa/ZZZStory/pull/24)
+- [法厄同图鉴 - 完善部分以骇图片 (2026/01/08)](https://github.com/doupoa/ZZZStory/pull/22)
+- [合作者档案 - 同步至v2.5 (2026/01/08)](https://github.com/doupoa/ZZZStory/pull/23)
+- [主线剧情 - 委托:兔与绳 (2026/01/08)](https://github.com/doupoa/ZZZStory/pull/21)
+
+## 近期重要结构更新
+- 剧情组件 - 迁移原生css至TailwindCSS,避免样式污染 (2025/01/08)
+- [全局 - 引入TailwindCSS、更换阅读字体、优化法厄同图鉴Tips样式、新增剧情编辑器 (2025/12/10)](https://github.com/doupoa/ZZZStory/pull/16)
+
+## 计划清单
+以下规划可能仍在计划中，或已经开始，又或被放弃，计划清单随实际情况动态更新。
+
+- **🚧 进行中**
+  - 继续提升网站阅读性，尽快完成样式迁移及提取常用文本为模板组件 （2026/01/08）
+  - 继续补全差距内容，当前主线版本：**v1.0**，追赶版本: v2.5 （2026/01/08）
+- **🔬 规划中**
+  - 为提升本站实用性及长期回流率，拟自实现一套驱动盘评分系统（含各项权重）及练度分析 。 （2026/01/08）
+- **🪄 更多想法**
+  - [ 暂无 ]
+
 ## 声明
 
 本站所有内容 [miHoYo](https://www.mihoyo.com/) 拥有的及另外声明的）均以遵循 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 协议授权
@@ -30,4 +51,8 @@
 
 [绝区零](https://zzz.mihoyo.com/main/)
 
+[绳网情报站](https://baike.mihoyo.com/zzz/wiki/)
+
 [VitePress](https://vitepress.dev/)
+
+[TailwindCSS](https://github.com/tailwindlabs/tailwindcss)

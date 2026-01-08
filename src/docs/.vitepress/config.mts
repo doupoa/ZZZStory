@@ -190,6 +190,10 @@ export default defineConfig({
               text: "生意 X 诡异 X 道义",
               link: "/main-line/chapter0/Business_x_Strangeness_x_Justness",
             },
+           {
+        	text: "委托:兔与绳",
+        	link: "/main-line/chapter0/Assignment_The_Rabbit_and_the_Rope",
+            },
           ],
         },
         {
