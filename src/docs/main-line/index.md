@@ -5,5 +5,6 @@
 ## 第 0 章
 
 - [生意 X 诡异 X 道义](/main-line/chapter0/Business_x_Strangeness_x_Justness)
+- [委托:兔与绳](/main-line/chapter0/Assignment_The_Rabbit_and_the_Rope)
 
 资料收集中，敬请期待！
