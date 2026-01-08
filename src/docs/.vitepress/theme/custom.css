@@ -256,33 +256,6 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
     display: none !important;
   }
 
-  /* 场景描述样式 */
-  .vp-doc .scene {
-    display: block;
-    font-style: italic;
-    color: #888;
-    margin: 1.5em 0;
-    padding-left: 1em;
-    border-left: 2px solid var(--main-color-1);
-  }
-
-  /* 角色对话容器 */
-  .vp-doc .dialogue {
-    margin: 1.2em 0;
-    position: relative;
-    padding-left: 1.5rem;
-    font-weight: bold;
-  }
-  .dialogue::before {
-    content: "“";
-    position: absolute;
-    left: 0;
-    top: -0.5rem;
-    font-size: 2.5rem;
-    color: var(--main-color-1);
-    font-family: Georgia, serif;
-  }
-
   /* 角色名称标签 */
   .vp-doc .speaker {
     display: inline-block;
@@ -297,17 +270,6 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   .vp-doc .emphasis {
     color: var(--main-color-2);
     font-weight: bold;
-  }
-
-  /* 动作描述 */
-  .vp-doc .action {
-    background: rgba(0, 0, 0, 0.03);
-    padding: 0.5rem;
-    border-radius: 4px;
-    margin: 1.2rem 1.5rem;
-    font-size: 0.9em;
-    border: 1px dashed rgba(0, 0, 0, 0.1);
-    color: rgb(255, 162, 0);
   }
 
   /* 在绳网情报站角色界面通过以下js获取主题色 */
