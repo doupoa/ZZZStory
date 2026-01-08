@@ -130,6 +130,9 @@ pageClass: database
 
 ### 游魂
 
+<img align="right" src="/workbench-img/enemy/etheral/specter-energized.jpg">
+<img align="right" src="/workbench-img/enemy/etheral/specter.jpg">
+
 似乎是受到了芭莱大厦内部别具一格的装潢氛围影响，「游魂」有着艺术雕塑般怪异扭曲的肢体构造。
 
 有一部分调查员认为，它特殊的造型，是为了更好地保护自己的以太核心。
@@ -145,6 +148,8 @@ pageClass: database
 
 ### 眼魔引擎
 
+<img align="right" src="/workbench-img/enemy/etheral/beholder-engine.jpg">
+
 虽然在空洞调查协会的资料库中，**「眼魔引擎」**属于只有在近距离接触时才具有一定威胁性的以骸。
 
 但在实际的空洞调查行动中，它却经常带来意料之外的威胁。
@@ -155,10 +160,13 @@ pageClass: database
 
 ---
 
-> [!TIP] 
+> [!TIP]
 > **「破除恐惧的唯一方法…就是凝视它，瞪回去。」**<br>——《今日灾星》论坛，某资深调查员的心得总结
 
 ### 弗瑟尔
+
+<img align="right" src="/workbench-img/enemy/etheral/specter-energized.jpg">
+<img align="right" src="/workbench-img/enemy/etheral/specter.jpg">
 
 怀斯塔学会的最新研究表明，一部分以骸的肢体会带有周遭环境的显著特征。
 
