@@ -8,7 +8,7 @@ pageClass: Story
 <Dialogue role="妮可">放心吧！我既没被跟踪，也没被盯梢！费尽力气才从十四分街现场混出来，就我一人！</Dialogue>
 <Dialogue role="哲">最好是这样。</Dialogue>
 <Dialogue role="妮可">哎呀我知道，市政换届选举快到了，风声紧得很！</Dialogue>
-<Dialogue role="妮可">尤其抓捕绳降的力度又加强了，甚至开通了专门的热线还有...</Dialogue>
+<Dialogue role="妮可">尤其抓捕绳匠的力度又加强了，甚至开通了专门的热线还有...</Dialogue>
 <Dialogue role="哲">妮可，你这么急匆匆的上门，又被人追债啦？</Dialogue>
 <Dialogue role="妮可">才没有被追债，是被治安局和丽都频道那个暴怒记者给摆了一道！</Dialogue>
 
@@ -85,7 +85,7 @@ pageClass: Story
 <Dialogue role="比利">不要用你的扑克脸讲这种话，我都不知道你是认真的还是开玩笑！</Dialogue>
 <Dialogue role="铃-邦布">每次合作都能听脱口秀，挺好的。</Dialogue>
 <Dialogue role="安比">绳匠是因为这个原因，才允许妮可一直赊账的吗？</Dialogue>
-<Dialogue role="比利">（好家伙）</Dialogue>
+
 <Dialogue role="比利">呃…总觉得有点高兴不起来啊。</Dialogue>
 <Dialogue role="比利">不过先不说这些了，趁以骸追上来之前，我们快溜！</Dialogue>
 
@@ -120,7 +120,6 @@ pageClass: Story
 
 <Action>比利发动技能，高举佩枪用枪托猛砸阀门锁扣，场面一阵异动</Action>
 
-<Dialogue role="比利">（好家伙，这技能…）</Dialogue>
 <Dialogue role="空洞深潜系统转播">「检测到代理人比利高举佩枪，正在用枪托猛砸向阀门的锁扣。」</Dialogue>
 <Dialogue role="空洞深潜系统转播">「检测到阀门打开，但代理人比利的手部外骨骼出现了部分损伤。」</Dialogue>
 <Dialogue role="比利">痛…痛死我了！！！</Dialogue>
@@ -171,14 +170,14 @@ pageClass: Story
 <Dialogue role="比利">安比，R值为255的绿是什么样的？</Dialogue>
 <Dialogue role="安比">和你的夹克一样。</Dialogue>
 <Dialogue role="哲">妮可，我们已经把人救出来了，现在可以付欠款了吧？</Dialogue>
-<Dialogue role="比利">（等等，总觉得忽略了什么。对！似乎保险箱还没拿回来吧！）</Dialogue>
+
 <Dialogue role="妮可">等一下！事情还没完吧？</Dialogue>
 <Dialogue role="妮可">我的委托可是：「把我的人和要的东西，都带出来。」现在只完成了前半段哦！</Dialogue>
 <Dialogue role="铃">还有把东西带回来这回事啊，哥哥你记得吗？</Dialogue>
 <Dialogue role="妮可">喂，你刚刚说了些很影响商誉的话吧？</Dialogue>
 <Dialogue role="妮可">在我们取回保险箱之前，委托都不算完成。</Dialogue>
 <Dialogue role="安比">按照撤离前目击的情况，目标保险箱处在一个高威胁以骸的活动范围内。</Dialogue>
-<Dialogue role="比利">（看来又要进去打架了吗？）</Dialogue>
+
 <Dialogue role="安比">怀斯塔学会的以骸图鉴登记名：杜拉罕。是上级以骸个体。</Dialogue>
 <Dialogue role="比利">没错，就是那个！赤牙帮的老大运气不太好，被烈性以太物质侵蚀，转变成了这种高威胁的以骸。</Dialogue>
 <Dialogue role="比利">我和安比试过硬抢保险箱，但那家伙实力不一般，直到撤离前我们都没能夺回来。</Dialogue>
@@ -203,9 +202,9 @@ pageClass: Story
 <Dialogue role="铃">委托费可不打折。</Dialogue>
 <Dialogue role="比利">店长，你太懂她了…</Dialogue>
 <Dialogue role="妮可">别忙着拒绝啊！我不会扰乱「法厄同」的官方报价，就像之前那样，开个绳网小号给我走折扣价嘛…</Dialogue>
-<Dialogue role="比利">（原来是用这种方式解决的嘛？太厉害了）</Dialogue>
+
 <Dialogue role="安比">绳匠，请给我们打个折，不然妮可不给我吃饭。此处要哭。</Dialogue>
-<Dialogue role="比利">（这里不知道是不是话术，如果是真的的话，那安比真是可怜。比利是机器人似乎不需要吃饭。）</Dialogue>
+
 <Dialogue role="妮可">不要把括号里的话读出来啊！——不过，我们是真的需要这个折扣！这点小差价对于你们「法厄同」来说，不是毛毛雨吗？</Dialogue>
 <Dialogue role="比利">原来真的是话术啊，真狡猾啊不愧是狡兔屋老大</Dialogue>
 <Dialogue role="比利">安比，妮可老大这次不仅搬了救兵，还是搬的一流救兵！她心里有我们！</Dialogue>
