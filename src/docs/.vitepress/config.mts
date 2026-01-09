@@ -298,6 +298,7 @@ export default defineConfig({
     },
     outline: {
       label: "页面导航",
+      level: [2, 3],
     },
     editLink: {
       pattern: "https://github.com/doupoa/ZZZStory/edit/main/docs/:path",
