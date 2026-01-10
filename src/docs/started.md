@@ -22,7 +22,7 @@ pageClass: Started
   <div class="pager">
     <a class="page-link" href="/knock-knock/index"
       ><img src="/started-img/knock-knock.png" title="knock-knock" lazy="loaded" />
-      <span class="page-title">knock Knock</span></a
+      <span class="page-title">Knock Knock</span></a
     >
   </div>
   <div class="pager">
@@ -57,4 +57,3 @@ pageClass: Started
     >
   </div>
 </nav>
-
