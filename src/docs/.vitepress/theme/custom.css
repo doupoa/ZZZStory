@@ -1,4 +1,3 @@
-
 @import "tailwindcss";
 @config "../../tailwind.config.cjs";
 @plugin "@tailwindcss/typography";
@@ -6,10 +5,10 @@
 @source '../../../**/*.{vue,ts}';
 @custom-variant dark (&:is(.dark *));
 
-@font-face{
+@font-face {
   font-family: Outfit;
   font-display: auto;
-  src:url("Outfit-VariableFont_wght.woff") format("woff")
+  src: url("Outfit-VariableFont_wght.woff") format("woff");
 }
 
 .prose {
@@ -18,7 +17,7 @@
 }
 
 :root {
-  --vp-font-family-base:Outfit;
+  --vp-font-family-base: Outfit;
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
@@ -125,6 +124,13 @@
 
   html.dark .VPNavBar:not(.top) .content-body {
     background-color: rgba(27, 27, 31, 0.3) !important;
+  }
+}
+
+.interKnot {
+  img {
+    /* 限制图片最大长宽 */
+    @apply max-h-48;
   }
 }
 
@@ -276,10 +282,10 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
   /* document.getElementsByClassName("entry-scroll")[0].style.cssText.replace(";","").split(": ")[1] */
   /* 背景色直接通过主色加33(20%透明度) */
 
-   /* 猫又 */
+  /* 猫又 */
   .nekomoto {
-    background: #A0351C33;
-    color: #A0351C;
+    background: #a0351c33;
+    color: #a0351c;
   }
   /* 安比 */
   .anby {
