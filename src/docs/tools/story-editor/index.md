@@ -90,64 +90,6 @@ layout: page
   --narration-color: #aaa;
   --narration-border: #aaa;
 }
-
-/* Scene 组件样式 */
-.scene {
-  display: block;
-  font-style: italic;
-  color: var(--scene-color);
-  margin: 1.5em 0;
-  padding-left: 1em;
-  border-left: 2px solid var(--scene-border);
-}
-
-/* Action 组件样式 */
-.action {
-  background: var(--action-bg);
-  padding: 0.5rem;
-  border-radius: 4px;
-  margin: 1.2rem 1.5rem;
-  font-size: 0.9em;
-  border: 1px dashed var(--action-border);
-  color: var(--action-color);
-}
-
-/* Dialogue 组件样式 */
-.dialogue {
-  margin: 1.2em 0;
-  position: relative;
-  padding-left: 1.5rem;
-  font-weight: bold;
-}
-
-.dialogue::before {
-  content: "\"";
-  position: absolute;
-  left: 0;
-  top: -0.5rem;
-  font-size: 2.5rem;
-  color: var(--dialogue-quote-color);
-  font-family: Georgia, serif;
-}
-
-.character {
-  display: inline-block;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  margin-right: 0.5rem;
-}
-
-/* Narration 组件样式 */
-/* .narration {
-  font-style: italic;
-  color: var(--narration-color);
-  padding: 0.5em 1em;
-  margin: 1em 0;
-  background: var(--action-bg);
-  border-left: 3px solid var(--narration-border);
-} */
 </style>
 
 <script setup>
@@ -474,10 +416,10 @@ const renderPreview = computed(() => {
   let html = rawText.value
 
   // 替换 Scene 标签
-  html = html.replace(/<Scene>(.*?)<\/Scene>/gs, '<div class="scene">$1</div>')
+  html = html.replace(/<Scene>(.*?)<\/Scene>/gs, '<div class="block italic text-gray-400 my-6 pl-4 border-l-2 border-(--main-color-1)">$1</div>')
 
   // 替换 Action 标签
-  html = html.replace(/<Action>(.*?)<\/Action>/gs, '<div class="action">$1</div>')
+  html = html.replace(/<Action>(.*?)<\/Action>/gs, '<div class="p-2 rounded my-5 mx-6 text-[0.9em] leading-5 text-amber-500 border-dashed border border-gray-300 bg-gray-100 dark:border-gray-600 dark:bg-gray-900">$1</div>')
 
   // 替换 Narration 标签
   html = html.replace(/<Narration>(.*?)<\/Narration>/gs, '<div class="narration">$1</div>')
@@ -485,7 +427,7 @@ const renderPreview = computed(() => {
   // 替换 Dialogue 标签
   html = html.replace(/<Dialogue\s+role="([^"]*)">(.*?)<\/Dialogue>/gs, (match, role, content) => {
     const colors = getRoleColors(role)
-    return `<div class="dialogue"><span class="character" style="color: ${colors.color}; background: ${colors.background};">${role}</span>${content}</div>`
+    return `<div class="my-6 relative pl-6 font-bold before:content-['“'] before:text-(--main-color-1) before:text-[2.50rem] before:leading-none before:absolute before:-top-2 before:left-0"><span class="inline-block py-1 px-2 rounded text-[0.80rem] font-bold mr-2" style="color: ${colors.color}; background: ${colors.background};">${role}</span>${content}</div>`
   })
 
   return html

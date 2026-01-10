@@ -96,7 +96,19 @@ export default defineConfig({
       { text: "绳网", link: "/inter-knot/index" },
       { text: "敲敲", link: "/knock-knock/index" },
       { text: "资料库", link: "/information/index" },
-      { text: "编辑器", link: "/editor/StoryEditor" },
+      {
+        text: "工具", // 热门工具放外边，不常用的就收起来
+        items: [
+          {
+            text: "剧情编辑器",
+            link: "/tools/story-editor/index",
+          },
+          {
+            text: "🚧 驱动盘评级",
+            link: "/tools/drive-disk-rating/index",
+          },
+        ],
+      },
       { text: "关于", link: "/about" },
     ],
     sidebar: {
@@ -190,9 +202,9 @@ export default defineConfig({
               text: "生意 X 诡异 X 道义",
               link: "/main-line/chapter0/Business_x_Strangeness_x_Justness",
             },
-           {
-        	text: "委托:兔与绳",
-        	link: "/main-line/chapter0/Assignment_The_Rabbit_and_the_Rope",
+            {
+              text: "委托:兔与绳",
+              link: "/main-line/chapter0/Assignment_The_Rabbit_and_the_Rope",
             },
           ],
         },
@@ -298,6 +310,7 @@ export default defineConfig({
     },
     outline: {
       label: "页面导航",
+      level: [2, 3],
     },
     editLink: {
       pattern: "https://github.com/doupoa/ZZZStory/edit/main/docs/:path",
