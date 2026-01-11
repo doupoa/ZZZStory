@@ -206,6 +206,10 @@ export default defineConfig({
               text: "委托:兔与绳",
               link: "/main-line/chapter0/Assignment_The_Rabbit_and_the_Rope",
             },
+            {
+              text: "委托:绳与兔",
+              link: "/main-line/chapter0/Assignment_The_Rope_and_the_rabbit",
+            },
           ],
         },
         {
