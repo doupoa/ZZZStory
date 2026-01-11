@@ -1,7 +1,7 @@
 <Dialogue role="哲">铃，你来了。妮可说她已经找到保险箱的线索，正在赶来的路上。</Dialogue>
 <Dialogue role="哲">准备好了就去车库等妮可他们吧。要现在去吗？</Dialogue>
 <Dialogue role="玩家">好，现在就去。</Dialogue>
-<Scene>车库内</Scene>
+<Scene>车库</Scene>
 <Dialogue role="比利">我们回来了，店长！</Dialogue>
 <Dialogue role="玩家">看来调查很顺利。</Dialogue>
 <Dialogue role="比利">那当然！干调查这方面，「狡兔屋」可是专业的！</Dialogue>
@@ -137,7 +137,7 @@
 <Dialogue role="邦布">......</Dialogue>
 <Dialogue role="邦布">......</Dialogue>
 <Dialogue role="妮可">不要过去！</Dialogue>
-<Scene>邦布自顾自地走向以骸</Scene>
+<Action>邦布自顾自地走向以骸</Action>
 <Dialogue role="妮可">可恶！挡住它们！</Dialogue>
 <Dialogue role="妮可">保护绳匠！</Dialogue>
 <Scene>电视屏幕里，狡兔屋的迷失逃亡还在继续…</Scene>
