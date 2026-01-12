@@ -1,3 +1,9 @@
+---
+pageClass: Story
+---
+
+# ⌈ 委托:绳与兔 ⌋
+
 <Dialogue role="哲">铃，你来了。妮可说她已经找到保险箱的线索，正在赶来的路上。</Dialogue>
 <Dialogue role="哲">准备好了就去车库等妮可他们吧。要现在去吗？</Dialogue>
 <Dialogue role="玩家">好，现在就去。</Dialogue>
@@ -304,7 +310,7 @@
 <Dialogue role="妮可">那是，我的保险箱！</Dialogue>
 <Dialogue role="妮可">可恶！一而再再而三地和我们作对！</Dialogue>
 <Dialogue role="妮可">休想我再对你客气！</Dialogue>
-<Dialogue role="邦布">以骸狂暴化了，小心！</Dialogue>
+<Dialogue role="铃-邦布">以骸狂暴化了，小心！</Dialogue>
 <Dialogue role="妮可">谁管你！快把老娘的东西还来！</Dialogue>
 <Dialogue role="比利">很好！妮可老大也狂暴化了！</Dialogue>
 <Dialogue role="妮可">哈哈——！</Dialogue>
@@ -313,28 +319,28 @@
 <Dialogue role="妮可">找到你了——！！</Dialogue>
 <Dialogue role="比利">(?!)</Dialogue>
 <Dialogue role="安比">...</Dialogue>
-<Dialogue role="邦布">虽然我不想煞风景…但是现在高兴还太早了！妮可，你冷静点听我说…都是那个坏蛋黑客的错！它把我预留的脱离空洞用逃生数据给删除了。</Dialogue>
+<Dialogue role="铃-邦布">虽然我不想煞风景…但是现在高兴还太早了！妮可，你冷静点听我说…都是那个坏蛋黑客的错！它把我预留的脱离空洞用逃生数据给删除了。</Dialogue>
 <Dialogue role="妮可">你说我们出不去了——？！</Dialogue>
 <Dialogue role="妮可">哈哈…历经千辛万苦，好不容易回到了原点…没想到却是终点么。</Dialogue>
 <Dialogue role="比利">可恶，我还没有和莫妮卡大姐姐共进过晚餐，好不甘心，不过…也是一段不错的人生吧。</Dialogue>
 <Dialogue role="安比">冷静一下，我们再想想其他办法。</Dialogue>
-<Dialogue role="邦布">呃，倒也不用这么悲观啦，压箱底的方法我还有一个！就是需要妮可你点头同意。</Dialogue>
+<Dialogue role="铃-邦布">呃，倒也不用这么悲观啦，压箱底的方法我还有一个！就是需要妮可你点头同意。</Dialogue>
 <Dialogue role="妮可">我同意！</Dialogue>
-<Dialogue role="邦布">答应得太快了吧？</Dialogue>
-<Dialogue role="邦布">那个坏蛋黑客说过，保险箱里的东西具有和罗塞塔数据类似的价值，有了它就能自由出入空洞。如果这句话是真的，我们应该可以利用它从空洞出去！如果你愿意让我打开的话。</Dialogue>
+<Dialogue role="铃-邦布">答应得太快了吧？</Dialogue>
+<Dialogue role="铃-邦布">那个坏蛋黑客说过，保险箱里的东西具有和罗塞塔数据类似的价值，有了它就能自由出入空洞。如果这句话是真的，我们应该可以利用它从空洞出去！如果你愿意让我打开的话。</Dialogue>
 <Dialogue role="妮可">我同意！我刚刚就说过了！</Dialogue>
-<Dialogue role="邦布">哎？真的可以这么轻易地答应嘛？你要怎么跟那个委托人交代啊？</Dialogue>
+<Dialogue role="铃-邦布">哎？真的可以这么轻易地答应嘛？你要怎么跟那个委托人交代啊？</Dialogue>
 <Dialogue role="妮可">都这种生死关头了！如果老娘出不去，谁来把保险箱带给他？尽管打开！</Dialogue>
 <Dialogue role="妮可">你已经知道密码了对吧？</Dialogue>
-<Dialogue role="邦布">没错！</Dialogue>
-<Dialogue role="邦布">不过…我也不知道那里面到底存储着什么，强行读取的后果万一很严重的话…</Dialogue>
+<Dialogue role="铃-邦布">没错！</Dialogue>
+<Dialogue role="铃-邦布">不过…我也不知道那里面到底存储着什么，强行读取的后果万一很严重的话…</Dialogue>
 <Dialogue role="安比">稍等，有一点我不太明白。你的本体在空洞外，明明可以一走了之，为什么要冒着风险回来帮我们？你有什么其他图谋么？</Dialogue>
 <Dialogue role="妮可">安比！</Dialogue>
-<Dialogue role="邦布">真是奇怪的问题。</Dialogue>
+<Dialogue role="铃-邦布">真是奇怪的问题。</Dialogue>
 <Dialogue role="铃">我是你们的「绳匠」啊！</Dialogue>
-<Dialogue role="邦布">既然承诺了带你们出去，就一定会带你们出去！到时候，我…假如我失败了，预留的H.D.D系统指令会自动在绳网上发布一条营救你们的委托。</Dialogue>
+<Dialogue role="铃-邦布">既然承诺了带你们出去，就一定会带你们出去！到时候，我…假如我失败了，预留的H.D.D系统指令会自动在绳网上发布一条营救你们的委托。</Dialogue>
 <Dialogue role="妮可">放心吧，要是能出去，不论发生什么，我们都会去店里救你的！</Dialogue>
-<Dialogue role="邦布">哼哼，就算说这种话，委托金我也不会打折的！</Dialogue>
+<Dialogue role="铃-邦布">哼哼，就算说这种话，委托金我也不会打折的！</Dialogue>
 <Action>将芯片插入邦布体内</Action>
 <Scene>一阵强光骤然爆发</Scene>
 <Dialogue role="未知">不要吓我…醒过来…</Dialogue>
