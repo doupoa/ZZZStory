@@ -25,11 +25,11 @@ pageClass: Story
 <Dialogue role="妮可">把我的人和我委托人的东西，从空洞里平安带出来！</Dialogue>
 <Dialogue role="妮可">标准的「绳匠」生意，你们不接嘛？「法厄同」？</Dialogue>
 <Dialogue role="妮可">做完这一单，我就把之前的全部赊账一次交清！</Dialogue>
-<Dialogue role="玲">妮可，你的欠款可已经拖了好几个月了，利息你都不考虑的吗？</Dialogue>
+<Dialogue role="铃">妮可，你的欠款可已经拖了好几个月了，利息你都不考虑的吗？</Dialogue>
 <Dialogue role="妮可">唉好吧好吧，我这次委托的报酬也给你们分红，这样总行了吧？</Dialogue>
 <Dialogue role="哲">嗯，这样听起来还合理了一些。</Dialogue>
 <Dialogue role="妮可">很好！事不宜迟，赶紧出发吧！我先去空洞里等着！嘶--</Dialogue>
-<Dialogue role="玲">妮可，你受伤了？还是在我们店里休息一会儿再出发吧。</Dialogue>
+<Dialogue role="铃">妮可，你受伤了？还是在我们店里休息一会儿再出发吧。</Dialogue>
 <Dialogue role="妮可">可是！… 唔嗯…</Dialogue>
 <Dialogue role="哲">你就听我妹妹的吧。</Dialogue>
 <Dialogue role="哲">待会儿「工作」的时候，还需要你帮忙运送伊埃斯到空洞附近。</Dialogue>
@@ -50,8 +50,8 @@ pageClass: Story
 <Dialogue role="比利">可恶，又得战斗！弹药消耗快超标了，这样下去奖金就…</Dialogue>
 <Dialogue role="安比">来了，准备迎击。</Dialogue>
 <Dialogue role="比利">等下，那不是我扔的！</Dialogue>
-<Dialogue role="邦布">喂，两位，快来这边！</Dialogue>
-<Dialogue role="邦布">两位，辛苦啦！</Dialogue>
+<Dialogue role="铃-邦布">喂，两位，快来这边！</Dialogue>
+<Dialogue role="铃-邦布">两位，辛苦啦！</Dialogue>
 <Dialogue role="安比">（悄悄对比利说）戴着围巾，说人话的邦布…</Dialogue>
 <Dialogue role="比利">（突然兴奋）噢噢噢！难道你是——</Dialogue>
 <Dialogue role="比利/安比">「法厄同」！</Dialogue>
@@ -61,7 +61,7 @@ pageClass: Story
 <Dialogue role="安比">已经听不见那个上级以骸的声音了</Dialogue>
 <Dialogue role="比利">太、太好了，我感觉脚上的液压杆都要跑断了！</Dialogue>
 <Dialogue role="安比">我提议现在适当修整一下，请问可以吗？绳匠？</Dialogue>
-<Dialogue role="铃-邦布">（哎，）正好伊埃斯也需要调试一下，我就先休息咯。</Dialogue>
+<Dialogue role="铃-邦布">正好伊埃斯也需要调试一下，我就先休息咯。</Dialogue>
 <Dialogue role="安比">嗯，绳匠你和比利先休息，我来负责警戒。</Dialogue>
 <Dialogue role="比利">哎呀呀，刚才真是惊险，没想到赤牙帮那大叔会被异化成那么厉害的怪物。</Dialogue>
 <Dialogue role="比利">多亏店长你及时救场带我们逃脱那里。</Dialogue>
