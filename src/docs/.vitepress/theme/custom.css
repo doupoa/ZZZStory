@@ -278,16 +278,6 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
     font-weight: bold;
   }
 
-  /* 角色名称标签 - 已在组件中通过内联样式实现，此处保留基础类名 */
-  .vp-doc .speaker {
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: bold;
-    margin-right: 0.5rem;
-  }
-
   /* 暗黑模式适配 */
   .dark .vp-doc {
     .scene {
