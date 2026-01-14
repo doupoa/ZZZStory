@@ -95,14 +95,15 @@
   }
 
   /* 文章背景压暗亮度 */
-  html.dark #VPContent:not(.is-home) {
+  html.dark #VPContent:has(.VPDoc)  {
     background: rgba(27, 27, 31, 0.7);
   }
 
   /* 首页标题栏高斯模糊及背景色设置 */
   html.dark .VPNavBar:not(.has-sidebar):not(.home.top),
   html.dark .VPNavBar:not(.top) {
-    background-color: rgba(27, 27, 31, 0.3) !important;
+    background-color: rgba(27, 27, 31, 0.5) !important;
+    color: white !important;;
   }
 
   html .VPNavBar:not(.has-sidebar):not(.home.top),
@@ -125,12 +126,17 @@
   html.dark .VPNavBar:not(.top) .content-body {
     background-color: rgba(27, 27, 31, 0.3) !important;
   }
+
+  .VPHero.has-image .main{
+    max-width:none;
+  }
+
 }
 
 .interKnot {
   img {
     /* 限制图片最大长宽 */
-    @apply max-h-48;
+    max-height: 192px;
   }
 }
 
