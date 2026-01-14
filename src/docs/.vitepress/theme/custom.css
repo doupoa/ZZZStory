@@ -95,7 +95,7 @@
   }
 
   /* 文章背景压暗亮度 */
-  html.dark #VPContent:has(.VPDoc)  {
+  html.dark #VPContent:has(.VPDoc) {
     background: rgba(27, 27, 31, 0.7);
   }
 
@@ -103,7 +103,7 @@
   html.dark .VPNavBar:not(.has-sidebar):not(.home.top),
   html.dark .VPNavBar:not(.top) {
     background-color: rgba(27, 27, 31, 0.5) !important;
-    color: white !important;;
+    color: white !important;
   }
 
   html .VPNavBar:not(.has-sidebar):not(.home.top),
@@ -112,10 +112,14 @@
   }
 
   /* 顶部菜单栏高斯 */
+  .VPNavBar:has(.top) .content-body {
+    position: relative;
+    @apply backdrop-blur-3xl;
+  }
+
   .VPNavBar:not(.top) .content-body {
     position: relative;
-    -webkit-backdrop-filter: saturate(50%) blur(8px);
-    backdrop-filter: saturate(50%) blur(8px);
+    @apply backdrop-blur;
   }
 
   /* 根据明暗主题分别设置背景色 */
@@ -124,13 +128,16 @@
   }
 
   html.dark .VPNavBar:not(.top) .content-body {
-    background-color: rgba(27, 27, 31, 0.3) !important;
+    background-color: transparent !important;
   }
 
-  .VPHero.has-image .main{
-    max-width:none;
+  .VPHero.has-image .main {
+    max-width: none;
   }
 
+  /* .VPNavBar .VPNavBarMenuLink {
+    color: white !important;
+  } */
 }
 
 .interKnot {
