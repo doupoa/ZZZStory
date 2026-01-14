@@ -12,6 +12,7 @@
     "vitepress-plugin-comment-with-giscus": "^1.1.15"
   },
   "dependencies": {
-    "@types/node": "^25.0.0"
+    "@types/node": "^25.0.0",
+    "three": "^0.182.0"
   }
 }
