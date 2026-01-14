@@ -278,55 +278,6 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
     font-weight: bold;
   }
 
-  /* 在绳网情报站角色界面通过以下js获取主题色 */
-  /* document.getElementsByClassName("entry-scroll")[0].style.cssText.replace(";","").split(": ")[1] */
-  /* 背景色直接通过主色加33(20%透明度) */
-
-  /* 猫又 */
-  .nekomoto {
-    background: #a0351c33;
-    color: #a0351c;
-  }
-  /* 安比 */
-  .anby {
-    background: #c8e16c33;
-    color: #b3cc58;
-  }
-  /* 比利 */
-  .billy {
-    background: #af3e3a33;
-    color: #cc4f4b;
-  }
-  /* 妮可 */
-  .nico {
-    background: #e6adaa33;
-    color: #cd8583;
-  }
-  /* 白佬 */
-  .whitebeard {
-    background: #949494;
-    color: #ffffff;
-  }
-  /* 玲 */
-  .belle {
-    background: #fd802d;
-    color: #002aff;
-  }
-  /* 哲 */
-  .wise {
-    background: #fd802d;
-    color: #ffffff;
-  }
-  /* Fairy */
-  .Fairy {
-    background: #1e3c7233;
-    color: #1e3c72;
-  }
-  .npc {
-    background: #7c7c7c46;
-    color: dodgerblue;
-  }
-
   /* 暗黑模式适配 */
   .dark .vp-doc {
     .scene {

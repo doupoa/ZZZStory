@@ -96,6 +96,7 @@ layout: page
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import FloatToolbar from './components/FloatToolbar.vue'
 import ExtensionPanel from './components/ExtensionPanel.vue'
+import { getRoleColors, getAllRoleNames } from '../../components/style/roles'
 
 
 // 编辑器内容
@@ -112,49 +113,8 @@ const undoStack = ref([])
 const redoStack = ref([])
 let isRecordingHistory = false
 
-// 角色列表
-const dialogueRoles = [
-  '(正在直播的电视)',
-  '(蓝发少女)',
-  '(灰发少年)',
-  '妮可',
-  '安比',
-  '比利',
-  '⌈ 白佬 ⌋'
-]
-
-// 定义角色颜色规则
-const roles = {
-  "random_play": {
-    "铃": ["#254fff", "#fd802dbf"],
-    "哲": ["#ffffff", "#fd802dbf"],
-    "(蓝发少女)": ["#254fff", "#fd802dbf"],
-    "(灰发少年)": ["#ffffff", "#fd802dbf"]
-  },
-  "cunning_hares": {
-    "安比": ["#b3cc58", "#C8E16C33"],
-    "比利": ["#cc4f4b", "#AF3E3A33"],
-    "妮可": ["#cd8583", "#E6ADAA33"],
-    "(粉毛长发少女)": ["#cd8583", "#E6ADAA33"],
-    "(白毛短发少女)": ["#cc4f4b", "#AF3E3A33"]
-  },
-  "other": { "npc": ["dodgerblue", "#7c7c7c46"] }
-}
-
-const getRoleColors = (role) => {
-  let colors = ['dodgerblue', "#7c7c7c46"]
-  for (const camp of Object.keys(roles)) {
-    const campRoles = roles[camp]
-    if (campRoles[role]) {
-      colors = campRoles[role]
-      break
-    }
-  }
-  return {
-    color: colors[0],
-    background: colors[1]
-  }
-}
+// 角色列表 - 动态从角色配置中获取
+const dialogueRoles = getAllRoleNames()
 
 // 存储键
 const STORAGE_KEY = 'zzz-story-editor-content'
