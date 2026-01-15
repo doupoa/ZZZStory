@@ -6,13 +6,13 @@ pageClass: Story
 
 <Dialogue role="哲">铃，你来了。妮可说她已经找到保险箱的线索，正在赶来的路上。</Dialogue>
 <Dialogue role="哲">准备好了就去车库等妮可他们吧。要现在去吗？</Dialogue>
-<Dialogue role="玩家">好，现在就去。</Dialogue>
-<Scene>车库</Scene>
+<Dialogue role="铃">好，现在就去。</Dialogue>
+<Scene>录像店后方的车库内，灯光在水泥地上投下模糊光晕</Scene>
 <Dialogue role="比利">我们回来了，店长！</Dialogue>
-<Dialogue role="玩家">看来调查很顺利。</Dialogue>
+<Dialogue role="铃">看来调查很顺利。</Dialogue>
 <Dialogue role="比利">那当然！干调查这方面，「狡兔屋」可是专业的！</Dialogue>
 <Dialogue role="安比">嗯…专业的样子…</Dialogue>
-<Dialogue role="玩家">在嘀咕什么呢，安比。</Dialogue>
+<Dialogue role="铃">在嘀咕什么呢，安比。</Dialogue>
 <Dialogue role="安比">啊，店长，没什么。妮可正在等你。</Dialogue>
 <Dialogue role="妮可">你们来啦。保险箱的下落已经查清楚了，我之前交代的事怎么样了？</Dialogue>
 <Dialogue role="哲">你是问数据盘吗？已经顺利修复了。</Dialogue>
@@ -33,7 +33,7 @@ pageClass: Story
 <Dialogue role="铃">那个…我们都听得到啊？</Dialogue>
 <Dialogue role="妮可">咳嗯！总、总之，目标就像安比说的那样简单明了：找到保险箱，抢回来！</Dialogue>
 <Dialogue role="妮可">从外界没有手段可以查看空洞内的实时状况，空洞内的支援与指引就靠你们了！</Dialogue>
-<Action>追加新委托「绳与兔」</Action>
+<Action>系统界面闪烁着新增了委托项，目标坐标如血色信标般明灭不定</Action>
 <Dialogue role="系统">身份验证有效，登录用户——「法厄同」</Dialogue>
 <Dialogue role="系统">已更新进行中的委托履历，新增目标——回收保险箱</Dialogue>
 <Dialogue role="妮可">好了！成功进入空洞！赶紧去找我的保险箱吧~</Dialogue>
@@ -50,6 +50,7 @@ pageClass: Story
 <Dialogue role="比利">不愧…妮可老大！</Dialogue>
 <Dialogue role="铃">等一下，这段我刚刚是不是听过了？</Dialogue>
 <Dialogue role="妮可">绳匠？你愣着干嘛？该出发啦！虽然我知道保险箱所在的大致空洞区域范围，但怎么抵达那里还是得靠你哟！</Dialogue>
+<Action>空洞的以太仿佛凝固的瘴气，每一次呼吸都带着黏稠的重量</Action>
 <Dialogue role="安比">唔…这附近的空气似乎变得更沉重了一些。</Dialogue>
 <Dialogue role="比利">没错，我的视讯传感器的分辨率好像也降低了一点。</Dialogue>
 <Dialogue role="妮可">这表示我们已经——</Dialogue>
@@ -75,7 +76,7 @@ pageClass: Story
 <Dialogue role="哲">临时调用了后备显示器。</Dialogue>
 <Dialogue role="哲">尺寸什么的…将就一下吧。</Dialogue>
 <Dialogue role="哲">妮可，你们状态还好吗？</Dialogue>
-<Action>夹杂着一段报错</Action>
+<Action>监控画面剧烈抖动，夹杂着刺耳的电流爆鸣</Action>
 <Dialogue role="哲">能听到吗？安比？比利？</Dialogue>
 <Dialogue role="哲">等等…为什么大家的信号离线了？</Dialogue>
 <Dialogue role="系统">「安比」离开队伍</Dialogue>
@@ -85,6 +86,7 @@ pageClass: Story
 <Dialogue role="铃">不是我要回来的，是被弹出来了。HDD和空洞内的连接彻底断了！</Dialogue>
 <Dialogue role="哲">赶快开始紧急调试！</Dialogue>
 <Dialogue role="铃">嗯！</Dialogue>
+<Action>一连串失败的提示音如丧钟般回响在狭小空间内</Action>
 <Dialogue role="铃">不行，能用的办法都用过了，还是没办法恢复连接。</Dialogue>
 <Dialogue role="哲">奇怪，按说HDD用的技术，应该没那么容易受空洞活性影响才对。</Dialogue>
 <Dialogue role="哲">不过最麻烦的是妮可他们，现在除了HDD，根本没有其他联络空洞内的手段。</Dialogue>
@@ -107,6 +109,7 @@ pageClass: Story
 <Dialogue role="???">装糊涂？喂喂，你们还没搞清状况吗？快把保险箱密码交出来。</Dialogue>
 <Dialogue role="哲">虽然你这么说，可不知道的东西，我们也没办法交给你。</Dialogue>
 <Dialogue role="???">回答错误。</Dialogue>
+<Action>屏幕上骤然闪过血红色的警告标识，如伤口般狰狞</Action>
 <Dialogue role="???">哼，还真是不见棺材不落泪，好吧，看来我只能帮你们回忆一下了。</Dialogue>
 <Dialogue role="???">现在被我操控的这台设备，对你们来说似乎很重要。</Dialogue>
 <Dialogue role="铃">等等！你想干什么？</Dialogue>
@@ -126,12 +129,12 @@ pageClass: Story
 <Dialogue role="哲">别的媒介？可现在能播视频的设备…有了，电视机。</Dialogue>
 <Dialogue role="哲">好，我去把视频转录到录像带里。</Dialogue>
 <Dialogue role="铃">怎么办，偏偏在这个时候被黑了，那家伙到底想干什么…</Dialogue>
-<Scene>电视荧屏亮起，录入了神秘黑客发来的视频的录像带开始播放，三个熟悉的身影映入眼帘…</Scene>
+<Scene>老式电视机的显像管发出熟悉的嗡鸣，雪花屏逐渐聚焦成清晰画面</Scene>
 <Dialogue role="妮可">不要挡路！！</Dialogue>
 <Dialogue role="比利">后面也有敌人！</Dialogue>
 <Dialogue role="安比">侧翼。</Dialogue>
 <Dialogue role="妮可">喂！这么走真的是对的吗？</Dialogue>
-<Dialogue role="邦布">……</Dialogue>
+<Dialogue role="邦布-伊埃斯">……</Dialogue>
 <Dialogue role="比利">店长到底怎么回事？一直沉默着自顾自地走着，也完全没有规避战斗的意思。</Dialogue>
 <Dialogue role="妮可">——绳匠？</Dialogue>
 <Dialogue role="安比">生气了？因为妮可付定金时杀价？</Dialogue>
@@ -140,18 +143,19 @@ pageClass: Story
 <Dialogue role="妮可">奇怪了，从进入空洞开始，她就完全不像是在引导的样子。</Dialogue>
 <Dialogue role="妮可">难道是外面遇到麻烦了？</Dialogue>
 <Dialogue role="妮可">喂！你是不是遇上了什么——</Dialogue>
-<Dialogue role="邦布">......</Dialogue>
-<Dialogue role="邦布">......</Dialogue>
+<Dialogue role="邦布-伊埃斯">......</Dialogue>
+<Dialogue role="邦布-伊埃斯">......</Dialogue>
 <Dialogue role="妮可">不要过去！</Dialogue>
-<Action>邦布自顾自地走向以骸</Action>
+<Action>邦布如提线木偶般径直走向以太漩涡中心</Action>
 <Dialogue role="妮可">可恶！挡住它们！</Dialogue>
 <Dialogue role="妮可">保护绳匠！</Dialogue>
-<Scene>电视屏幕里，狡兔屋的迷失逃亡还在继续…</Scene>
-<Dialogue role="以骸">GRRR</Dialogue>
+<Scene>录像带继续转动，画面在噪点与清晰间反复跳跃</Scene>
+<Dialogue role="以骸">GRRR!!</Dialogue>
 <Dialogue role="安比">那些以骸还在。</Dialogue>
 <Dialogue role="比利">和追着我们要房租的房东有得一拼。</Dialogue>
 <Dialogue role="比利">计时时间又到了啊，我们已经待够四轮「空洞内安全活动推荐时间」了呢。</Dialogue>
 <Dialogue role="妮可">要是再不恢复过来，你就永远也别想拿到欠款了！</Dialogue>
+<Action>安比突然拽住两人，迅速藏身于断裂的水泥柱后</Action>
 <Dialogue role="安比">藏起来！</Dialogue>
 <Dialogue role="比利">什、什么？那些怪物又来了？</Dialogue>
 <Dialogue role="安比">不是以骸，是空洞调查团队，前方。</Dialogue>
@@ -166,12 +170,12 @@ pageClass: Story
 <Dialogue role="安比">就目前情况来看，比利的提议具备相当的可行性。</Dialogue>
 <Dialogue role="安比">利用绳匠的身份交换我们的安全，或者是继续徘徊在这里，等邦布恢复正常。</Dialogue>
 <Dialogue role="比利">妮可老大…我不会逼你选择，究竟要怎么办，我们听你的。</Dialogue>
-<Dialogue role="邦布">......</Dialogue>
-<Action>妮可望着邦布，陷入沉思。</Action>
+<Dialogue role="邦布-伊埃斯">......</Dialogue>
+<Action>妮可凝视着邦布空洞的眼部传感器，金属表面映出她犹豫的面容</Action>
 <Dialogue role="比利">妮可老大？</Dialogue>
 <Dialogue role="妮可">别叫了…这里不适合久留。</Dialogue>
 <Dialogue role="妮可">走吧。</Dialogue>
-<Scene>新艾利都雅努斯区，六分街录像店「Random Play」。</Scene>
+<Scene>电视画面骤暗，只剩屏幕中央一点微弱残光</Scene>
 <Dialogue role="???">不得不说，我被感动了。</Dialogue>
 <Dialogue role="???">绳匠和盗洞客，从调查协会眼底窃取空洞利益的狼与狈，我见过很多为了利益而相互坑害的组合。</Dialogue>
 <Dialogue role="???">但为了保护「法厄同」的身份秘密，他们竟然放弃了逃生的机会，啧啧。</Dialogue>
@@ -233,6 +237,7 @@ pageClass: Story
 <Dialogue role="铃">我们可没有抛弃「法厄同」的身份，只不过是舍弃了一个「账号」。</Dialogue>
 <Dialogue role="???">这、这一切没完！</Dialogue>
 <Dialogue role="???">你们会付出代价的！</Dialogue>
+<Action>屏幕上的入侵痕迹如潮水般迅速退去，系统控制权重新闪烁熟悉的标识</Action>
 <Dialogue role="铃">太好了，我们成功了！！</Dialogue>
 <Dialogue role="哲">现在HDD已经完全在我们的控制下了。</Dialogue>
 <Dialogue role="铃">哥哥，辛苦了。</Dialogue>
@@ -251,6 +256,7 @@ pageClass: Story
 <Dialogue role="妮可">嗜财如命的狡兔屋…明明不管别人，只顾自己才是我的信条啊。</Dialogue>
 <Dialogue role="铃">难道说，妮可意外地是个好人？</Dialogue>
 <Dialogue role="妮可">啊，好人啊…为了这无关痛痒的两个字，在空洞里白白丢了性命，我真是个傻——</Dialogue>
+<Action>妮可的悲叹被突如其来的连线提示音打断</Action>
 <Dialogue role="妮可">咿呀啊啊啊啊啊啊啊啊！</Dialogue>
 <Dialogue role="铃">妮可，你的尖叫也延迟太多了吧。</Dialogue>
 <Dialogue role="妮可">绳匠？！真的是你们吗？！</Dialogue>
@@ -265,9 +271,9 @@ pageClass: Story
 <Dialogue role="系统">「妮可」加入队伍</Dialogue>
 <Dialogue role="哲">保险箱的信号就在这边</Dialogue>
 <Dialogue role="妮可">好，委托继续！</Dialogue>
-<Action>画面闪过一阵乱码</Action>
-<Scene>克里特空洞，废弃地铁深处。</Scene>
-<Action>一边追踪着和数据盘同特征的定位信号，一边将断线期间发生的变故简明扼要地告知了狡兔屋一行。</Action>
+<Action>通讯界面闪过一丝异常的乱码，如鬼魅掠过</Action>
+<Scene>废弃地铁隧道深处，扭曲的钢筋如怪物的肋骨</Scene>
+<Action>一边追踪着和数据盘同源的信号波纹，一边将断线期间惊心动魄的对峙简要告知</Action>
 <Dialogue role="比利">…原来如此，店长的设备遭到了神秘黑客的劫持所以才和我们断了联系。</Dialogue>
 <Dialogue role="安比">原来不是因为妮可压低委托金而生气。</Dialogue>
 <Dialogue role="铃">什么，原来你们还能给更多的？</Dialogue>
@@ -305,7 +311,7 @@ pageClass: Story
 <Dialogue role="哲">探索时会增长压力</Dialogue>
 <Dialogue role="哲">要规划好前行的路径</Dialogue>
 <Dialogue role="妮可">这事你是专业的，你说了算！</Dialogue>
-<Action>一只以骸突然从阴影中扑出</Action>
+<Action>一只浑身覆盖晶体的以骸如鬼魅般从墙体剥落</Action>
 <Dialogue role="妮可">真是走运！</Dialogue>
 <Dialogue role="妮可">那是，我的保险箱！</Dialogue>
 <Dialogue role="妮可">可恶！一而再再而三地和我们作对！</Dialogue>
@@ -314,8 +320,9 @@ pageClass: Story
 <Dialogue role="妮可">谁管你！快把老娘的东西还来！</Dialogue>
 <Dialogue role="比利">很好！妮可老大也狂暴化了！</Dialogue>
 <Dialogue role="妮可">哈哈——！</Dialogue>
+<Action>经过激烈交锋，以骇轰然倒地，保险箱滚落在碎石间</Action>
 <Dialogue role="妮可">终于…终于！</Dialogue>
-<Scene>安比和比利摆出击掌的架势，可妮可完全没有搭理的意思</Scene>
+<Scene>安比和比利相视露出胜利微笑，妮可却已扑向保险箱</Scene>
 <Dialogue role="妮可">找到你了——！！</Dialogue>
 <Dialogue role="比利">(?!)</Dialogue>
 <Dialogue role="安比">...</Dialogue>
@@ -341,8 +348,8 @@ pageClass: Story
 <Dialogue role="铃-邦布">既然承诺了带你们出去，就一定会带你们出去！到时候，我…假如我失败了，预留的H.D.D系统指令会自动在绳网上发布一条营救你们的委托。</Dialogue>
 <Dialogue role="妮可">放心吧，要是能出去，不论发生什么，我们都会去店里救你的！</Dialogue>
 <Dialogue role="铃-邦布">哼哼，就算说这种话，委托金我也不会打折的！</Dialogue>
-<Action>将芯片插入邦布体内</Action>
-<Scene>一阵强光骤然爆发</Scene>
+<Action>芯片接口与邦布躯干完美嵌合，发出一声清脆的锁定音</Action>
+<Scene>耀目的白光如超新星爆发般吞没视野</Scene>
 <Dialogue role="未知">不要吓我…醒过来…</Dialogue>
 <Dialogue role="未知">…使用条款及条件…不得授权他人使用…</Dialogue>
 <Dialogue role="未知">…不得转让或以其它任何方式让渡…</Dialogue>
@@ -351,22 +358,23 @@ pageClass: Story
 <Dialogue role="未知">邦布在抽搐…最好去店里…看看本体。</Dialogue>
 <Dialogue role="铃">呃…好吵…到底是什么声音…</Dialogue>
 <Dialogue role="未知">…请问您是否同意上述用户条款？</Dialogue>
-<Dialogue role="玩家">不同意。</Dialogue>
+<Dialogue role="铃">不同意。</Dialogue>
+<Action>无数信息碎片如玻璃渣般刺入意识</Action>
 <Dialogue role="铃">呃…信息在大脑里翻涌…好难受…</Dialogue>
 <Dialogue role="未知">…请问您是否同意上述用户条款？</Dialogue>
-<Dialogue role="玩家">不...不同意！</Dialogue>
+<Dialogue role="铃">不...不同意！</Dialogue>
 <Dialogue role="铃">快停下来！好疼…我的眼睛…全部器官都要…</Dialogue>
 <Dialogue role="未知">…请问您是否同意上述用户条款？</Dialogue>
 <Dialogue role="铃">同意…同意总行了吧？不要再折磨我了…</Dialogue>
 <Dialogue role="未知">授权协议签署完成，很高兴为您服务。</Dialogue>
 <Dialogue role="未知">…让我们一起，将新艾利都…</Dialogue>
-<Scene>六分街录像店，「Random Play」</Scene>
+<Scene>熟悉的药水气味与旧木地板气息交织</Scene>
 <Dialogue role="哲">啊，你终于醒了。</Dialogue>
 <Dialogue role="哲">别担心，已经没事了，你现在安全在家。</Dialogue>
 <Dialogue role="铃">那个数据芯片呢？妮可她们人呢？对了还有，我到底是怎么回来的？</Dialogue>
 <Dialogue role="哲">冷静冷静，你刚刚恢复，不要太激动。</Dialogue>
 <Dialogue role="哲">情况我会慢慢告诉你，你先说说读取芯片后发生了什么？</Dialogue>
-<Action>将之前痛苦又诡异的通感经历和盘托出…</Action>
+<Action>那些破碎而痛苦的感知如潮水般涌出…</Action>
 <Dialogue role="哲">唔…听起来像是梦话，或者是精神科重症区的聊天记录…</Dialogue>
 <Dialogue role="哲">总之，你的遭遇我大概知道了，现在轮到我讲了。</Dialogue>
 <Dialogue role="哲">在你读取数据芯片后，我们的邦布就失控了，似乎进入了某种超载状态，像404 Live场里的舞池灯球一样，劈里啪啦地闪着光。</Dialogue>
