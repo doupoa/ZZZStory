@@ -17,13 +17,13 @@ footer: false
             绝区零故事汇
           </span>
           <span
-            class="text-4xl font-bold text-white! sm:text-5xl lg:text-6xl whitespace-nowrap"
+            class="text-4xl font-bold dark:text-white! sm:text-5xl lg:text-6xl whitespace-nowrap"
           >
             ZZZStory
           </span>
         </h1>
         <p
-          class="my-5! max-w-[392px] text-lg text-white! sm:text-xl lg:text-2xl lg:max-w-[592px] whitespace-nowrap"
+          class="my-5! max-w-[392px] text-lg dark:text-white! sm:text-xl lg:text-2xl lg:max-w-[592px] whitespace-nowrap"
         >
           旨在为剧情爱好者及资深游戏玩家提供完整的故事剧情
         </p>
@@ -36,7 +36,7 @@ footer: false
           </a>
           <a
             href="/started"
-            class="rounded-full border-2 px-5 py-2 text-center font-semibold text-white! transition-colors hover:text-black! hover:bg-white sm:px-6 backdrop-blur-xl"
+            class="rounded-full border-2 px-5 py-2 text-center font-semibold dark:text-white!  dark:hover:text-black! dark:hover:bg-white hover:bg-gray-700 hover:text-white! transition-colors sm:px-6 backdrop-blur-xl"
           >
             开始
           </a>
@@ -44,7 +44,7 @@ footer: false
             href="https://zzz.mihoyo.com/main"
             target="_blank"
             rel="noreferrer"
-            class="rounded-full border-2 px-5 py-2 text-center font-semibold text-white! transition-colors hover:text-black! hover:bg-white sm:px-6 backdrop-blur-xl"
+            class="rounded-full border-2 px-5 py-2 text-center font-semibold dark:text-white! transition-colors dark:hover:text-black! dark:hover:bg-white hover:bg-gray-700 hover:text-white! sm:px-6 backdrop-blur-xl"
           >
             获取游戏
           </a>
