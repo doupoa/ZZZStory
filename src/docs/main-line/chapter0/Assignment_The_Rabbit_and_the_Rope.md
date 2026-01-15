@@ -12,7 +12,7 @@ pageClass: Story
 <Dialogue role="哲">妮可，你这么急匆匆的上门，又被人追债啦？</Dialogue>
 <Dialogue role="妮可">才没有被追债，是被治安局和丽都频道那个暴怒记者给摆了一道！</Dialogue>
 
-<Scene>妮可将与赤牙帮的冲突简要叙述了一遍。</Scene>
+<Scene>妮可急促的叙述中，十四分街的混战场景仿佛在昏黄灯光下重现</Scene>
 
 <Dialogue role="妮可">也就是说，比利和安比掉进了空洞里。</Dialogue>
 <Dialogue role="妮可">我要救他们出来，还得拿回委托人要的东西。事出紧急，只有你们能帮我了！</Dialogue>
@@ -37,8 +37,8 @@ pageClass: Story
 <Dialogue role="哲">妹妹，你先帮妮可处理一下伤口吧，我去调试 HDD，帮你做好「潜入」空洞的准备工作。</Dialogue>
 <Dialogue role="哲">那么… 开始做「生意」吧！</Dialogue>
 
-<Scene>身份验证有效，登录用户 ——「法厄同」</Scene>
-<Scene>检索到新增紧急委托，目标所在空洞已标记</Scene>
+<Scene>屏幕泛起幽蓝微光，「法厄同」的标识如暗夜灯塔般浮现</Scene>
+<Scene>光标闪烁间，地图上的红点标记如同凝固的血滴</Scene>
 
 <Dialogue role="哲">喂，听得见吗妮可？可以把伊埃斯放进去了！</Dialogue>
 <Dialogue role="妮可">OK！好啦小家伙，去吧去吧！</Dialogue>
@@ -56,7 +56,7 @@ pageClass: Story
 <Dialogue role="比利">（突然兴奋）噢噢噢！难道你是——</Dialogue>
 <Dialogue role="比利/安比">「法厄同」！</Dialogue>
 
-<Scene>克里特空洞，旧地铁枢纽站某处</Scene>
+<Scene>破碎的列车厢内，时间如同凝固的琥珀</Scene>
 
 <Dialogue role="安比">已经听不见那个上级以骸的声音了</Dialogue>
 <Dialogue role="比利">太、太好了，我感觉脚上的液压杆都要跑断了！</Dialogue>
@@ -76,7 +76,7 @@ pageClass: Story
 <Dialogue role="比利">有这样的王牌，为什么不加入调查协会吃香的喝辣的？</Dialogue>
 <Dialogue role="比利">和我们这样的盗洞客合作，怎么想都是风险大于收益吧？</Dialogue>
 
-<Action>一阵不明嘈杂声音传来</Action>
+<Action>一阵不祥的窸窣声从隧道深处蔓延而来，如同千万虫豸同时爬行</Action>
 
 <Dialogue role="安比">以骸的声音。</Dialogue>
 <Dialogue role="比利">（抱头）这么快？我刚准备躺下哎！</Dialogue>
@@ -101,8 +101,8 @@ pageClass: Story
 <Dialogue role="比利">店长，麻烦你带路！</Dialogue>
 <Dialogue role="铃-邦布">还有新的敌人，别放松警惕。</Dialogue>
 
-<Action>战斗结束，新区域出现</Action>
-<Action>进入未知空洞数据区域，回收数据，但触发了以骸的追击</Action>
+<Action>最后一具以骇在电光中化为以太尘埃，新的空间裂隙悄然展开</Action>
+<Action>未知数据的光芒诱人，却在触碰瞬间激起以太涟漪</Action>
 
 <Dialogue role="哲">嗯？这震动是…？</Dialogue>
 <Dialogue role="安比">绳匠，以骸追上来了。</Dialogue>
@@ -118,7 +118,7 @@ pageClass: Story
 <Dialogue role="空洞深潜系统转播">比利：「就算星徽骑士答应，妮可老大也不会答应！」</Dialogue>
 <Dialogue role="空洞深潜系统转播">比利：「接招吧！星徽荣耀幻影！」</Dialogue>
 
-<Action>比利发动技能，高举佩枪用枪托猛砸阀门锁扣，场面一阵异动</Action>
+<Action>机械碰撞的闷响在空洞中回荡，阀门锁扣迸射出灼热的火星</Action>
 
 <Dialogue role="空洞深潜系统转播">「检测到代理人比利高举佩枪，正在用枪托猛砸向阀门的锁扣。」</Dialogue>
 <Dialogue role="空洞深潜系统转播">「检测到阀门打开，但代理人比利的手部外骨骼出现了部分损伤。」</Dialogue>
@@ -127,7 +127,7 @@ pageClass: Story
 <Dialogue role="安比">比利你可以起鸡皮疙瘩？</Dialogue>
 <Dialogue role="比利">比喻而已啦比喻！还是专心对付敌人吧。</Dialogue>
 
-<Action>侦测到新的敌人，众人立刻提高警戒</Action>
+<Action>黑暗中骤然亮起数对猩红光点，以太浓度急剧攀升</Action>
 
 <Dialogue role="铃-邦布">以太活性提高！敌人被激怒了，小心啊！</Dialogue>
 <Dialogue role="比利">店长！接下来往哪边跑？</Dialogue>
@@ -146,7 +146,7 @@ pageClass: Story
 <Dialogue role="哲">妹妹，可以切断感官同步了。</Dialogue>
 <Dialogue role="铃-邦布">我们就先挂了，回聊~</Dialogue>
 
-<Action>感官同步已断开</Action>
+<Action>邦布眼中的灵光消散，变回懵懂机械造物</Action>
 
 <Dialogue role="安比">没有声音了…</Dialogue>
 <Dialogue role="安比">它变成普通的邦布了。</Dialogue>
@@ -154,12 +154,12 @@ pageClass: Story
 <Dialogue role="安比">笔直前进，冲击预备姿势。</Dialogue>
 <Dialogue role="比利">要撞上了要撞上了要撞上了！！</Dialogue>
 
-<Action>伴随着一股奇妙的感觉，两人和邦布从墙体中凭空穿过</Action>
+<Action>墙体泛起水纹般的涟漪，三人如幻影般穿透物质边界</Action>
 
 <Dialogue role="安比">以太的压迫感消失了。</Dialogue>
 <Dialogue role="比利">出来了…我们终于出来了！啊哈！</Dialogue>
 
-<Action>一阵嘀嘀的提示音响起</Action>
+<Action>远处传来轮胎摩擦地面的尖锐声响，车灯切开街角阴影</Action>
 
 <Dialogue role="妮可">时间和地点还真跟「法厄同」那家伙说的一模一样…</Dialogue>
 <Dialogue role="妮可">喂，你们俩！快上车！</Dialogue>
