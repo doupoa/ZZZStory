@@ -64,7 +64,17 @@
   /* 设定正文行高 */
   margin: 12px 0;
   /* 设定正文段落间距 */
-  font-size: 18px;
+  font-size: 1.2rem
+}
+
+.vp-doc h2::before{
+  color: var(--main-color-1);
+  content:"▶ "; 
+}
+
+.vp-doc h3::before{
+  color: var(--main-color-2);
+  content:"↪ ";
 }
 
 @media only screen and (min-width: 900px) {
@@ -112,12 +122,12 @@
   }
 
   /* 顶部菜单栏高斯 */
-  .VPNavBar:has(.top) .content-body {
+  .VPNavBar:has(.top) {
     position: relative;
     @apply backdrop-blur-3xl;
   }
 
-  .VPNavBar:not(.top) .content-body {
+  .VPNavBar:not(.top) {
     position: relative;
     @apply backdrop-blur;
   }
@@ -262,13 +272,13 @@ html.dark .knockChat .main p:not(.contacts):not(.me) {
 
 .Story {
   .vp-doc {
-    font-family: "Segoe UI", "PingFang SC", sans-serif;
+    font-family: "Outfit","Segoe UI", "PingFang SC", sans-serif;
     line-height: 1.6;
     color: var(--vp-c-text-1);
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem 0;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
   }
   /* 隐藏右侧导航栏 */
   .aside {
