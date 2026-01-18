@@ -68,30 +68,6 @@ layout: page
   />
 </div>
 
-<style>
-/* CSS 变量定义 - 亮色模式 */
-:root {
-  --scene-color: #888;
-  --scene-border: var(--main-color-1);
-  --action-color: rgb(255, 162, 0);
-  --action-bg: rgba(0, 0, 0, 0.03);
-  --action-border: rgba(0, 0, 0, 0.1);
-  --dialogue-quote-color: var(--main-color-1);
-  --narration-color: #888;
-  --narration-border: #999;
-}
-
-/* 暗色模式变量 */
-.dark {
-  --scene-color: #999;
-  --action-color: rgb(255, 180, 60);
-  --action-bg: rgba(255, 255, 255, 0.05);
-  --action-border: rgba(255, 255, 255, 0.1);
-  --narration-color: #aaa;
-  --narration-border: #aaa;
-}
-</style>
-
 <script setup>
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
 import FloatToolbar from './components/FloatToolbar.vue'
@@ -402,3 +378,27 @@ onUnmounted(() => {
   clearTimeout(autoSaveTimeout)
 })
 </script>
+
+<style>
+/* CSS 变量定义 - 亮色模式 */
+:root {
+  --scene-color: #888;
+  --scene-border: var(--main-color-1);
+  --action-color: rgb(255, 162, 0);
+  --action-bg: rgba(0, 0, 0, 0.03);
+  --action-border: rgba(0, 0, 0, 0.1);
+  --dialogue-quote-color: var(--main-color-1);
+  --narration-color: #888;
+  --narration-border: #999;
+}
+
+/* 暗色模式变量 */
+.dark {
+  --scene-color: #999;
+  --action-color: rgb(255, 180, 60);
+  --action-bg: rgba(255, 255, 255, 0.05);
+  --action-border: rgba(255, 255, 255, 0.1);
+  --narration-color: #aaa;
+  --narration-border: #aaa;
+}
+</style>
