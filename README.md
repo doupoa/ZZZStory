@@ -26,8 +26,10 @@
 - [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 委托:兔与绳 (2026/01/08) - [PR#21](https://github.com/doupoa/ZZZStory/pull/21)
 
 ## 近期重要结构更新
-- 剧情组件 - 迁移原生css至TailwindCSS,避免样式污染 (2025/01/08)
-- [全局 - 引入TailwindCSS、更换阅读字体、优化法厄同图鉴Tips样式、新增剧情编辑器 (2025/12/10)](https://github.com/doupoa/ZZZStory/pull/16)
+- 首页 - 重构首页布局并添加全屏背景动画 (2026/01/15) - [PR#32](https://github.com/doupoa/ZZZStory/pull/32)
+- 结构 - 将分散在多个文件中的角色颜色配置统一迁移到 roles.ts 模块(2026/01/14) - [PR#31](https://github.com/doupoa/ZZZStory/pull/31)
+- 剧情组件 - 迁移原生css至TailwindCSS,避免样式污染 (2026/01/08)
+- 全局 - 引入TailwindCSS、更换阅读字体、优化法厄同图鉴Tips样式、新增剧情编辑器 (2025/12/10) - [PR#16](https://github.com/doupoa/ZZZStory/pull/16)
 
 ## 计划清单
 以下规划可能仍在计划中，或已经开始，又或被放弃，计划清单随实际情况动态更新。
