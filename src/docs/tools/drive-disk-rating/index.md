@@ -5,15 +5,16 @@ footer: false
 ---
 
 <div
-  class="h-full flex flex-col dark:text-gray-300 px-10 py-5 bg-gray-100 dark:bg-gray-900"
+  class="h-full flex flex-col dark:text-gray-300 px-10 py-5 bg-gray-100 dark:bg-black/40"
 >
   <h1 class="text-3xl! font-bold! py-1">驱动盘评分</h1>
+  <span class="text-gray-400 dark:text-gray-700">测试版本，欢迎反馈</span>
   <CharacterSelector
     v-model="currentCharacterName"
     @change="handleCharacterChange"
   />
   <!-- 驱动盘配置区 -->
-  <div class="dark:bg-gray-900 rounded-lg">
+  <div class=" rounded-lg">
     <div class="text-lg font-semibold my-2 text-black dark:text-gray-200">
       驱动盘配置 (理论满分权重{{ maxPossibleWeight.toFixed(1) }})
     </div>
@@ -34,13 +35,13 @@ footer: false
     <div class="flex justify-center gap-5 mt-5">
       <button
         @click="calculateScore"
-        class="px-8! py-2.5! border-none rounded text-sm font-semibold cursor-pointer bg-(--main-color-1)! hover:bg-(--main-color-2)! text-white! dark:text-gray-200 transition-colors"
+        class="px-8! py-2.5! border-none rounded text-sm font-semibold cursor-pointer bg-(--main-color-1)! hover:bg-(--main-color-2)! text-white! dark:text-black! transition-colors"
       >
         计算评分
       </button>
       <button
         @click="resetAll"
-        class="px-8! py-2.5! border-none rounded text-sm font-semibold cursor-pointer hover:bg-gray-200! dark:bg-[#2d2d30] dark:hover:bg-[#3e3e42] dark:text-gray-300 transition-colors"
+        class="px-8! py-2.5! border-none rounded text-sm font-semibold cursor-pointer hover:bg-gray-200! dark:bg-[#2d2d30] dark:hover:bg-gray-800! dark:text-gray-300 transition-colors"
       >
         重置所有
       </button>

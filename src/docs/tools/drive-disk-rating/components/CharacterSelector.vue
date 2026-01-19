@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex justify-center items-center gap-4 p-4 bg-white border border-gray-200! dark:bg-[#1e1e1e] rounded-lg"
+    class="flex justify-center items-center gap-4 p-4 bg-white border border-gray-200! dark:border-gray-600! dark:bg-[#1e1e1e] rounded-lg"
   >
     <label class="text-base dark:text-gray-200 font-semibold">选择角色：</label>
     <select
       v-model="currentCharacterName"
       @change="handleCharacterChange"
-      class="px-2! rounded dark:text-gray-200 text-sm min-w-[150px] border! appearance-auto!"
+      class="p-2! rounded dark:text-gray-200 text-sm min-w-[150px] border! border-gray-300! appearance-auto!"
     >
       <option
         v-for="charName in characterNames"
@@ -20,7 +20,7 @@
       属性：<span class="text-[#4ecdc4] dark:text-teal-400 mr-2">{{
         currentCharacter.element
       }}</span>
-      | 高亮词条：<span class="text-[#4ecdc4] dark:text-teal-400">{{
+      | 高亮词条：<span class="text-(--main-color-1)">{{
         currentCharacter.highlightSubStats.join("、")
       }}</span>
     </div>

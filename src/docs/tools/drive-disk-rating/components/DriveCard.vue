@@ -1,13 +1,13 @@
 <template>
   <div
-    class="text-black bg-white dark:bg-[#252525] rounded-lg p-4 border border-gray-200 dark:border-[#333]"
+    class="text-black bg-white dark:bg-[#252525] rounded-lg p-4 border border-gray-300 dark:border-gray-600"
   >
-    <div class="flex justify-between items-center dark:border-[#333] pb-2">
+    <div class="flex justify-between items-center pb-2">
       <span class="font-semibold dark:text-gray-300">
         {{ isFixedSlot ? "固定主词条分区" : "自由主词条分区" }} {{ slotId }}
       </span>
       <span
-        class="bg-gray-300 dark:bg-black/30 text-gray-500 dark:text-gray-500 px-2 py-0.5 rounded text-xs"
+        class="bg-gray-300 dark:bg-black/20 text-gray-500 dark:text-gray-300 px-2 py-0.5 rounded text-xs"
       >
         {{ slotId }}号位
       </span>
@@ -18,25 +18,25 @@
       <select
         :value="data.quality"
         @change="handleUpdate('quality', $event)"
-        class="p-2! rounded dark:text-gray-200 text-sm border! w-full appearance-auto!"
+        class="p-2! rounded dark:text-gray-200! text-sm border! border-gray-300! dark:border-gray-600! w-full appearance-auto!"
       >
-        <option value="S">S级</option>
-        <option value="A">A级</option>
-        <option value="B">B级</option>
+        <option value="S" class="dark:text-black">S级</option>
+        <option value="A" class="dark:text-black">A级</option>
+        <option value="B" class="dark:text-black">B级</option>
       </select>
       <select
         :value="data.level"
         @change="handleUpdate('level', $event)"
-        class="p-2! rounded dark:text-gray-200 text-sm border! w-full appearance-auto!"
+        class="p-2! rounded dark:text-gray-200! text-sm border! border-gray-300! dark:border-gray-600! w-full appearance-auto!"
       >
-        <option v-for="i in 16" :key="i - 1" :value="i - 1">
+        <option v-for="i in 16" :key="i - 1" :value="i - 1" class="dark:text-black">
           {{ i - 1 }}级
         </option>
       </select>
     </div>
 
     <div
-      class="flex justify-between items-center py-1 text-xs text-[#888] dark:text-gray-500"
+      class="flex justify-between items-center py-1 text-xs text-[#888] dark:text-gray-300"
     >
       <span>初始词条: {{ initialSubCount }} 条</span>
       <span
@@ -45,15 +45,15 @@
     </div>
 
     <!-- 主词条 -->
-    <div class="mb-4 dark:bg-[#1a1a1a] rounded">
-      <span class="block text-xs text-[#666] dark:text-gray-600 mb-1.5">
+    <div class="mb-4  rounded">
+      <span class="block text-xs  dark:text-gray-400 mb-1.5">
         {{ isFixedSlot ? "主词条 (固定)" : "主词条 (选择)" }}
       </span>
 
       <select
         v-if="isFixedSlot"
         disabled
-        class="p-2! rounded dark:text-gray-200 border! text-sm w-full disabled:text-gray-400! disabled:cursor-not-allowed appearance-auto!"
+        class="p-2! rounded dark:text-gray-200! border! border-gray-300! dark:border-gray-600! text-sm w-full disabled:text-gray-400! disabled:cursor-not-allowed appearance-auto!"
       >
         <option>{{ data.mainStat }}</option>
       </select>
@@ -62,10 +62,10 @@
         <select
           :value="data.mainStat"
           @change="handleMainStatChange"
-          class="p-2! rounded dark:text-gray-200 text-sm border! w-full appearance-auto!"
+          class="p-2! rounded dark:text-gray-200! text-sm border! border-gray-300! dark:border-gray-600! w-full appearance-auto! "
         >
-          <option value="">请选择主词条</option>
-          <option v-for="stat in mainStatOptions" :key="stat" :value="stat">
+          <option value="" class="dark:text-black text-gray-400!">请选择主词条</option>
+          <option v-for="stat in mainStatOptions" :key="stat" :value="stat" class="dark:text-black">
             {{ stat }}
           </option>
         </select>
@@ -73,15 +73,15 @@
         <!-- 元素选择器（仅当主词条为属性伤害%时显示） -->
         <div v-if="data.mainStat === '属性伤害%'" class="flex gap-2 mt-2">
           <span
-            class="text-xs text-[#888] dark:text-gray-600 self-center whitespace-nowrap"
+            class="text-xs text-[#888] dark:text-gray-400 self-center whitespace-nowrap"
             >属性:</span
           >
           <select
             :value="data.element"
             @change="handleUpdate('element', $event)"
-            class="p-2! rounded dark:text-gray-200 text-sm border! w-full appearance-auto!"
+            class="p-2! rounded dark:text-gray-200! text-sm border! border-gray-300! dark:border-gray-600! w-full appearance-auto! "
           >
-            <option v-for="el in ELEMENTS" :key="el" :value="el">
+            <option v-for="el in ELEMENTS" :key="el" :value="el" class="dark:text-black">
               {{ el }}
             </option>
           </select>
@@ -101,7 +101,7 @@
 
     <!-- 副词条列表 -->
     <div class="flex flex-col rounded gap-2">
-      <span class="text-xs text-[#666] dark:text-gray-600"> 副词条选择 </span>
+      <span class="text-xs dark:text-gray-400"> 副词条选择 </span>
       <SubStatRow
         v-for="(subStat, index) in data.subStats"
         :key="index"
@@ -233,7 +233,7 @@ const mainStatWeightText = computed(() => {
 const mainStatWeightClass = computed(() => {
   return props.data.mainStat && mainStatWeightText.value.includes("权重")
     ? "text-(--main-color-1) dark:text-teal-400"
-    : "text-gray-400 dark:text-gray-600";
+    : "text-gray-400";
 });
 
 const handleUpdate = (field: string, event: Event) => {
