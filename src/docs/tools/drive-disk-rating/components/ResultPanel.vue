@@ -2,7 +2,7 @@
   <div
     v-if="visible"
     ref="resultPanelRef"
-    class="bg-white dark:bg-[#252525] p-5 rounded-lg border border-gray-200"
+    class="bg-white dark:bg-[#252525] p-5 rounded-lg border border-gray-200 dark:border-gray-600"
   >
     <div class="text-center mb-5">
       <div class="text-5xl font-bold dark:text-gray-200">
@@ -21,7 +21,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
       <div
-        class="border border-gray-200 dark:bg-[#1a1a1a] p-4 rounded text-center"
+        class="border border-gray-200 dark:border-gray-600 dark:bg-[#1a1a1a] p-4 rounded text-center"
       >
         <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">
           有效主词条
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div
-        class="border border-gray-200 dark:bg-[#1a1a1a] p-4 rounded text-center"
+        class="border border-gray-200 dark:border-gray-600 dark:bg-[#1a1a1a] p-4 rounded text-center"
       >
         <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">
           有效副词条(初始+强化)
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div
-        class="border border-gray-200 dark:bg-[#1a1a1a] p-4 rounded text-center"
+        class="border border-gray-200 dark:border-gray-600 dark:bg-[#1a1a1a] p-4 rounded text-center"
       >
         <div class="text-xs text-gray-400 dark:text-gray-500 mb-1">
           无效副词条提升
@@ -147,26 +147,38 @@ const sortedBreakdown = computed(() => {
 }
 
 .grade-a {
-  color: #c0c0c0;
+  color: #b711d8;
 }
 
 .grade-b {
-  color: #cd7f32;
+  color: #2d49c7;
 }
 
 .grade-c {
   color: #a0a0a0;
+  .dark & {
+    color: #8d8d8d;
+  }
 }
 
 .grade-d {
   color: #808080;
+  .dark & {
+    color: #808080;
+  }
 }
 
 .grade-e {
   color: #606060;
+  .dark & {
+    color: #808080;
+  }
 }
 
 .grade-f {
   color: #404040;
+  .dark & {
+    color: #808080;
+  }
 }
 </style>
