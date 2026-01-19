@@ -37,23 +37,23 @@ pageClass: Started
 
 <nav class="grid">
   <div class="pager">
-    <a class="page-link" href="/information/workbench/archive"
-      ><span class="page-title">资料库 - 工作台 - 合作者档案</span></a
+    <a class="page-link" href="/information/new-eridu-encyclopedia"
+      ><span class="page-title">资料库 - 丽都事典</span></a
     >
   </div>
   <div class="pager">
-    <a class="page-link" href="/information/urban-express"
-      ><span class="page-title">资料库 - 都市快报</span></a
+    <a class="page-link" href="/main-line"
+      ><span class="page-title">故事 - 主线剧情</span></a
     >
   </div>
   <div class="pager">
-    <a class="page-link" href="/inter-knot/steering-clear-of"
-      ><span class="page-title">绳网 - 避雷</span></a
+    <a class="page-link" href="/information/new-eridu-accommodation-guide"
+      ><span class="page-title">资料库 - 新艾利都入住指南</span></a
     >
   </div>
   <div class="pager">
-    <a class="page-link" href="/inter-knot/chat"
-      ><span class="page-title">绳网 - 闲聊灌水</span></a
+    <a class="page-link" href="/tools/drive-disk-rating/index"
+      ><span class="page-title">工具 - 驱动盘评分</span></a
     >
   </div>
 </nav>
