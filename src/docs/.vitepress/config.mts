@@ -15,7 +15,7 @@ export default defineConfig({
   },
   transformHead({ assets }) {
     const fontFile = assets.find((file) =>
-      /font-name\.[\w-]+\.woff/.test(file)
+      /font-name\.[\w-]+\.woff/.test(file),
     );
     if (fontFile) {
       return [
@@ -94,6 +94,7 @@ export default defineConfig({
       { text: "绳网", link: "/inter-knot/index" },
       { text: "敲敲", link: "/knock-knock/index" },
       { text: "资料库", link: "/information/index" },
+      { text: "[ɑ] 驱动盘评级", link: "/tools/drive-disk-rating/index" },
       {
         text: "工具", // 热门工具放外边，不常用的就收起来
         items: [
@@ -102,7 +103,7 @@ export default defineConfig({
             link: "/tools/story-editor/index",
           },
           {
-            text: "🚧 驱动盘评级",
+            text: "[ɑ] 驱动盘评级",
             link: "/tools/drive-disk-rating/index",
           },
         ],
@@ -171,6 +172,10 @@ export default defineConfig({
             {
               text: "世界观",
               link: "/information/worldview",
+            },
+            {
+              text: "丽都事典",
+              link: "/information/new-eridu-encyclopedia",
             },
             {
               text: "工作台",
@@ -263,6 +268,10 @@ export default defineConfig({
         {
           text: "世界观",
           link: "/information/worldview",
+        },
+        {
+          text: "丽都事典",
+          link: "/information/new-eridu-encyclopedia",
         },
         {
           text: "工作台",
