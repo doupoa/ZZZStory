@@ -1,15 +1,20 @@
 ---
-title: 驱动盘评级
+title: 驱动盘评级系统
+description: 智能分析您的驱动盘配置，计算综合评分
 layout: page
 ---
 
-<div class=" justify-center text-center space-y-3 ">
-  <p class="text-4xl font-bold py-8">驱动盘评级</p>
-  <p>功能开发中...</p>
-  <p>
-    关于数据导出可参阅 [<a
-      href="https://doupoa.site/archives/885"
-      class="underline! text-(--main-color-1)! hover:text-(--main-color-2)!"
-      >此文</a>]
-  </p>
-</div>
+<ClientOnly>
+  <DriveRatingApp />
+</ClientOnly>
+
+<script setup>
+import DriveRatingApp from './components/DriveRatingApp.vue'
+</script>
+
+<style>
+:root {
+  --main-color-1: #ee7309;
+  --main-color-2: #b45400;
+}
+</style>
