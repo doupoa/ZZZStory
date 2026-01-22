@@ -33,7 +33,7 @@ pageClass: Story
 <Dialogue role="铃">那个…我们都听得到啊？</Dialogue>
 <Dialogue role="妮可">咳嗯！总、总之，目标就像安比说的那样简单明了：找到保险箱，抢回来！</Dialogue>
 <Dialogue role="妮可">从外界没有手段可以查看空洞内的实时状况，空洞内的支援与指引就靠你们了！</Dialogue>
-<Action>系统界面闪烁着新增了委托项，目标坐标如血色信标般明灭不定</Action>
+<Dialogue role="系统">追加新委托「绳与兔」</Dialogue>
 <Dialogue role="系统">身份验证有效，登录用户——「法厄同」</Dialogue>
 <Dialogue role="系统">已更新进行中的委托履历，新增目标——回收保险箱</Dialogue>
 <Dialogue role="妮可">好了！成功进入空洞！赶紧去找我的保险箱吧~</Dialogue>
@@ -322,7 +322,7 @@ pageClass: Story
 <Dialogue role="妮可">哈哈——！</Dialogue>
 <Action>经过激烈交锋，以骇轰然倒地，保险箱滚落在碎石间</Action>
 <Dialogue role="妮可">终于…终于！</Dialogue>
-<Scene>安比和比利相视露出胜利微笑，妮可却已扑向保险箱</Scene>
+<Scene>安比和比利摆出击掌的架势，可妮可完全没有搭理的意思</Scene>
 <Dialogue role="妮可">找到你了——！！</Dialogue>
 <Dialogue role="比利">(?!)</Dialogue>
 <Dialogue role="安比">...</Dialogue>
@@ -368,13 +368,13 @@ pageClass: Story
 <Dialogue role="铃">同意…同意总行了吧？不要再折磨我了…</Dialogue>
 <Dialogue role="未知">授权协议签署完成，很高兴为您服务。</Dialogue>
 <Dialogue role="未知">…让我们一起，将新艾利都…</Dialogue>
-<Scene>熟悉的药水气味与旧木地板气息交织</Scene>
+<Dialogue role="旁白">六分街录像店，「Random Play」</Dialogue>
 <Dialogue role="哲">啊，你终于醒了。</Dialogue>
 <Dialogue role="哲">别担心，已经没事了，你现在安全在家。</Dialogue>
 <Dialogue role="铃">那个数据芯片呢？妮可她们人呢？对了还有，我到底是怎么回来的？</Dialogue>
 <Dialogue role="哲">冷静冷静，你刚刚恢复，不要太激动。</Dialogue>
 <Dialogue role="哲">情况我会慢慢告诉你，你先说说读取芯片后发生了什么？</Dialogue>
-<Action>那些破碎而痛苦的感知如潮水般涌出…</Action>
+<Dialogue role="旁白">将之前痛苦又诡异的通感经历和盘托出…</Dialogue>
 <Dialogue role="哲">唔…听起来像是梦话，或者是精神科重症区的聊天记录…</Dialogue>
 <Dialogue role="哲">总之，你的遭遇我大概知道了，现在轮到我讲了。</Dialogue>
 <Dialogue role="哲">在你读取数据芯片后，我们的邦布就失控了，似乎进入了某种超载状态，像404 Live场里的舞池灯球一样，劈里啪啦地闪着光。</Dialogue>
