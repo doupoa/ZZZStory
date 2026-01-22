@@ -251,7 +251,7 @@ pageClass: Story
 
 <Dialogue role="系统">追加新委托 帮帮三小只</Dialogue>
 
-[收到了哲的手机消息](/knock-knock/private-message/#联系人-哲)
+[收到了哲的手机消息](/knock-knock/private-message#联系人-哲)
 
 <Scene>熟悉的咖啡香再次包围</Scene>
 
@@ -367,7 +367,7 @@ pageClass: Story
 
 <Dialogue role="哲">有这么可靠的小18在，再加上我们的用心经营，录像店的客人们，一定会越来越多的吧！</Dialogue>
 
-[收到比利的手机消息](/knock-knock/private-message/#比利_1)
+[收到比利的手机消息](/knock-knock/private-message#比利-1)
 
 <Dialogue role="哲">如果客人变多，似乎我们也可以补充些新品种的录像带了。</Dialogue>
 
