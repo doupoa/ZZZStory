@@ -12,7 +12,7 @@ pageClass: Story
 <Dialogue role="哲">妮可，你这么急匆匆的上门，又被人追债啦？</Dialogue>
 <Dialogue role="妮可">才没有被追债，是被治安局和丽都频道那个暴怒记者给摆了一道！</Dialogue>
 
-<Scene>妮可急促的叙述中，十四分街的混战场景仿佛在昏黄灯光下重现</Scene>
+<Dialogue role="旁白">妮可将与赤牙帮的冲突简要叙述了一遍。</Dialogue>
 
 <Dialogue role="妮可">也就是说，比利和安比掉进了空洞里。</Dialogue>
 <Dialogue role="妮可">我要救他们出来，还得拿回委托人要的东西。事出紧急，只有你们能帮我了！</Dialogue>
@@ -37,8 +37,8 @@ pageClass: Story
 <Dialogue role="哲">妹妹，你先帮妮可处理一下伤口吧，我去调试 HDD，帮你做好「潜入」空洞的准备工作。</Dialogue>
 <Dialogue role="哲">那么… 开始做「生意」吧！</Dialogue>
 
-<Scene>屏幕泛起幽蓝微光，「法厄同」的标识如暗夜灯塔般浮现</Scene>
-<Scene>光标闪烁间，地图上的红点标记如同凝固的血滴</Scene>
+<Dialogue role="系统">身份验证有效，登录用户 ——「法厄同」</Dialogue>
+<Dialogue role="系统">检索到新增紧急委托，目标所在空洞已标记</Dialogue>
 
 <Dialogue role="哲">喂，听得见吗妮可？可以把伊埃斯放进去了！</Dialogue>
 <Dialogue role="妮可">OK！好啦小家伙，去吧去吧！</Dialogue>
@@ -56,7 +56,7 @@ pageClass: Story
 <Dialogue role="比利">（突然兴奋）噢噢噢！难道你是——</Dialogue>
 <Dialogue role="比利/安比">「法厄同」！</Dialogue>
 
-<Scene>破碎的列车厢内，时间如同凝固的琥珀</Scene>
+<Dialogue role="旁白">克里特空洞，旧地铁枢纽站某处</Dialogue>
 
 <Dialogue role="安比">已经听不见那个上级以骸的声音了</Dialogue>
 <Dialogue role="比利">太、太好了，我感觉脚上的液压杆都要跑断了！</Dialogue>
