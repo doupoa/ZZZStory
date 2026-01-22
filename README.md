@@ -19,11 +19,11 @@
 [ZZZStory](https://zzzstory.doupoa.site)
 
 ## 近期重要内容更新
+- [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 第1章：幕间 - [PR#39](https://github.com/doupoa/ZZZStory/pull/39)
+- [@doupoa](https://github.com/doupoa):新增丽都事典，补充代理人录像点宣传风格，上线驱动盘评分Alpha版本 - [PR#37](https://github.com/doupoa/ZZZStory/pull/37)
 - [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 委托:绳与兔(2026/01/11) - [PR#27](https://github.com/doupoa/ZZZStory/pull/27)
 - [@YinCQL](https://github.com/YinCQL): 都市快报 - 重磅消息 (2026/01/08) - [PR#24](https://github.com/doupoa/ZZZStory/pull/24)
 - [@doupoa](https://github.com/doupoa): 法厄同图鉴 - 完善部分以骇图片 (2026/01/08) - [PR#22](https://github.com/doupoa/ZZZStory/pull/22)
-- [@YinCQL](https://github.com/YinCQL): 合作者档案 - 同步至v2.5 (2026/01/08) - [PR#23](https://github.com/doupoa/ZZZStory/pull/23)
-- [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 委托:兔与绳 (2026/01/08) - [PR#21](https://github.com/doupoa/ZZZStory/pull/21)
 
 ## 近期重要结构更新
 - 首页 - 重构首页布局并添加全屏背景动画 (2026/01/15) - [PR#32](https://github.com/doupoa/ZZZStory/pull/32)
@@ -35,13 +35,10 @@
 以下规划可能仍在计划中，或已经开始，又或被放弃，计划清单随实际情况动态更新。
 
 - **🚧 进行中**
+  - 继续完善驱动盘评分系统基础框架，实现自动化获取数据和手动填写 （2026/01/21）
   - 继续补全差距内容，当前主线版本：**v1.0**，追赶版本: v2.5 （2026/01/08）
-  - 补充录像店角色经营风格 (2026/01/12)
-  - 用精炼易懂的描述方式介绍角色基本玩法及按键操作，以帮助玩家在实战中使角色发挥最大价值 (2026/01/12)
-
 - **🔬 规划中**
-  - 为提升本站实用性及长期回流率，拟自实现一套驱动盘评分系统（含各项权重）及练度分析 。 （2026/01/08）
-
+  - 用精炼易懂的描述方式介绍角色基本玩法及按键操作，以帮助玩家在实战中使角色发挥最大价值 (2026/01/12)
 - **🪄 更多想法**
   - 设计一套“代理人训练计划” (2026/01/11)
     - 由用户指定1-3个角色，程序会收集角色基本资料及最佳状态数据，随后交给大模型规划。
