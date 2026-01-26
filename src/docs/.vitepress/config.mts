@@ -103,7 +103,7 @@ export default defineConfig({
             link: "/tools/story-editor/index",
           },
           {
-            text: "[ɑ] 驱动盘评级",
+            text: "驱动盘评级",
             link: "/tools/drive-disk-rating/index",
           },
         ],
