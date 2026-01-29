@@ -1,59 +1,120 @@
 // 驱动盘评分算法实现
-import { getCharacterWeights } from './character-weights.ts';
+import type {
+  SubProperty,
+  MainProperty,
+  DriveDisc,
+  CharacterData,
+  DriveDiscScoreResult,
+  CharacterScoreResult,
+  AllCharactersScoreResult
+} from './types.ts';
 
-import type { CharacterWeightConfig } from './character-weights.ts';
+// 角色驱动盘词条权重配置
+// 数值表示该词条的权重占比，1为最高权重，0为无效词条
+export interface CharacterWeightConfig {
+  [characterName: string]: {
+    [propertyName: string]: number;
+  };
+}
+
+// 从 JSON 文件导入角色权重配置
+import characterWeightsData from './character_weight.json';
+
+export const characterWeights: CharacterWeightConfig = characterWeightsData;
+
+// 获取角色权重配置
+export function getCharacterWeights(characterName: string): {
+  [propertyName: string]: number;
+} {
+  // 尝试获取精确匹配的角色配置
+  if (characterWeights[characterName]) {
+    return characterWeights[characterName];
+  }
+
+  // 尝试使用角色全名的一部分进行匹配
+  const matchingCharacter = Object.keys(characterWeights).find(
+    name => characterName.includes(name) || name.includes(characterName)
+  );
+
+  if (matchingCharacter) {
+    return characterWeights[matchingCharacter];
+  }
+  //1:强攻 2:击破 3:异常 4:支援 5:防护 6:命破
+
+  // 如果没有找到匹配的角色，返回默认配置（输出型角色）
+  return characterWeights['叶瞬光'];
+}
+
+// 获取所有已配置的角色名称列表
+export function getConfiguredCharacters(): string[] {
+  return Object.keys(characterWeights);
+}
+
+// 从 JSON 文件导入角色元素映射配置
+import characterElementMapping from './Character_Stat_Damage_Mapping_Table.json';
+
+// 获取角色属性
+export function getCharacterElement(characterName: string): string {
+  // 遍历所有元素类型，查找包含该角色的元素
+  for (const [element, characters] of Object.entries(characterElementMapping)) {
+    // 跳过 ELEMENTS 和 ELEMENT_MAPPING 字段
+    if (element === 'ELEMENTS' || element === 'ELEMENT_MAPPING') {
+      continue;
+    }
+    
+    // 检查该元素是否包含指定角色
+    if (Array.isArray(characters) && characters.includes(characterName)) {
+      return element;
+    }
+  }
+  
+  // 如果没有找到匹配的角色，返回默认值
+  return '物理';
+}
+
+// 1. 品质权重配置
+export const QUALITY_WEIGHTS: Record<string, number> = {
+  'S': 1,
+  'A': 0.67,
+  'B': 0.33
+};
+
+// 2. 定义每个部位的主词条可选池
+export const SLOT_MAIN_POOLS: Record<number, string[]> = {
+  1: ['生命值'],           // 1号位固定主词条
+  2: ['攻击力'],          // 2号位固定主词条
+  3: ['防御力'],         // 3号位固定主词条
+  4: ['攻击力', '生命值', '防御力', '暴击率', '暴击伤害', '异常精通'],  // 4号位可选主词条
+  5: ['攻击力', '生命值', '防御力', '穿透率', '属性伤害'],  // 5号位可选主词条
+  6: ['攻击力', '生命值', '防御力', '异常掌控', '冲击力', '能量自动回复'],  // 6号位可选主词条
+};
+
+// 3. 定义副词条可选池
+export const SUB_STATS_POOL: string[] = [
+  '生命值',
+  '攻击力',
+  '防御力',
+  '暴击率',
+  '暴击伤害',
+  '异常精通',
+  '穿透值',
+  '小生命',
+  '小攻击',
+  '小防御'
+];
 
 
-// 1. 角色有效词条权重配置（从 character-weights.ts 导入）
+
+// 4. 角色有效词条权重配置（从 character-weights.ts 导入）
 interface RoleConfig {
   [roleName: string]: CharacterWeightConfig;
-}
-
-// 2. 驱动盘数据类型定义
-interface SubProperty {
-  name: string;
-  value: string;
-  level: number;
-  valid: boolean;
-  add: number;
-}
-
-interface MainProperty {
-  name: string;
-  value: string;
-}
-
-interface DriveDisc {
-  position: number;
-  name: string;
-  level: number;
-  rarity: 'S' | 'A' | 'B';
-  invalidProperty: number;
-  mainProperty: MainProperty;
-  subProperties: SubProperty[];
-}
-
-interface CharacterData {
-  characterName: string;
-  characterFullName: string;
-  level: number;
-  profession: number;
-  driveDiscs: DriveDisc[];
 }
 
 // 3. 计算单个驱动盘评分
 function calculateDriveDiscScore(
 driveDisc: DriveDisc,
 roleName: string = 'default'
-): { 
-  score: number; 
-  subPropertiesWeight: number; 
-  mainPropertyWeight: number; 
-  maxWeightSum: number; 
-  validProperties: any[]; 
-  qualityWeight: number; 
-  levelWeight: number; 
-} {
+): DriveDiscScoreResult {
   // 确保driveDisc是有效的对象
   if (!driveDisc) {
     return {
@@ -61,6 +122,7 @@ roleName: string = 'default'
       subPropertiesWeight: 0,
       mainPropertyWeight: 0,
       maxWeightSum: 0,
+      maxWeightFormula: '',
       validProperties: [],
       qualityWeight: 0,
       levelWeight: 0
@@ -71,11 +133,7 @@ roleName: string = 'default'
   
   // 步骤1：计算品质权重
   const rarity = driveDisc.rarity || 'S';
-  const qualityWeight = {
-    'S': 1,
-    'A': 0.67,
-    'B': 0.33
-  }[rarity] || 1;
+  const qualityWeight = QUALITY_WEIGHTS[rarity] || 1;
   
   // 步骤2：计算主词条等级权重（0级0.25，每升1级+0.05，15级达1）
   const level = driveDisc.level || 0;
@@ -164,33 +222,101 @@ roleName: string = 'default'
   // 步骤5：计算该部位的最高词条数总和
   // 副词条最大有效条数 + 主属性最大有效条数
   
-  // 计算当前驱动盘副词条理想最大有效条数
-  const excludeKeywords = ['伤害加成', '异常掌控', '穿透率', '能量自动回复'];
-  const validWeights = Object.entries(weightConfig)
-    .filter(([name]) => !excludeKeywords.some(keyword => name.includes(keyword)))
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4)
-    .map(([_, weight]) => weight);
+  // 5.1 排序副词条权重（从高到低）
+  const availableSubWeights = SUB_STATS_POOL
+    .filter((stat) => weightConfig[stat] > 0)
+    .map((stat) => [stat, weightConfig[stat]] as [string, number])
+    .sort((a, b) => b[1] - a[1]);
   
-  const first = validWeights[0] || 0;
-  const second = validWeights[1] || 0;
-  const third = validWeights[2] || 0;
-  const fourth = validWeights[3] || 0;
-  const subPropertyMax = 6 * first + 1 * second + 1 * third + 1 * fourth;
+  // 5.2 排序主词条权重（从高到低）
+  const slotKey = position as keyof typeof SLOT_MAIN_POOLS;
+  const availableMainWeights = (SLOT_MAIN_POOLS[slotKey] || [])
+    .filter((stat) => weightConfig[stat] > 0)
+    .map((stat) => [stat, weightConfig[stat]] as [string, number])
+    .sort((a, b) => b[1] - a[1]);
   
-  // 计算当前驱动盘主属性理想最大有效条数
-  const mainPropertyName = mainProperty.name;
-  const mainPropWeight = weightConfig[mainPropertyName] || 0;
-  
-  // 4-6号位主属性最大有效条数
-  // 如果主属性权重为0，视为2条（无效词条）
-  // 如果主属性权重>0，视为3条
+  let subPropertyMax = 0;
   let mainPropertyMax = 0;
+  let maxWeightFormula = '';
+  
+  // 5.3 按部位计算权重
+  if (position >= 1 && position <= 3) {
+    // 1-3号位：主属性不参与计算
+    mainPropertyMax = 0;
+    // 副词条最大权重 = 前4个副词条权重之和 + 5倍最大副词条权重
+    subPropertyMax = (availableSubWeights[0]?.[1] || 0) + 
+                     (availableSubWeights[1]?.[1] || 0) + 
+                     (availableSubWeights[2]?.[1] || 0) + 
+                     (availableSubWeights[3]?.[1] || 0) + 
+                     5 * (availableSubWeights[0]?.[1] || 0);
+    
+    // 构建公式字符串
+    const subStatNames = [
+      `${availableSubWeights[0]?.[0] || ''}(权重${availableSubWeights[0]?.[1] || 0})`,
+      `${availableSubWeights[1]?.[0] || ''}(权重${availableSubWeights[1]?.[1] || 0})`,
+      `${availableSubWeights[2]?.[0] || ''}(权重${availableSubWeights[2]?.[1] || 0})`,
+      `${availableSubWeights[3]?.[0] || ''}(权重${availableSubWeights[3]?.[1] || 0})`
+    ].filter(s => s.trim() !== '');
+    
+    maxWeightFormula = `副属性-${subStatNames.join('+')}+5*${availableSubWeights[0]?.[0] || ''}(权重${availableSubWeights[0]?.[1] || 0})`;
+  }
+  
   if (position >= 4 && position <= 6) {
-    if (mainPropWeight === 0) {
-      mainPropertyMax = 2; // 当主属性权重为0时，视为2条有效词条
+    // 4-6号位：遍历所有可能的主属性（包括主属性权重为0的情况），选择权重最大的组合
+    let maxTotalWeight = 0;
+    let bestMainStat = '';
+    let bestMainWeight = 0;
+    let bestSubWeights: [string, number][] = [];
+    
+    // 获取当前位置的所有主词条（包括权重为0的）
+    const allMainStats = SLOT_MAIN_POOLS[slotKey] || [];
+    
+    // 遍历所有主属性（包括权重为0的）
+    for (const mainStat of allMainStats) {
+      const mainWeight = weightConfig[mainStat] || 0;
+      const currentMainStatWeight = 3 * mainWeight; // 主属性权重为3倍（权重为0时也为0）
+      
+      // 过滤掉与主属性名称相同的副词条
+      const filteredSubWeights = availableSubWeights.filter(([stat]) => stat !== mainStat);
+      
+      // 计算当前主属性下副词条的最大权重
+      const currentSubStatsWeight = (filteredSubWeights[0]?.[1] || 0) + 
+                                    (filteredSubWeights[1]?.[1] || 0) + 
+                                    (filteredSubWeights[2]?.[1] || 0) + 
+                                    (filteredSubWeights[3]?.[1] || 0) + 
+                                    5 * (filteredSubWeights[0]?.[1] || 0);
+      
+      const currentTotalWeight = currentMainStatWeight + currentSubStatsWeight;
+      
+      if (currentTotalWeight > maxTotalWeight) {
+        maxTotalWeight = currentTotalWeight;
+        mainPropertyMax = currentMainStatWeight;
+        subPropertyMax = currentSubStatsWeight;
+        bestMainStat = mainStat;
+        bestMainWeight = mainWeight;
+        bestSubWeights = filteredSubWeights;
+      }
+    }
+    
+    // 构建公式字符串
+    if (bestMainWeight > 0) {
+      const subStatNames = [
+        `${bestSubWeights[0]?.[0] || ''}(权重${bestSubWeights[0]?.[1] || 0})`,
+        `${bestSubWeights[1]?.[0] || ''}(权重${bestSubWeights[1]?.[1] || 0})`,
+        `${bestSubWeights[2]?.[0] || ''}(权重${bestSubWeights[2]?.[1] || 0})`,
+        `${bestSubWeights[3]?.[0] || ''}(权重${bestSubWeights[3]?.[1] || 0})`
+      ].filter(s => s.trim() !== '');
+      
+      maxWeightFormula = `主属性-${bestMainStat}（权重${bestMainWeight}）*3+副属性-${subStatNames.join('+')}+5*${bestSubWeights[0]?.[0] || ''}(权重${bestSubWeights[0]?.[1] || 0})`;
     } else {
-      mainPropertyMax = 3 * mainPropWeight;
+      const subStatNames = [
+        `${availableSubWeights[0]?.[0] || ''}(权重${availableSubWeights[0]?.[1] || 0})`,
+        `${availableSubWeights[1]?.[0] || ''}(权重${availableSubWeights[1]?.[1] || 0})`,
+        `${availableSubWeights[2]?.[0] || ''}(权重${availableSubWeights[2]?.[1] || 0})`,
+        `${availableSubWeights[3]?.[0] || ''}(权重${availableSubWeights[3]?.[1] || 0})`
+      ].filter(s => s.trim() !== '');
+      
+      maxWeightFormula = `副属性-${subStatNames.join('+')}+5*${availableSubWeights[0]?.[0] || ''}(权重${availableSubWeights[0]?.[1] || 0})`;
     }
   }
   
@@ -217,6 +343,7 @@ roleName: string = 'default'
     subPropertiesWeight,
     mainPropertyWeight,
     maxWeightSum,
+    maxWeightFormula,
     validProperties: validProps,
     qualityWeight,
     levelWeight
@@ -226,19 +353,7 @@ roleName: string = 'default'
 // 4. 计算角色全套驱动盘评分
 function calculateCharacterTotalScore(
   characterData: CharacterData
-): {
-  totalScore: number;
-  discScores: { [position: number]: number };
-  discDetails: Array<{
-    position: number;
-    name: string;
-    level: number;
-    rarity: string;
-    mainProperty: MainProperty;
-    score: number;
-    details: any;
-  }>;
-} {
+): CharacterScoreResult {
   const discScores: { [position: number]: number } = {};
   const discDetails: Array<{
     position: number;
@@ -287,11 +402,7 @@ function calculateCharacterTotalScore(
 // 5. 计算所有角色的评分
 function calculateAllCharactersScore(
   charactersData: CharacterData[]
-): Array<{
-  characterName: string;
-  totalScore: number;
-  discScores: { [position: number]: number };
-}> {
+): AllCharactersScoreResult[] {
   return charactersData.map(character => {
     const { totalScore, discScores } = calculateCharacterTotalScore(character);
     return {
@@ -309,13 +420,20 @@ export {
  calculateAllCharactersScore
 };
 
+// 重新导出类型
 export type {
- CharacterData,
+ SubProperty,
+ MainProperty,
  DriveDisc,
+ CharacterData,
+ DriveDiscScoreResult,
+ CharacterScoreResult,
+ AllCharactersScoreResult
+} from './types.ts';
+
+export type {
  RoleConfig
 };
 
-// 重新导出 character-weights 中的内容
-export { getCharacterWeights, characterWeights } from './character-weights.ts';
-export type { CharacterWeightConfig } from './character-weights.ts';
+
 
