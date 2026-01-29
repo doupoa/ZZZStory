@@ -19,11 +19,11 @@
 [ZZZStory](https://zzzstory.doupoa.site)
 
 ## 近期重要内容更新
+- [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 第1章：逃出生天 - [PR#42](https://github.com/doupoa/ZZZStory/pull/42)
 - [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 第1章：幕间 - [PR#39](https://github.com/doupoa/ZZZStory/pull/39)
 - [@doupoa](https://github.com/doupoa):新增丽都事典，补充代理人录像点宣传风格，上线驱动盘评分Alpha版本 - [PR#37](https://github.com/doupoa/ZZZStory/pull/37)
 - [@chenshuo318-dotcom](https://github.com/chenshuo318-dotcom): 主线剧情 - 委托:绳与兔(2026/01/11) - [PR#27](https://github.com/doupoa/ZZZStory/pull/27)
 - [@YinCQL](https://github.com/YinCQL): 都市快报 - 重磅消息 (2026/01/08) - [PR#24](https://github.com/doupoa/ZZZStory/pull/24)
-- [@doupoa](https://github.com/doupoa): 法厄同图鉴 - 完善部分以骇图片 (2026/01/08) - [PR#22](https://github.com/doupoa/ZZZStory/pull/22)
 
 ## 近期重要结构更新
 - 首页 - 重构首页布局并添加全屏背景动画 (2026/01/15) - [PR#32](https://github.com/doupoa/ZZZStory/pull/32)
