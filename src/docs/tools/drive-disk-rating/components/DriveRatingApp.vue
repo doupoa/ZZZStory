@@ -92,13 +92,13 @@
               <div class="step-content">
                 <strong>访问官方页面</strong>
                 <p>点击下方按钮打开绝区零角色练度页面，并确保您已登录账号。</p>
-                <a
+                <div
                   href="https://act.mihoyo.com/zzz/gt/character-builder-h/index.html#/"
                   target="_blank"
                   class="btn"
                 >
                   打开角色练度页面 ↗
-                </a>
+                </div>
               </div>
             </div>
 
@@ -108,7 +108,7 @@
                 <strong>添加书签脚本</strong>
                 <p>将下方的按钮拖拽到浏览器的书签栏中。</p>
                 <a
-                  href="javascript:(async function(){const API_BASE='https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool';const API_LOGIN='https://api-takumi.mihoyo.com/common/badge/v1/login/info';const cleanText=t=>t?.replace(/<[^>]*>/g,'').replace(/\\n/g,'')||'';const fetchJSON=(t,e)=>fetch(t,{credentials:'include',...e}).then(t=>t.json());const getGameUID=async()=>(await fetchJSON(`${API_LOGIN}?game_biz=nap_cn&lang=zh-cn`)).data?.game_uid;const getDeviceFP=()=>document.cookie.match(/DEVICEFP=(\\w+)/)?.[1];const getBasicList=(t,e)=>fetchJSON(`${API_BASE}/user/avatar_basic_list?uid=${t}&region=prod_gf_cn`,{headers:{'x-rpc-device_fp':e}});const getEquipBatch=(t,e,o)=>fetchJSON(`${API_BASE}/user/batch_avatar_detail_v2?uid=${t}&region=prod_gf_cn`,{method:'POST',headers:{'x-rpc-device_fp':o},body:JSON.stringify({avatar_list:e})});const processEquipData=({avatar:t,equip:e,weapon:o})=>({characterName:t.name_mi18n,characterFullName:t.full_name_mi18n,level:t.level,profession:t.avatar_profession,driveDiscs:e?.map(({level:t,name:e,icon:o,rarity:a,invalid_property_cnt:i,equipment_type:s,properties:r,main_properties:n,equip_suit:c})=>({position:s,name:e,level:t,rarity:a,invalidProperty:i,mainProperty:{name:n[0].property_name,val:n[0].base},subProperties:r.map(({property_name:t,base:e,level:o,valid:a,add:i})=>({name:t,val:e,level:o,valid:a,add:i})),suit:{name:c.name,desc1:c.desc1,desc2:cleanText(c.desc2)}}))||[]});const uid=await getGameUID();const device_fp=getDeviceFP();if(!uid||!device_fp){alert('❌ 无法读取 UID 或 DEVICEFP，可能未登录！');return;}const basicData=await getBasicList(uid,device_fp);const avatarList=basicData.data.list.filter(t=>t.unlocked).map(t=>({avatar_id:t.avatar.id}));const batches=[];for(let t=0;t<avatarList.length;t+=10)batches.push(avatarList.slice(t,t+10));const detailResponses=await Promise.all(batches.map(t=>getEquipBatch(uid,t,device_fp)));const allResults=detailResponses.flatMap(t=>t.data.list.map(processEquipData));const result=allResults.map(t=>({...t,driveDiscs:t.driveDiscs.map(d=>({...d,mainProperty:{name:d.mainProperty.name,value:d.mainProperty.val.toString()},subProperties:d.subProperties.map(s=>({...s,value:s.val.toString()}))}))}));const dataStr=JSON.stringify(result,null,2);const blob=new Blob([dataStr],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='drive_discs_data.json';a.click();URL.revokeObjectURL(url);alert(`✅ 成功提取 ${result.length} 个角色的驱动盘数据！`);})();"
+                  :href="bookmarkletLink"
                   class="bookmarklet-btn"
                   rel="noopener noreferrer"
                 >
@@ -125,10 +125,22 @@
             <div class="bookmarklet-step">
               <div class="step-number">3</div>
               <div class="step-content">
+                <strong>提取数据</strong>
+                <p>
+                  在官方页面点击书签栏中的按钮，脚本将自动提取数据并保存到本地存储。
+                </p>
+                <p class="highlight-text">
+                  💡 提取完成后，返回本页面即可自动加载角色数据！
+                </p>
+              </div>
+            </div>
+
+            <div class="bookmarklet-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
                 <strong>一键提取数据</strong>
                 <p>
-                  在官方页面点击书签栏中的按钮，脚本将自动提取所有角色的驱动盘数据并下载为
-                  JSON 文件。
+                  在官方页面点击书签栏中的按钮，脚本将自动提取所有角色的驱动盘数据并保存到本地存储。
                 </p>
               </div>
             </div>
@@ -144,13 +156,13 @@
       </div>
     </transition>
 
-    <!-- 新自动模式（window.open + postMessage） -->
+    <!-- 新自动模式（localStorage轮询） -->
     <transition name="fade">
       <div v-if="currentMode === 'auto-new'" class="auto-new-section">
         <div class="card">
           <h2>🚀 自动提取驱动盘数据</h2>
           <p class="description">
-            使用书签脚本，在官方页面一键提取数据并自动传输
+            使用书签脚本在官方页面提取数据，数据将自动传输到本页面
           </p>
 
           <div class="bookmarklet-step">
@@ -174,11 +186,11 @@
               <strong>添加书签脚本</strong>
               <p>将下方的按钮拖拽到浏览器的书签栏中。</p>
               <a
-                href="javascript:(async function(){const API_BASE='https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool';const API_LOGIN='https://api-takumi.mihoyo.com/common/badge/v1/login/info';const cleanText=t=>t?.replace(/<[^>]*>/g,'').replace(/\\n/g,'')||'';const fetchJSON=(t,e)=>fetch(t,{credentials:'include',...e}).then(t=>t.json());const getGameUID=async()=>(await fetchJSON(`${API_LOGIN}?game_biz=nap_cn&lang=zh-cn`)).data?.game_uid;const getDeviceFP=()=>document.cookie.match(/DEVICEFP=(\\w+)/)?.[1];const getBasicList=(t,e)=>fetchJSON(`${API_BASE}/user/avatar_basic_list?uid=${t}&region=prod_gf_cn`,{headers:{'x-rpc-device_fp':e}});const getEquipBatch=(t,e,o)=>fetchJSON(`${API_BASE}/user/batch_avatar_detail_v2?uid=${t}&region=prod_gf_cn`,{method:'POST',headers:{'x-rpc-device_fp':o},body:JSON.stringify({avatar_list:e})});const processEquipData=({avatar:t,equip:e,weapon:o})=>({characterName:t.name_mi18n,characterFullName:t.full_name_mi18n,level:t.level,profession:t.avatar_profession,driveDiscs:e?.map(({level:t,name:e,icon:o,rarity:a,invalid_property_cnt:i,equipment_type:s,properties:r,main_properties:n,equip_suit:c})=>({position:s,name:e,level:t,rarity:a,invalidProperty:i,mainProperty:{name:n[0].property_name,val:n[0].base},subProperties:r.map(({property_name:t,base:e,level:o,valid:a,add:i})=>({name:t,val:e,level:o,valid:a,add:i})),suit:{name:c.name,desc1:c.desc1,desc2:cleanText(c.desc2)}}))||[]});const uid=await getGameUID();const device_fp=getDeviceFP();if(!uid||!device_fp){alert('❌ 无法读取 UID 或 DEVICEFP，可能未登录！');return;}const basicData=await getBasicList(uid,device_fp);const avatarList=basicData.data.list.filter(t=>t.unlocked).map(t=>({avatar_id:t.avatar.id}));const batches=[];for(let t=0;t<avatarList.length;t+=10)batches.push(avatarList.slice(t,t+10));const detailResponses=await Promise.all(batches.map(t=>getEquipBatch(uid,t,device_fp)));const allResults=detailResponses.flatMap(t=>t.data.list.map(processEquipData));const result=allResults.map(t=>({...t,driveDiscs:t.driveDiscs.map(d=>({...d,mainProperty:{name:d.mainProperty.name,value:d.mainProperty.val.toString()},subProperties:d.subProperties.map(s=>({...s,value:s.val.toString()}))}))}));const ANALYZER_URL='https://zzzstory.doupoa.site/tools/drive-disk-rating/';const popup=window.open(ANALYZER_URL,'_blank');if(!popup){alert('请允许弹出窗口，否则无法打开分析器！');return;}setTimeout(()=>{try{popup.postMessage({type:'ZZZ_CHARACTER_DATA',payload:result},window.location.origin);console.log('角色数据已发送至分析器');}catch(e){console.error('发送失败:',e);alert('数据发送失败，请重试');}},1500);})();"
+                :href="bookmarkletLink"
                 class="bookmarklet-btn"
                 rel="noopener noreferrer"
               >
-                🎮 一键提取并传输
+                🎮 一键提取驱动盘
               </a>
               <p class="hint">
                 💡 提示：如果看不到书签栏，按
@@ -191,9 +203,28 @@
           <div class="bookmarklet-step">
             <div class="step-number">3</div>
             <div class="step-content">
-              <strong>提取数据</strong>
+              <strong>打开本页面监听</strong>
               <p>
-                在官方页面点击书签栏中的按钮，脚本将自动提取数据并传输到本页面。
+                在点击书签按钮之前，请确保本页面（驱动盘评分页面）已经在浏览器中打开并保持在前台。
+              </p>
+              <p class="highlight-text">
+                💡 本页面会自动监听并接收从官方页面传输过来的数据！
+              </p>
+            </div>
+          </div>
+
+          <div class="bookmarklet-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <strong>在官方页面点击书签按钮</strong>
+              <p>切换到官方页面，点击书签栏中的"🎮 一键提取驱动盘"按钮。</p>
+              <p>
+                脚本将自动提取所有角色的驱动盘数据，并尝试通过 PostMessage
+                传输到本页面。
+              </p>
+              <p class="highlight-text" style="margin-top: 12px">
+                🔔 提示：如果 PostMessage 传输失败，数据会自动保存到
+                localStorage，返回本页面后也会自动加载。
               </p>
             </div>
           </div>
@@ -451,6 +482,24 @@ const characters = ref([]);
 const showCalculation = ref(false);
 const selectedCharacter = ref("星见雅");
 const allCharacterData = ref([]);
+const pollingInterval = ref(null);
+const bookmarkletLink = ref("");
+
+const generateBookmarklet = async () => {
+  try {
+    const response = await fetch("./components/bookmarkScript.js");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const scriptContent = await response.text();
+
+    // 将脚本内容转换为书签脚本URL格式
+    const bookmarkletCode = `javascript:(function(){${encodeURIComponent(scriptContent)}})()`;
+    bookmarkletLink.value = bookmarkletCode;
+  } catch (error) {
+    console.error("生成书签脚本失败:", error);
+  }
+};
 
 const modes = [
   { id: "auto-new", name: "🚀 自动提取（推荐）" },
@@ -468,14 +517,85 @@ const switchMode = (mode) => {
   error.value = null;
   fileInfo.value = null;
   showCalculation.value = false;
+
+  // 停止轮询
+  if (pollingInterval.value) {
+    clearInterval(pollingInterval.value);
+    pollingInterval.value = null;
+  }
+
+  // 如果切换到自动模式，开始轮询
+  if (mode === "auto-new") {
+    startPolling();
+  }
 };
 
-// PostMessage 处理
+// localStorage 轮询机制
+const startPolling = () => {
+  console.log("🔄 开始轮询 localStorage...");
+  receivingStatus.value = {
+    type: "info",
+    icon: "⏳",
+    text: "等待数据...请在官方页面点击书签按钮",
+  };
+
+  // 立即检查一次
+  checkLocalStorageData();
+
+  // 每500ms检查一次
+  pollingInterval.value = setInterval(() => {
+    checkLocalStorageData();
+  }, 500);
+};
+
+const checkLocalStorageData = () => {
+  const dataKey = "ZZZ_DRIVE_DISC_DATA";
+  try {
+    const stored = localStorage.getItem(dataKey);
+    if (stored) {
+      const parsed = JSON.parse(stored);
+
+      // 检查数据是否新鲜（5秒内）
+      const isFresh = Date.now() - parsed.timestamp < 5000;
+
+      if (isFresh && parsed.data && Array.isArray(parsed.data)) {
+        console.log("✅ 从 localStorage 读取到数据");
+        localStorage.removeItem(dataKey);
+
+        // 停止轮询
+        if (pollingInterval.value) {
+          clearInterval(pollingInterval.value);
+          pollingInterval.value = null;
+        }
+
+        // 处理数据
+        allCharacterData.value = parsed.data;
+        switchCharacter(selectedCharacter.value);
+
+        receivingStatus.value = {
+          type: "success",
+          icon: "✅",
+          text: `成功接收 ${parsed.data.length} 个角色的数据！`,
+        };
+
+        // 3秒后清除状态
+        setTimeout(() => {
+          receivingStatus.value = null;
+        }, 3000);
+      }
+    }
+  } catch (e) {
+    console.error("读取 localStorage 失败:", e);
+  }
+};
+
+// PostMessage 处理（保留作为备用）
 const handleMessage = (event) => {
   // 安全检查：验证消息来源
   const allowedOrigins = [
     "https://act.mihoyo.com",
     "https://zzzstory.doupoa.site",
+    window.location.origin,
   ];
   if (!allowedOrigins.includes(event.origin)) {
     console.warn("拒绝非信任来源的消息:", event.origin);
@@ -519,16 +639,28 @@ const handleMessage = (event) => {
 };
 
 onMounted(() => {
+  generateBookmarklet();
   window.addEventListener("message", handleMessage);
   receivingStatus.value = {
     type: "info",
     icon: "⏳",
     text: "等待接收数据...请在官方页面点击书签按钮",
   };
+
+  // 如果在自动模式，开始轮询
+  if (currentMode.value === "auto-new") {
+    startPolling();
+  }
 });
 
 onUnmounted(() => {
   window.removeEventListener("message", handleMessage);
+
+  // 清理轮询
+  if (pollingInterval.value) {
+    clearInterval(pollingInterval.value);
+    pollingInterval.value = null;
+  }
 });
 
 // 文件上传相关
@@ -1067,6 +1199,14 @@ header span {
   color: var(--vp-c-text-2);
   line-height: 1.6;
   margin-bottom: 12px;
+}
+
+.step-content .highlight-text {
+  background: rgba(238, 115, 9, 0.1);
+  border-left: 3px solid var(--main-color-1);
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
 }
 
 .step-content .highlight {
