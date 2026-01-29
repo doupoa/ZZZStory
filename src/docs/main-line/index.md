@@ -10,5 +10,6 @@
 
 ## 第 1 章
 - [幕间](/main-line/chapter1/Interlude)
+- [委托:逃出生天](/main-line/chapter1/Assignment_Escape_from_Peril)
 
 资料收集中，敬请期待！
