@@ -47,10 +47,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import characterWeights from "../character-weights.json";
-
-// 从 JSON 中提取配置
-const { SUB_STATS_POOL } = characterWeights;
+import { SUB_STATS_POOL } from "./rating_algorithm.ts";
 
 // 定义类型
 interface CharacterConfig {

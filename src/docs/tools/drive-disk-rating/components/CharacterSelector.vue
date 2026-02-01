@@ -30,6 +30,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import characterWeights from "../character-weights.json";
+import { getCharacterElement } from "./rating_algorithm.ts";
+import { getCharacterMainStatsWeights, getCharacterSubStatsWeights, getCharacterHighlightSubStats } from "./ManualEntryTab_Method_Library.ts";
 
 // 从 JSON 中提取配置
 const { CHARACTER_CONFIGS } = characterWeights;
@@ -68,7 +70,16 @@ const currentCharacterName = computed({
 
 const characterNames = computed(() => Object.keys(configs));
 
-const currentCharacter = computed(() => configs[currentCharacterName.value]);
+const currentCharacter = computed(() => {
+  const config = configs[currentCharacterName.value];
+  return {
+    ...config,
+    element: getCharacterElement(currentCharacterName.value),
+    mainStats: getCharacterMainStatsWeights(currentCharacterName.value),
+    subStats: getCharacterSubStatsWeights(currentCharacterName.value),
+    highlightSubStats: getCharacterHighlightSubStats(currentCharacterName.value)
+  };
+});
 
 const handleCharacterChange = () => {
   emit("change", currentCharacter.value);
