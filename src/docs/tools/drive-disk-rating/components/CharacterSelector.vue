@@ -31,7 +31,11 @@
 import { computed } from "vue";
 import characterWeights from "../character-weights.json";
 import { getCharacterElement } from "./rating_algorithm.ts";
-import { getCharacterMainStatsWeights, getCharacterSubStatsWeights, getCharacterHighlightSubStats } from "./ManualEntryTab_Method_Library.ts";
+import {
+  getCharacterMainStatsWeights,
+  getCharacterSubStatsWeights,
+  getCharacterHighlightSubStats,
+} from "./ManualEntryTab_Method_Library.ts";
 
 // 从 JSON 中提取配置
 const { CHARACTER_CONFIGS } = characterWeights;
@@ -77,7 +81,9 @@ const currentCharacter = computed(() => {
     element: getCharacterElement(currentCharacterName.value),
     mainStats: getCharacterMainStatsWeights(currentCharacterName.value),
     subStats: getCharacterSubStatsWeights(currentCharacterName.value),
-    highlightSubStats: getCharacterHighlightSubStats(currentCharacterName.value)
+    highlightSubStats: getCharacterHighlightSubStats(
+      currentCharacterName.value,
+    ),
   };
 });
 

@@ -20,7 +20,7 @@ export interface DriveDisc {
   position: number;
   name: string;
   level: number;
-  rarity: 'S' | 'A' | 'B';
+  rarity: "S" | "A" | "B";
   invalidProperty: number;
   mainProperty: MainProperty;
   subProperties: SubProperty[];

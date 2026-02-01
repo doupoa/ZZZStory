@@ -143,7 +143,9 @@ const currentCharacter = computed(() => {
   const config = CHARACTER_CONFIGS[currentCharacterName.value];
   return {
     ...config,
-    highlightSubStats: getCharacterHighlightSubStats(currentCharacterName.value)
+    highlightSubStats: getCharacterHighlightSubStats(
+      currentCharacterName.value,
+    ),
   };
 });
 

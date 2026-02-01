@@ -2,7 +2,7 @@
   <transition name="fade">
     <div class="auto-new-section">
       <div class="card">
-        <h2>🚀 自动提取驱动盘数据</h2>
+        <h2>自动提取驱动盘数据</h2>
         <p class="description">
           使用书签脚本，在官方页面一键提取数据并自动传输
         </p>
@@ -28,11 +28,11 @@
             <strong>添加书签脚本</strong>
             <p>将下方的按钮拖拽到浏览器的书签栏中。</p>
             <a
-              href="javascript:(async function(){const API_BASE='https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool';const API_LOGIN='https://api-takumi.mihoyo.com/common/badge/v1/login/info';const cleanText=t=>t?.replace(/<[^>]*>/g,'').replace(/\\n/g,'')||'';const fetchJSON=(t,e)=>fetch(t,{credentials:'include',...e}).then(t=>t.json());const getGameUID=async()=>(await fetchJSON(`${API_LOGIN}?game_biz=nap_cn&lang=zh-cn`)).data?.game_uid;const getDeviceFP=()=>document.cookie.match(/DEVICEFP=(\\w+)/)?.[1];const getBasicList=(t,e)=>fetchJSON(`${API_BASE}/user/avatar_basic_list?uid=${t}&region=prod_gf_cn`,{headers:{'x-rpc-device_fp':e}});const getEquipBatch=(t,e,o)=>fetchJSON(`${API_BASE}/user/batch_avatar_detail_v2?uid=${t}&region=prod_gf_cn`,{method:'POST',headers:{'x-rpc-device_fp':o},body:JSON.stringify({avatar_list:e})});const processEquipData=({avatar:t,equip:e,weapon:o})=>({characterName:t.name_mi18n,characterFullName:t.full_name_mi18n,level:t.level,profession:t.avatar_profession,driveDiscs:e?.map(({level:t,name:e,icon:o,rarity:a,invalid_property_cnt:i,equipment_type:s,properties:r,main_properties:n,equip_suit:c})=>({position:s,name:e,level:t,rarity:a,invalidProperty:i,mainProperty:{name:n[0].property_name,val:n[0].base},subProperties:r.map(({property_name:t,base:e,level:o,valid:a,add:i})=>({name:t,val:e,level:o,valid:a,add:i})),suit:{name:c.name,desc1:c.desc1,desc2:cleanText(c.desc2)}}))||[]});const uid=await getGameUID();const device_fp=getDeviceFP();if(!uid||!device_fp){alert('❌ 无法读取 UID 或 DEVICEFP，可能未登录！');return;}const basicData=await getBasicList(uid,device_fp);const avatarList=basicData.data.list.filter(t=>t.unlocked).map(t=>({avatar_id:t.avatar.id}));const batches=[];for(let t=0;t<avatarList.length;t+=10)batches.push(avatarList.slice(t,t+10));const detailResponses=await Promise.all(batches.map(t=>getEquipBatch(uid,t,device_fp)));const allResults=detailResponses.flatMap(t=>t.data.list.map(processEquipData));const result=allResults.map(t=>({...t,discDetails:t.driveDiscs.map(d=>({...d,mainProperty:{...d.mainProperty,value:d.mainProperty?.val||d.mainProperty?.value}}))}));const newWindow=window.open('https://zzzstory.doupoa.site/tools/drive-disk-rating/','_blank');if(newWindow){newWindow.addEventListener('load',()=>{setTimeout(()=>{newWindow.postMessage({type:'ZZZ_CHARACTER_DATA',payload:result},'*');alert('✅ 数据已传输！');},1000);});}else{alert('❌ 无法打开新窗口，请检查弹窗拦截设置。');}})();"
+              :href="getBookmarklet()"
               class="bookmarklet-btn"
               rel="noopener noreferrer"
             >
-              🎮 一键提取并传输
+              一键提取并传输
             </a>
             <p class="hint">
               💡 提示：如果看不到书签栏，按
@@ -62,7 +62,7 @@
 
         <div class="switch-hint">
           <button @click="$emit('switch-mode', 'manual')" class="switch-btn">
-            ✏️ 无法获取数据？试试手动填写
+            无法获取数据？试试手动填写
           </button>
         </div>
       </div>
@@ -73,47 +73,126 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 
-defineEmits(["switch-mode", "data-received"]);
+const emit = defineEmits(["switch-mode", "data-received"]);
+
+// 配置管理
+const config = {
+  allowedOrigins: ["act.mihoyo.com", "zzzstory.doupoa.site"],
+  enableDetailedLogging: false,
+  messageCount: 0,
+};
 
 const receivingStatus = ref(null);
 
+function getBookmarklet() {
+  const rawCode = `(()=>{if(window._napRunning)return alert("脚本正在运行中，请勿重复点击");window._napRunning=1;let t=(m,y)=>{let d=document.getElementById("nap-toast");d||(d=document.body.appendChild(Object.assign(document.createElement("div"),{id:"nap-toast",style:'position:fixed;top:20px;right:40%;padding:16px 20px;border-radius:12px;z-index:999;font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:white;box-shadow:0 10px 40px rgba(0,0,0,.2);transition:.3s;border:1px solid rgba(255,255,255,.2);max-width:320px;line-height:1.5'})));d.style.cssText+=({info:"background:#667eea;color:#fff;",error:"background:#ff416c;color:#fff;cursor:pointer;",success:"background:#11998e;color:#fff;"}[y]||"");d.innerHTML=y=="error"?"[ERROR] "+m+'<div style="font-size:12px;opacity:.9;margin-top:4px;">点击关闭</div>':y=="success"?"[OK] "+m:"[WAIT] "+m;d.style.opacity=1;d.style.transform="translateY(0)";y=="error"?d.onclick=()=>{d.style.opacity=0;d.style.transform="translateY(-20px)"}:setTimeout(()=>{d.style.opacity=0;d.style.transform="translateY(-20px)"},y=="success"?4e3:1e4)};t("正在连接服务器...");let A="https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool",O="https://zzzstory.doupoa.site",g=(u,o={})=>fetch(u,{credentials:"include",...o}).then(r=>r.json());Promise.all([g("https://api-takumi.mihoyo.com/common/badge/v1/login/info?game_biz=nap_cn&lang=zh-cn").then(r=>r.data?.game_uid),document.cookie.match(/DEVICEFP=(\\w+)/)?.[1]]).then(async([u,f])=>{if(!u||!f)throw Error("未登录或Cookie无效，请先登录游戏账号");t(\`账号 \${u} 已识别，正在获取角色列表...\`);let{data:{list:l}}=await g(\`\${A}/user/avatar_basic_list?uid=\${u}&region=prod_gf_cn\`,{headers:{"x-rpc-device_fp":f}}),i=l.filter(x=>x.unlocked).map(x=>({avatar_id:x.avatar.id}));if(!i.length)throw Error("没有找到已解锁的角色");t(\`找到 \${i.length} 个角色，分批获取装备数据...\`);let b=[...Array(Math.ceil(i.length/10))].map((_,k)=>i.slice(k*10,k*10+10)),d=(await Promise.all(b.map(s=>g(\`\${A}/user/batch_avatar_detail_v2?uid=\${u}&region=prod_gf_cn\`,{method:"POST",headers:{"x-rpc-device_fp":f},body:JSON.stringify({avatar_list:s})})))) .flatMap(r=>r.data.list.map(({name:n,equip:e})=>({[n]:(e||[]).map(({main_properties:m,properties:p})=>({main:m?.[0]?{name:m[0].property_name,add:m[0].add}:null,sub:p?.map(x=>({name:x.property_name,add:x.add}))||[]}))})));if(!window.opener)throw Error("未找到来源页面（请从分析站点点击书签打开）");window.opener.postMessage({type:"nap-data",payload:d,uid:u,timestamp:Date.now()},O);t(\`成功！已发送 \${d.length} 个角色的装备数据，请切换回原分析页面查看\`,"success");window._napRunning=0}).catch(e=>{t(e.message,"error");console.error(e);window._napRunning=0})})();`;
+
+  // UTF-8 → Base64
+  const bytes = new TextEncoder().encode(rawCode);
+  let bin = "";
+  bytes.forEach((b) => (bin += String.fromCharCode(b)));
+  const base64 = btoa(bin);
+
+  // 书签执行：Base64 → UTF-8 → eval
+  return (
+    "javascript:(()=>{const b=atob('" +
+    base64 +
+    "');eval(new TextDecoder().decode(Uint8Array.from(b,c=>c.charCodeAt(0))))})();"
+  );
+}
+// 验证来源
+const validateOrigin = (origin) => {
+  return config.allowedOrigins.some((allowedOrigin) =>
+    origin.includes(allowedOrigin),
+  );
+};
+
+// 记录消息
+const recordMessage = () => {
+  config.messageCount++;
+};
+
+// 格式化消息数据
+const formatMessageData = (event) => {
+  return `【${new Date().toLocaleString()} 收到消息】
+来源: ${event.origin}
+数据: ${JSON.stringify(event.data, null, 2)}
+---`;
+};
+
+// 日志输出到控制台
+const logMessage = (message, level = "info") => {
+  if (!config.enableDetailedLogging) return;
+
+  const logMethod =
+    level === "error"
+      ? console.error
+      : level === "warning"
+        ? console.warn
+        : console.log;
+  logMethod(`[PostMessage ${level.toUpperCase()}]:`, message);
+};
+
+// 消息处理器
 const handleMessage = (event) => {
-  const allowedOrigins = [
-    "https://act.mihoyo.com",
-    "https://zzzstory.doupoa.site",
-  ];
-  if (!allowedOrigins.includes(event.origin)) {
-    console.warn("拒绝非信任来源的消息:", event.origin);
-    return;
-  }
-
-  if (event.data?.type === "ZZZ_CHARACTER_DATA" && event.data?.payload) {
-    try {
-      const data = event.data.payload;
-
-      if (!Array.isArray(data)) {
-        throw new Error("数据格式错误：应为数组");
-      }
-
-      receivingStatus.value = {
-        type: "success",
-        icon: "✅",
-        text: `成功接收 ${data.length} 个角色的数据！`,
-      };
-
-      setTimeout(() => {
-        receivingStatus.value = null;
-      }, 3000);
-
-      $emit("data-received", data);
-    } catch (e) {
-      receivingStatus.value = {
-        type: "error",
-        icon: "❌",
-        text: "数据解析失败：" + e.message,
-      };
-      console.error("PostMessage 数据解析失败:", e);
+  try {
+    // 详细的来源验证
+    if (!validateOrigin(event.origin)) {
+      logMessage(`来源验证失败: ${event.origin}`, "warning");
+      return;
     }
+
+    // 验证数据完整性
+    if (!event.data || typeof event.data !== "object") {
+      logMessage("接收到无效的数据格式", "warning");
+      return;
+    }
+
+    // 记录消息
+    recordMessage();
+
+    // 支持多种消息类型
+    if (
+      (event.data?.type === "nap-data" ||
+        event.data?.type === "ZZZ_CHARACTER_DATA") &&
+      event.data?.payload
+    ) {
+      try {
+        const data = event.data.payload;
+
+        if (!Array.isArray(data)) {
+          throw new Error("数据格式错误：应为数组");
+        }
+
+        // 记录详细日志
+        logMessage(formatMessageData(event), "info");
+
+        receivingStatus.value = {
+          type: "success",
+          icon: "✅",
+          text: `成功接收 ${data.length} 个角色的数据！`,
+        };
+
+        setTimeout(() => {
+          receivingStatus.value = null;
+        }, 3000);
+
+        emit("data-received", data);
+      } catch (e) {
+        receivingStatus.value = {
+          type: "error",
+          icon: "❌",
+          text: "数据解析失败：" + e.message,
+        };
+        logMessage(`数据解析失败: ${e.message}`, "error");
+        console.error("PostMessage 数据解析失败:", e);
+      }
+    } else {
+      logMessage("接收到未知类型的消息", "warning");
+    }
+  } catch (error) {
+    logMessage(`处理消息时出错: ${error.message}`, "error");
+    console.error("Error handling message:", error);
   }
 };
 
@@ -124,6 +203,7 @@ onMounted(() => {
     icon: "⏳",
     text: "等待接收数据...请在官方页面点击书签按钮",
   };
+  logMessage("系统就绪，开始监听 postMessage...", "info");
 });
 
 onUnmounted(() => {
@@ -169,7 +249,7 @@ onUnmounted(() => {
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  background: linear-gradient(135deg, var(--main-color-1), var(--main-color-2));
+  background: var(--main-color-1);
   color: white;
   border-radius: 50%;
   display: flex;
@@ -216,7 +296,7 @@ onUnmounted(() => {
 .bookmarklet-btn {
   display: inline-block;
   padding: 12px 24px;
-  background: linear-gradient(135deg, var(--main-color-1), var(--main-color-2));
+  background: var(--main-color-1);
   color: white;
   text-decoration: none;
   border-radius: 8px;

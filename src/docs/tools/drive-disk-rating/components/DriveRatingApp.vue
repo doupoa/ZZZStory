@@ -55,14 +55,8 @@
 
 <script setup>
 import { ref, computed } from "vue";
-import {
-  getCharacterAvatarUrl,
-  getAvataredCharacters,
-} from "./character-avatar-map.ts";
-import {
-  getCharacterWeights,
-  getConfiguredCharacters,
-} from "./rating_algorithm.ts";
+import { getAvataredCharacters } from "./character-avatar-map.ts";
+import { getConfiguredCharacters } from "./rating_algorithm.ts";
 import AutoExtractTab from "./Upload_Page_Tab/AutoExtractTab.vue";
 import UploadFileTab from "./Upload_Page_Tab/UploadFileTab.vue";
 import ManualEntryTab from "./Upload_Page_Tab/ManualEntryTab.vue";
@@ -74,50 +68,17 @@ const characters = ref([]);
 const showCalculation = ref(false);
 const selectedCharacter = ref("星见雅");
 const allCharacterData = ref([]);
-const pollingInterval = ref(null);
-const bookmarkletLink = ref("");
-
-const generateBookmarklet = async () => {
-  try {
-    const response = await fetch("./components/bookmarkScript.js");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const scriptContent = await response.text();
-
-    // 将脚本内容转换为书签脚本URL格式
-    const bookmarkletCode = `javascript:(function(){${encodeURIComponent(scriptContent)}})()`;
-    bookmarkletLink.value = bookmarkletCode;
-  } catch (error) {
-    console.error("生成书签脚本失败:", error);
-  }
-};
 
 const modes = [
-  { id: "auto-new", name: "🚀 自动提取（推荐）" },
-  { id: "auto-upload", name: "📁 上传文件" },
-  { id: "manual", name: "✏️ 手动填写" },
+  { id: "auto-new", name: "自动提取（推荐）" },
+  { id: "auto-upload", name: "上传文件" },
+  { id: "manual", name: "手动填写" },
 ];
-
-const toggleCalculation = () => {
-  showCalculation.value = !showCalculation.value;
-};
 
 const switchMode = (mode) => {
   currentMode.value = mode;
   characters.value = [];
   showCalculation.value = false;
-
-  // 停止轮询
-  if (pollingInterval.value) {
-    clearInterval(pollingInterval.value);
-    pollingInterval.value = null;
-  }
-
-  // 如果切换到自动模式，开始轮询
-  if (mode === "auto-new") {
-    startPolling();
-  }
 };
 
 const handleDataReceived = (data) => {

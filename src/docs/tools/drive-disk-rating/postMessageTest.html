@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>PostMessage 接收器 - 安全通信测试工具</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .container {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .status-indicator {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        margin-right: 8px;
+      }
+
+      .status-active {
+        background-color: #4caf50;
+      }
+
+      .status-inactive {
+        background-color: #f44336;
+      }
+
+      .bookmarklet {
+        display: block;
+        margin: 15px 0;
+        padding: 12px;
+        background-color: #e3f2fd;
+        border: 1px solid #bbdefb;
+        border-radius: 4px;
+        cursor: move;
+      }
+
+      .btn {
+        background-color: #2196f3;
+        color: white;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 5px;
+        font-size: 14px;
+      }
+
+      .btn:hover {
+        background-color: #1976d2;
+      }
+
+      .btn-test {
+        background-color: #4caf50;
+      }
+
+      .btn-test:hover {
+        background-color: #388e3c;
+      }
+
+      .btn-clear {
+        background-color: #f44336;
+      }
+
+      .btn-clear:hover {
+        background-color: #d32f2f;
+      }
+
+      #output {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 15px;
+        margin-top: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+        font-family: monospace;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+
+      .log-entry {
+        margin-bottom: 10px;
+        padding: 8px;
+        border-left: 3px solid #2196f3;
+        background-color: #f1f8ff;
+      }
+
+      .error-log {
+        border-left-color: #f44336;
+        background-color: #ffebee;
+      }
+
+      .warning-log {
+        border-left-color: #ff9800;
+        background-color: #fff3e0;
+      }
+
+      .controls {
+        margin: 15px 0;
+        text-align: center;
+      }
+
+      .config-section {
+        margin: 15px 0;
+        padding: 15px;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+        border: 1px dashed #ccc;
+      }
+
+      .config-row {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      label {
+        min-width: 120px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>
+        <span
+          id="status-indicator"
+          class="status-indicator status-inactive"
+        ></span
+        >等待从目标网站接收消息...
+      </h2>
+
+      <div class="config-section">
+        <h3>安全配置</h3>
+        <div class="config-row">
+          <label for="allowed-origin">允许的来源:</label>
+          <input
+            type="text"
+            id="allowed-origin"
+            value="act.mihoyo.com"
+            placeholder="输入允许的域名"
+          />
+        </div>
+        <div class="config-row">
+          <label for="your-site-origin">您的站点地址:</label>
+          <input
+            type="text"
+            id="your-site-origin"
+            value="https://zzzstory.doupoa.site"
+            placeholder="输入您的站点URL"
+          />
+        </div>
+      </div>
+
+      <div class="bookmarklet">
+        <strong>书签工具:</strong>
+        拖动以下按钮到浏览器书签栏，然后在目标网站上点击它来发送测试消息
+      </div>
+      <a
+        id="bookmarklet-btn"
+        href="#"
+        onclick="alert('请直接拖拽此按钮到书签栏，不要点击！')"
+        >🚀 发送测试消息</a
+      >
+
+      <div class="controls">
+        <button class="btn btn-test" onclick="openTarget()">
+          打开目标网站进行测试
+        </button>
+        <button class="btn btn-test" onclick="sendTestMessage()">
+          发送模拟消息
+        </button>
+        <button class="btn btn-clear" onclick="clearOutput()">清空输出</button>
+        <button class="btn" onclick="toggleLogging()">切换详细日志</button>
+      </div>
+
+      <div id="stats">消息计数: <span id="message-count">0</span></div>
+
+      <pre id="output"></pre>
+    </div>
+
+    <script>
+      // 配置管理
+      const config = {
+        allowedOrigins: ["act.mihoyo.com"],
+        SiteOrigin: "https://zzzstory.doupoa.site",
+        enableDetailedLogging: false,
+        messageCount: 0,
+      };
+
+      // DOM 元素引用
+      const outputElement = document.getElementById("output");
+      const statusIndicator = document.getElementById("status-indicator");
+      const messageCountElement = document.getElementById("message-count");
+
+      // 初始化
+      function init() {
+        updateBookmarklet();
+        setupEventListeners();
+        setStatusActive(true);
+
+        logToUI("系统就绪，开始监听 postMessage...", "info");
+      }
+
+      // 设置事件监听器
+      function setupEventListeners() {
+        // 监听来自其他窗口的消息
+        window.addEventListener("message", handleMessage);
+
+        // 配置输入框变化监听
+        document
+          .getElementById("allowed-origin")
+          .addEventListener("change", updateConfig);
+        document
+          .getElementById("your-site-origin")
+          .addEventListener("change", updateConfig);
+      }
+
+      // 更新配置
+      function updateConfig() {
+        const origins = document
+          .getElementById("allowed-origin")
+          .value.split(",")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        config.allowedOrigins =
+          origins.length > 0 ? origins : ["act.mihoyo.com"];
+        config.SiteOrigin =
+          document.getElementById("your-site-origin").value ||
+          "https://zzzstory.doupoa.site";
+
+        logToUI(
+          `配置已更新 - 允许来源: ${config.allowedOrigins.join(", ")}`,
+          "info",
+        );
+      }
+
+      // 消息处理器
+      function handleMessage(event) {
+        try {
+          // 详细的来源验证
+          if (!validateOrigin(event.origin)) {
+            logToUI(`来源验证失败: ${event.origin}`, "warning");
+            return;
+          }
+
+          // 验证数据完整性
+          if (!event.data || typeof event.data !== "object") {
+            logToUI("接收到无效的数据格式", "warning");
+            return;
+          }
+          alert("已收到消息");
+          // 记录消息
+          recordMessage(event);
+
+          // 输出到界面
+          const formattedData = formatMessageData(event);
+          logToUI(formattedData, "success");
+
+          // 控制台日志
+          if (config.enableDetailedLogging) {
+            console.log("PostMessage Received:", {
+              origin: event.origin,
+              data: event.data,
+              source: event.source,
+              ports: event.ports,
+            });
+          }
+        } catch (error) {
+          logToUI(`处理消息时出错: ${error.message}`, "error");
+          console.error("Error handling message:", error);
+        }
+      }
+
+      // 验证来源
+      function validateOrigin(origin) {
+        // 检查是否在允许的来源列表中
+        return config.allowedOrigins.some((allowedOrigin) =>
+          origin.includes(allowedOrigin),
+        );
+      }
+
+      // 记录消息
+      function recordMessage(event) {
+        config.messageCount++;
+        messageCountElement.textContent = config.messageCount;
+
+        // 可以在这里添加更多统计逻辑
+      }
+
+      // 格式化消息数据
+      function formatMessageData(event) {
+        return `【${new Date().toLocaleString()} 收到消息】
+来源: ${event.origin}
+数据: ${JSON.stringify(event.data, null, 2)}
+---`;
+      }
+
+      // 日志输出到UI
+      function logToUI(message, level = "info") {
+        const logEntry = document.createElement("div");
+        logEntry.className = `log-entry ${level}-log`;
+        logEntry.textContent = message;
+
+        outputElement.prepend(logEntry);
+
+        // 限制输出长度，避免页面过长
+        if (outputElement.children.length > 100) {
+          outputElement.removeChild(outputElement.lastChild);
+        }
+      }
+
+      function updateBookmarklet() {
+        const btn = document.getElementById("bookmarklet-btn");
+
+        const rawCode = `(()=>{if(window._napRunning)return alert("脚本正在运行中，请勿重复点击");window._napRunning=1;let t=(m,y)=>{let d=document.getElementById("nap-toast");d||(d=document.body.appendChild(Object.assign(document.createElement("div"),{id:"nap-toast",style:'position:fixed;top:20px;right:40%;padding:16px 20px;border-radius:12px;z-index:999;font:500 14px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.2);transition:.3s;border:1px solid rgba(255,255,255,.2);max-width:320px;line-height:1.5'})));d.style.cssText+=({info:"background:#667eea;color:#fff;",error:"background:#ff416c;color:#fff;cursor:pointer;",success:"background:#11998e;color:#fff;"}[y]||"");d.innerHTML=y=="error"?"[ERROR] "+m+'<div style="font-size:12px;opacity:.9;margin-top:4px;">点击关闭</div>':y=="success"?"[OK] "+m:"[WAIT] "+m;d.style.opacity=1;d.style.transform="translateY(0)";y=="error"?d.onclick=()=>{d.style.opacity=0;d.style.transform="translateY(-20px)"}:setTimeout(()=>{d.style.opacity=0;d.style.transform="translateY(-20px)"},y=="success"?4e3:1e4)};t("正在连接服务器...");let A="https://act-api-takumi.mihoyo.com/event/nap_cultivate_tool",O="https://zzzstory.doupoa.site",g=(u,o={})=>fetch(u,{credentials:"include",...o}).then(r=>r.json());Promise.all([g("https://api-takumi.mihoyo.com/common/badge/v1/login/info?game_biz=nap_cn&lang=zh-cn").then(r=>r.data?.game_uid),document.cookie.match(/DEVICEFP=(\\w+)/)?.[1]]).then(async([u,f])=>{if(!u||!f)throw Error("未登录或Cookie无效，请先登录游戏账号");t(\`账号 \${u} 已识别，正在获取角色列表...\`);let{data:{list:l}}=await g(\`\${A}/user/avatar_basic_list?uid=\${u}&region=prod_gf_cn\`,{headers:{"x-rpc-device_fp":f}}),i=l.filter(x=>x.unlocked).map(x=>({avatar_id:x.avatar.id}));if(!i.length)throw Error("没有找到已解锁的角色");t(\`找到 \${i.length} 个角色，分批获取装备数据...\`);let b=[...Array(Math.ceil(i.length/10))].map((_,k)=>i.slice(k*10,k*10+10)),d=(await Promise.all(b.map(s=>g(\`\${A}/user/batch_avatar_detail_v2?uid=\${u}&region=prod_gf_cn\`,{method:"POST",headers:{"x-rpc-device_fp":f},body:JSON.stringify({avatar_list:s})})))) .flatMap(r=>r.data.list.map(({name:n,equip:e})=>({[n]:(e||[]).map(({main_properties:m,properties:p})=>({main:m?.[0]?{name:m[0].property_name,add:m[0].add}:null,sub:p?.map(x=>({name:x.property_name,add:x.add}))||[]}))})));if(!window.opener)throw Error("未找到来源页面（请从分析站点点击书签打开）");window.opener.postMessage({type:"nap-data",payload:d,uid:u,timestamp:Date.now()},O);t(\`成功！已发送 \${d.length} 个角色的装备数据，请切换回原分析页面查看\`,"success");window._napRunning=0}).catch(e=>{t(e.message,"error");console.error(e);window._napRunning=0})})();`;
+
+        // UTF-8 → Base64
+        const bytes = new TextEncoder().encode(rawCode);
+        let bin = "";
+        bytes.forEach((b) => (bin += String.fromCharCode(b)));
+        const base64 = btoa(bin);
+
+        // 书签执行：Base64 → UTF-8 → eval
+        btn.href =
+          "javascript:(()=>{const b=atob('" +
+          base64 +
+          "');eval(new TextDecoder().decode(Uint8Array.from(b,c=>c.charCodeAt(0))))})();";
+      }
+
+      // 打开目标网站
+      function openTarget() {
+        const targetUrl =
+          "https://act.mihoyo.com/zzz/gt/character-builder-h/index.html";
+        window.open(targetUrl, "_blank");
+        logToUI(`已打开目标网站: ${targetUrl}`, "info");
+      }
+
+      // 发送模拟消息（用于本地测试）
+      function sendTestMessage() {
+        const testData = {
+          type: "test-message",
+          payload: {
+            message: "这是测试消息",
+            timestamp: Date.now(),
+            testId: Math.random().toString(36).substring(7),
+          },
+        };
+
+        // 模拟从允许的源发送消息
+        const mockEvent = {
+          origin: "https://act.mihoyo.com",
+          data: testData,
+          source: window,
+          ports: [],
+        };
+
+        handleMessage(mockEvent);
+        logToUI("已发送模拟消息", "info");
+      }
+
+      // 清空输出
+      function clearOutput() {
+        outputElement.innerHTML = "";
+        config.messageCount = 0;
+        messageCountElement.textContent = "0";
+        logToUI("输出已清空", "info");
+      }
+
+      // 切换详细日志
+      function toggleLogging() {
+        config.enableDetailedLogging = !config.enableDetailedLogging;
+        logToUI(
+          `详细日志: ${config.enableDetailedLogging ? "开启" : "关闭"}`,
+          "info",
+        );
+      }
+
+      // 页面加载完成后初始化
+      document.addEventListener("DOMContentLoaded", init);
+    </script>
+  </body>
+</html>

@@ -7,24 +7,32 @@
         🔄 重新上传
       </button>
     </div>
-    
+
     <div class="character-list">
-      <div v-for="character in characters" :key="character.characterName" class="character-card">
+      <div
+        v-for="character in characters"
+        :key="character.characterName"
+        class="character-card"
+      >
         <div class="character-header">
           <div class="character-name-wrapper">
             <h3 class="character-name">
-              <img 
-                :src="getCharacterAvatarUrl(character.characterName)" 
-                :alt="character.characterName" 
+              <img
+                :src="getCharacterAvatarUrl(character.characterName)"
+                :alt="character.characterName"
                 class="character-avatar"
               />
               {{ character.characterName }}
             </h3>
             <div class="character-selector">
-              <select :value="selectedCharacter" @change="handleCharacterChange" class="character-select">
-                <option 
-                  v-for="char in availableCharacters" 
-                  :key="char" 
+              <select
+                :value="selectedCharacter"
+                @change="handleCharacterChange"
+                class="character-select"
+              >
+                <option
+                  v-for="char in availableCharacters"
+                  :key="char"
                   :value="char"
                 >
                   {{ char }}
@@ -33,45 +41,91 @@
             </div>
           </div>
           <div class="character-score">
-            <div style="font-size: 0.875rem; color: var(--vp-c-text-2); margin-bottom: 4px;">总评分</div>
-            <div style="font-size: 2rem; font-weight: 700; color: var(--main-color-1);">{{ character.totalScore.toFixed(1) }}</div>
-            <div style="font-size: 0.75rem; color: var(--vp-c-text-2);">平均分: {{ character.averageScore.toFixed(1) }}</div>
+            <div
+              style="
+                font-size: 0.875rem;
+                color: var(--vp-c-text-2);
+                margin-bottom: 4px;
+              "
+            >
+              总评分
+            </div>
+            <div
+              style="
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--main-color-1);
+              "
+            >
+              {{ character.totalScore.toFixed(1) }}
+            </div>
+            <div style="font-size: 0.75rem; color: var(--vp-c-text-2)">
+              平均分: {{ character.averageScore.toFixed(1) }}
+            </div>
           </div>
         </div>
-        
+
         <div v-if="character.discDetails.length === 0" class="no-data-message">
           <div class="no-data-icon">📭</div>
           <div class="no-data-text">该角色暂无驱动盘数据</div>
-          <div class="no-data-hint">请在游戏中为该角色装备驱动盘后重新提取数据</div>
+          <div class="no-data-hint">
+            请在游戏中为该角色装备驱动盘后重新提取数据
+          </div>
         </div>
-        
+
         <div v-else class="disc-grid">
-          <div v-for="disc in character.discDetails" :key="disc.position" class="disc-card">
+          <div
+            v-for="disc in character.discDetails"
+            :key="disc.position"
+            class="disc-card"
+          >
             <div class="disc-header">
               <span class="disc-position">位置 {{ disc.position }}</span>
               <span class="disc-rarity">{{ disc.rarity }}</span>
             </div>
-            
+
             <div class="disc-info">
               <div class="disc-name">{{ disc.name }}</div>
               <div class="disc-level">等级 {{ disc.level }}</div>
             </div>
-            
+
             <div class="disc-main-property">
-              <strong>主属性：</strong>{{ disc.mainProperty?.name || '无' }} +{{ disc.mainProperty?.value || 0 }}
+              <strong>主属性：</strong>{{ disc.mainProperty?.name || "无" }} +{{
+                disc.mainProperty?.value || 0
+              }}
             </div>
-            
+
             <div class="disc-score">
               <strong>评分：</strong>{{ disc.score.toFixed(1) }}
             </div>
-            
+
             <div class="disc-properties">
-              <div style="font-weight: 600; color: var(--main-color-1); margin-bottom: 12px;">📊 有效副词条</div>
-              <div v-for="(prop, index) in disc.details.validProperties" :key="index" class="property-item">
-                <span class="property-name">{{ prop.name }}</span>
-                <span class="property-value">{{ prop.value }} <small style="color: var(--vp-c-text-2);">+{{ prop.weightedValue.toFixed(2) }}</small></span>
+              <div
+                style="
+                  font-weight: 600;
+                  color: var(--main-color-1);
+                  margin-bottom: 12px;
+                "
+              >
+                📊 有效副词条
               </div>
-              <div v-if="!disc.details.validProperties.length" style="color: var(--vp-c-text-2); font-size: 0.875rem;">
+              <div
+                v-for="(prop, index) in disc.details.validProperties"
+                :key="index"
+                class="property-item"
+              >
+                <span class="property-name">{{ prop.name }}</span>
+                <span class="property-value"
+                  >{{ prop.value }}
+                  <small style="color: var(--vp-c-text-2)"
+                    >+{{ prop.weightedValue.toFixed(2) }}</small
+                  ></span
+                >
+              </div>
+              <div
+                v-if="!disc.details.validProperties.length"
+                style="color: var(--vp-c-text-2); font-size: 0.875rem"
+              >
                 无有效副词条
               </div>
             </div>
@@ -80,81 +134,132 @@
       </div>
     </div>
   </div>
-  
+
   <div v-if="characters.length" class="calculation-section">
     <div class="calculation-header" @click="toggleCalculation">
       <h2 class="calculation-title">🔢 计算过程详情</h2>
-      <span class="toggle-icon">{{ showCalculation ? '收起 ▲' : '展开 ▼' }}</span>
+      <span class="toggle-icon">{{
+        showCalculation ? "收起 ▲" : "展开 ▼"
+      }}</span>
     </div>
-    
+
     <transition name="expand">
       <div v-if="showCalculation" class="calculation-content">
-        <div v-for="character in characters" :key="character.characterName" class="character-calculation">
+        <div
+          v-for="character in characters"
+          :key="character.characterName"
+          class="character-calculation"
+        >
           <h3 class="character-calc-title">
-            <img 
-              :src="getCharacterAvatarUrl(character.characterName)" 
-              :alt="character.characterName" 
+            <img
+              :src="getCharacterAvatarUrl(character.characterName)"
+              :alt="character.characterName"
               class="character-avatar"
             />
             {{ character.characterName }} 的计算过程
           </h3>
-          
-          <div v-for="disc in character.discDetails" :key="disc.position" class="disc-calculation">
+
+          <div
+            v-for="disc in character.discDetails"
+            :key="disc.position"
+            class="disc-calculation"
+          >
             <div class="disc-calc-header">
               <span class="disc-calc-position">位置 {{ disc.position }}</span>
               <span class="disc-calc-name">{{ disc.name }}</span>
-              <span class="disc-calc-score">最终评分: {{ disc.score.toFixed(2) }}</span>
+              <span class="disc-calc-score"
+                >最终评分: {{ disc.score.toFixed(2) }}</span
+              >
             </div>
-            
+
             <div class="disc-calc-details">
               <div class="calc-row">
                 <span class="calc-label">品质权重:</span>
-                <span class="calc-value">{{ disc.details.qualityWeight.toFixed(2) }} ({{ disc.rarity }}级)</span>
+                <span class="calc-value"
+                  >{{ disc.details.qualityWeight.toFixed(2) }} ({{
+                    disc.rarity
+                  }}级)</span
+                >
               </div>
               <div class="calc-row">
                 <span class="calc-label">等级权重:</span>
-                <span class="calc-value">{{ disc.details.levelWeight.toFixed(2) }} ({{ disc.level }}级)</span>
+                <span class="calc-value"
+                  >{{ disc.details.levelWeight.toFixed(2) }} ({{
+                    disc.level
+                  }}级)</span
+                >
               </div>
               <div class="calc-row collapsible-row">
                 <span class="calc-label">副词条权重总和:</span>
                 <span class="calc-value-with-toggle">
-                  <span class="calc-value">{{ disc.details.subPropertiesWeight.toFixed(4) }}</span>
-                  <span class="collapse-toggle" @click="disc.showSubDetails = !disc.showSubDetails">
-                    {{ disc.showSubDetails ? '▼' : '▶' }}
+                  <span class="calc-value">{{
+                    disc.details.subPropertiesWeight.toFixed(4)
+                  }}</span>
+                  <span
+                    class="collapse-toggle"
+                    @click="disc.showSubDetails = !disc.showSubDetails"
+                  >
+                    {{ disc.showSubDetails ? "▼" : "▶" }}
                   </span>
                 </span>
               </div>
-              <div v-if="disc.showSubDetails && disc.details.validProperties.length > 0" class="valid-properties-section">
-                <div v-for="(prop, index) in disc.details.validProperties" :key="index" class="valid-prop-item">
-                  <span class="prop-name">{{ prop.name }} {{ prop.value }} +{{ prop.add }}</span>
-                  <span class="prop-weight">权重: {{ prop.weight.toFixed(2) }}</span>
-                  <span class="prop-contribution">贡献: {{ prop.weightedValue.toFixed(4) }}</span>
+              <div
+                v-if="
+                  disc.showSubDetails && disc.details.validProperties.length > 0
+                "
+                class="valid-properties-section"
+              >
+                <div
+                  v-for="(prop, index) in disc.details.validProperties"
+                  :key="index"
+                  class="valid-prop-item"
+                >
+                  <span class="prop-name"
+                    >{{ prop.name }} {{ prop.value }} +{{ prop.add }}</span
+                  >
+                  <span class="prop-weight"
+                    >权重: {{ prop.weight.toFixed(2) }}</span
+                  >
+                  <span class="prop-contribution"
+                    >贡献: {{ prop.weightedValue.toFixed(4) }}</span
+                  >
                 </div>
               </div>
               <div class="calc-row">
                 <span class="calc-label">主属性权重:</span>
-                <span class="calc-value">{{ disc.details.mainPropertyWeight.toFixed(4) }}</span>
+                <span class="calc-value">{{
+                  disc.details.mainPropertyWeight.toFixed(4)
+                }}</span>
               </div>
               <div class="calc-row collapsible-row">
                 <span class="calc-label">最大权重总和:</span>
                 <span class="calc-value-with-toggle">
-                  <span class="calc-value">{{ disc.details.maxWeightSum.toFixed(4) }}</span>
-                  <span class="collapse-toggle" @click="disc.showMaxWeightDetails = !disc.showMaxWeightDetails">
-                    {{ disc.showMaxWeightDetails ? '▼' : '▶' }}
+                  <span class="calc-value">{{
+                    disc.details.maxWeightSum.toFixed(4)
+                  }}</span>
+                  <span
+                    class="collapse-toggle"
+                    @click="
+                      disc.showMaxWeightDetails = !disc.showMaxWeightDetails
+                    "
+                  >
+                    {{ disc.showMaxWeightDetails ? "▼" : "▶" }}
                   </span>
                 </span>
               </div>
               <div v-if="disc.showMaxWeightDetails" class="max-weight-details">
                 <div class="max-weight-formula">
-                  最理想的情况: {{ disc.details.maxWeightFormula || '计算中...' }}
+                  最理想的情况:
+                  {{ disc.details.maxWeightFormula || "计算中..." }}
                 </div>
               </div>
               <div class="calc-row calc-formula">
                 <span class="calc-label">计算公式:</span>
                 <span class="calc-value">
-                  ({{ disc.details.subPropertiesWeight.toFixed(4) }} + {{ disc.details.mainPropertyWeight.toFixed(4) }}) 
-                  × (55 ÷ {{ disc.details.maxWeightSum.toFixed(4) }}) 
-                  × {{ disc.details.qualityWeight.toFixed(2) }}
+                  ({{ disc.details.subPropertiesWeight.toFixed(4) }} +
+                  {{ disc.details.mainPropertyWeight.toFixed(4) }}) × (55 ÷
+                  {{ disc.details.maxWeightSum.toFixed(4) }}) ×
+                  {{ disc.details.qualityWeight.toFixed(2) }}
                 </span>
               </div>
             </div>
@@ -166,49 +271,52 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, getCurrentInstance } from 'vue'
-import { getCharacterAvatarUrl, getAvataredCharacters } from './character-avatar-map.ts'
-import { getConfiguredCharacters } from './rating_algorithm.ts'
+import { ref, computed, getCurrentInstance } from "vue";
+import {
+  getCharacterAvatarUrl,
+  getAvataredCharacters,
+} from "./character-avatar-map.ts";
+import { getConfiguredCharacters } from "./rating_algorithm.ts";
 
 interface Character {
-  characterName: string
-  characterFullName: string
-  level: number
-  profession: number
-  driveDiscs: any[]
-  totalScore: number
-  averageScore: number
-  discScores: { [position: number]: number }
-  discDetails: any[]
+  characterName: string;
+  characterFullName: string;
+  level: number;
+  profession: number;
+  driveDiscs: any[];
+  totalScore: number;
+  averageScore: number;
+  discScores: { [position: number]: number };
+  discDetails: any[];
 }
 
 defineProps<{
-  characters: Character[]
-  selectedCharacter: string
-  onCharacterChange: (characterName: string) => void
-}>()
+  characters: Character[];
+  selectedCharacter: string;
+  onCharacterChange: (characterName: string) => void;
+}>();
 
 defineEmits<{
-  (e: 'reset'): void
-}>()
+  (e: "reset"): void;
+}>();
 
-const showCalculation = ref(false)
+const showCalculation = ref(false);
 
 const availableCharacters = computed(() => {
-  const configuredChars = getConfiguredCharacters()
-  const avataredChars = getAvataredCharacters()
-  return configuredChars.filter(char => avataredChars.includes(char))
-})
+  const configuredChars = getConfiguredCharacters();
+  const avataredChars = getAvataredCharacters();
+  return configuredChars.filter((char) => avataredChars.includes(char));
+});
 
 const toggleCalculation = () => {
-  showCalculation.value = !showCalculation.value
-}
+  showCalculation.value = !showCalculation.value;
+};
 
 const handleCharacterChange = (event: Event) => {
-  const target = event.target as HTMLSelectElement
-  const characterName = target.value
-  getCurrentInstance()?.emit('onCharacterChange', characterName)
-}
+  const target = event.target as HTMLSelectElement;
+  const characterName = target.value;
+  getCurrentInstance()?.emit("onCharacterChange", characterName);
+};
 </script>
 
 <style scoped>
@@ -423,7 +531,11 @@ const handleCharacterChange = (event: Event) => {
 }
 
 .disc-score {
-  background: linear-gradient(135deg, rgba(200, 231, 0, 0.2), rgba(238, 115, 9, 0.2));
+  background: linear-gradient(
+    135deg,
+    rgba(200, 231, 0, 0.2),
+    rgba(238, 115, 9, 0.2)
+  );
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 16px;
@@ -458,7 +570,7 @@ const handleCharacterChange = (event: Event) => {
 }
 
 .property-value {
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: "Consolas", "Monaco", monospace;
   color: var(--vp-c-text-2);
   font-size: 0.875rem;
 }
@@ -584,7 +696,7 @@ const handleCharacterChange = (event: Event) => {
 .calc-value {
   color: var(--vp-c-text-2);
   font-size: 0.9rem;
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: "Consolas", "Monaco", monospace;
 }
 
 .calc-value-with-toggle {
@@ -626,12 +738,12 @@ const handleCharacterChange = (event: Event) => {
 
 .prop-weight {
   color: var(--vp-c-brand-1);
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: "Consolas", "Monaco", monospace;
 }
 
 .prop-contribution {
   color: var(--vp-c-text-2);
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: "Consolas", "Monaco", monospace;
 }
 
 .max-weight-details {
@@ -642,7 +754,7 @@ const handleCharacterChange = (event: Event) => {
 }
 
 .max-weight-formula {
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: "Consolas", "Monaco", monospace;
   font-size: 0.85rem;
   color: var(--vp-c-text-2);
   line-height: 1.5;
