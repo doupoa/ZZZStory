@@ -222,6 +222,10 @@ export default defineConfig({
               text: "幕间",
               link: "/main-line/chapter1/Interlude",
             },
+            {
+              text: "委托:逃出生天",
+              link: "/main-line/chapter1/Assignment_Escape_from_Peril",
+            },
           ],
         },
         {
