@@ -35,7 +35,14 @@ export interface CharacterData {
   driveDiscs: DriveDisc[];
 }
 
-// 5. 驱动盘评分结果
+// 5. 驱动盘等级结果
+export interface GradeResult {
+  grade: string;
+  gradeClass: string;
+  gradeDesc: string;
+}
+
+// 6. 驱动盘评分结果
 export interface DriveDiscScoreResult {
   score: number;
   subPropertiesWeight: number;
@@ -51,9 +58,10 @@ export interface DriveDiscScoreResult {
   }>;
   qualityWeight: number;
   levelWeight: number;
+  gradeResult?: GradeResult;
 }
 
-// 6. 角色全套驱动盘评分结果
+// 7. 角色全套驱动盘评分结果
 export interface CharacterScoreResult {
   totalScore: number;
   discScores: { [position: number]: number };

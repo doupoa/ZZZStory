@@ -3,6 +3,9 @@ import { characterWeights } from './rating_algorithm.ts';
 import { SLOT_MAIN_POOLS } from './rating_algorithm.ts';
 import { SUB_STATS_POOL } from './rating_algorithm.ts';
 
+// 从 JSON 文件导入角色元素映射配置
+import characterElementMapping from './Character_Stat_Damage_Mapping_Table.json';
+
 // 定义类型
 interface StatWeights {
   [stat: string]: number;
@@ -94,5 +97,74 @@ export function getCharacterHighlightSubStats(characterName: string): string[] {
   });
   
   return result;
+}
+
+// 获取角色属性
+export function getCharacterElement(characterName: string): string {
+  // 遍历所有元素类型，查找包含该角色的元素
+  for (const [element, characters] of Object.entries(characterElementMapping)) {
+    // 跳过 ELEMENTS 和 ELEMENT_MAPPING 字段
+    if (element === 'ELEMENTS' || element === 'ELEMENT_MAPPING') {
+      continue;
+    }
+    
+    // 检查该元素是否包含指定角色
+    if (Array.isArray(characters) && characters.includes(characterName)) {
+      return element;
+    }
+  }
+  
+  // 如果没有找到匹配的角色，返回默认值
+  return '物理';
+}
+
+// 导出元素类型列表
+export const ELEMENTS = characterElementMapping.ELEMENTS || [];
+
+// 定义角色配置类型
+export interface CharacterConfig {
+  element: string;
+  mainStats: {
+    [slot: string]: { [stat: string]: number };
+  };
+  subStats: { [stat: string]: number };
+  highlightSubStats: string[];
+}
+
+// 定义角色配置类型
+export interface CharacterConfigs {
+  [key: string]: CharacterConfig;
+}
+
+// 构建角色配置对象
+export function buildCharacterConfigs(): CharacterConfigs {
+  const configs: CharacterConfigs = {};
+  const characterNames = Object.keys(characterWeights);
+  
+  characterNames.forEach(characterName => {
+    configs[characterName] = {
+      element: getCharacterElement(characterName),
+      mainStats: getCharacterMainStatsWeights(characterName),
+      subStats: getCharacterSubStatsWeights(characterName),
+      highlightSubStats: getCharacterHighlightSubStats(characterName)
+    };
+  });
+  
+  return configs;
+}
+
+// 获取指定部位的主词条选项
+export function getMainStatOptions(slotId: string): string[] {
+  // 将罗马数字 slotId 转换为数字
+  const slotNumberMap: Record<string, number> = {
+    "I": 1,
+    "II": 2,
+    "III": 3,
+    "IV": 4,
+    "V": 5,
+    "VI": 6
+  };
+  const slotNumber = slotNumberMap[slotId] || 1;
+  return SLOT_MAIN_POOLS[slotNumber] || [];
 }
 

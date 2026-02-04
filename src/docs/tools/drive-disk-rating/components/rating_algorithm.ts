@@ -6,7 +6,8 @@ import type {
   CharacterData,
   DriveDiscScoreResult,
   CharacterScoreResult,
-  AllCharactersScoreResult
+  AllCharactersScoreResult,
+  GradeResult
 } from './types.ts';
 
 // 角色驱动盘词条权重配置
@@ -50,27 +51,7 @@ export function getConfiguredCharacters(): string[] {
   return Object.keys(characterWeights);
 }
 
-// 从 JSON 文件导入角色元素映射配置
-import characterElementMapping from './Character_Stat_Damage_Mapping_Table.json';
 
-// 获取角色属性
-export function getCharacterElement(characterName: string): string {
-  // 遍历所有元素类型，查找包含该角色的元素
-  for (const [element, characters] of Object.entries(characterElementMapping)) {
-    // 跳过 ELEMENTS 和 ELEMENT_MAPPING 字段
-    if (element === 'ELEMENTS' || element === 'ELEMENT_MAPPING') {
-      continue;
-    }
-    
-    // 检查该元素是否包含指定角色
-    if (Array.isArray(characters) && characters.includes(characterName)) {
-      return element;
-    }
-  }
-  
-  // 如果没有找到匹配的角色，返回默认值
-  return '物理';
-}
 
 // 1. 品质权重配置
 export const QUALITY_WEIGHTS: Record<string, number> = {
@@ -335,6 +316,9 @@ roleName: string = 'default'
   // 步骤7：计算实际分值
   const actualScore = (subPropertiesWeight + mainPropertyWeight) * scorePerWeight * qualityWeight;
   
+  // 计算等级结果
+  const gradeResult = calculateGrade(actualScore);
+  
   // 输出调试信息
   console.log(`位置${position} - 实际得分: ${actualScore.toFixed(4)} (副词条权重: ${subPropertiesWeight.toFixed(4)} + 主属性权重: ${mainPropertyWeight.toFixed(4)}) × 每权重分值: ${scorePerWeight.toFixed(4)} × 品质权重: ${qualityWeight.toFixed(4)}`);
   
@@ -346,7 +330,8 @@ roleName: string = 'default'
     maxWeightFormula,
     validProperties: validProps,
     qualityWeight,
-    levelWeight
+    levelWeight,
+    gradeResult
   };
 }
 
@@ -434,6 +419,54 @@ export type {
 export type {
  RoleConfig
 };
+//定义
+export function calculateGrade(finalScore: number): GradeResult {
+  let grade = "F";
+  let gradeClass = "grade-f";
+  let gradeDesc = "可以掰了(是不是没升级？)";
 
+  if (finalScore >= 97) {
+    grade = "SSS+";
+    gradeClass = "grade-sssp";
+    gradeDesc = "极限毕业 (神话盘)";
+  } else if (finalScore >= 93) {
+    grade = "SSS";
+    gradeClass = "grade-sss";
+    gradeDesc = "完美毕业 (神盘)";
+  } else if (finalScore >= 90) {
+    grade = "SS";
+    gradeClass = "grade-ss";
+    gradeDesc = "大毕业 (极品)";
+  } else if (finalScore >= 80) {
+    grade = "S";
+    gradeClass = "grade-s";
+    gradeDesc = "毕业 (好用)";
+  } else if (finalScore >= 70) {
+    grade = "A";
+    gradeClass = "grade-a";
+    gradeDesc = "毕业 (标准)";
+  } else if (finalScore >= 60) {
+    grade = "B";
+    gradeClass = "grade-b";
+    gradeDesc = "可用 (过渡)";
+  } else if (finalScore >= 50) {
+    grade = "C";
+    gradeClass = "grade-c";
+    gradeDesc = "胚子 (需强化)";
+  } else if (finalScore >= 40) {
+    grade = "D";
+    gradeClass = "grade-d";
+    gradeDesc = "较差";
+  } else if (finalScore >= 30) {
+    grade = "E";
+    gradeClass = "grade-e";
+    gradeDesc = "废弃";
+  } else if (finalScore == 0) {
+    grade = "?";
+    gradeClass = "grade-f";
+    gradeDesc = "一个词条都没填评什么？快去填属性！";
+  }
 
+  return { grade, gradeClass, gradeDesc };
+}
 

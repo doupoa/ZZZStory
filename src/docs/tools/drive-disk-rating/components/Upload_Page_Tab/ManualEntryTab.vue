@@ -73,8 +73,8 @@ import { ref, computed, nextTick } from "vue";
 import CharacterSelector from "../CharacterSelector.vue";
 import DriveCard from "../DriveCard.vue";
 import ResultPanel from "../ResultPanel.vue";
-import characterWeights from "../../character-weights.json";
-import { getCharacterHighlightSubStats } from "../ManualEntryTab_Method_Library.ts";
+import { getCharacterHighlightSubStats, getMainStatOptions, buildCharacterConfigs } from "../ManualEntryTab_Method_Library.ts";
+import { QUALITY_WEIGHTS } from "../rating_algorithm.ts";
 
 // 定义类型
 interface CharacterConfig {
@@ -86,9 +86,8 @@ interface CharacterConfig {
   highlightSubStats: string[];
 }
 
-// 从 JSON 中提取配置
-const { SLOT_MAIN_POOLS, QUALITY_MULTIPLIERS, CHARACTER_CONFIGS } =
-  characterWeights as any;
+// 构建角色配置对象
+const CHARACTER_CONFIGS = buildCharacterConfigs();
 
 // 工具函数
 const getMaxUpgradesForLevel = (level: number) => {
@@ -140,11 +139,7 @@ const initDriveData = () => {
 // 角色选择
 const currentCharacterName = ref("星见雅");
 const currentCharacter = computed(() => {
-  const config = CHARACTER_CONFIGS[currentCharacterName.value];
-  return {
-    ...config,
-    highlightSubStats: getCharacterHighlightSubStats(currentCharacterName.value)
-  };
+  return CHARACTER_CONFIGS[currentCharacterName.value];
 });
 
 // 驱动盘数据
@@ -246,8 +241,7 @@ const maxPossibleWeight = computed(() => {
       totalMaxWeight += initialWeight + maxEnhancement;
     } else {
       let slotMaxWeight = 0;
-      const availableMainStats =
-        SLOT_MAIN_POOLS[slot as keyof typeof SLOT_MAIN_POOLS];
+      const availableMainStats = getMainStatOptions(slot);
 
       availableMainStats.forEach((mainStatName: string) => {
         let mainStatWeight = 0;
@@ -309,7 +303,7 @@ const calculateScore = () => {
   slots.forEach((slot) => {
     const data = driveData.value[slot];
     const qualityMult =
-      QUALITY_MULTIPLIERS[data.quality as keyof typeof QUALITY_MULTIPLIERS];
+      QUALITY_WEIGHTS[data.quality as keyof typeof QUALITY_WEIGHTS];
     const currentTotalUpgrades = data.subStats.reduce(
       (sum: number, s: any) => sum + s.upgrades,
       0,
