@@ -10,7 +10,8 @@
     "@types/node": "^25.0.9",
     "tailwindcss": "^4.1.17",
     "vitepress": "^2.0.0-alpha.15",
-    "vitepress-plugin-comment-with-giscus": "^1.1.15"
+    "vitepress-plugin-comment-with-giscus": "^1.1.15",
+    "zzz-drive-disk-rating": "^1.0.0"
   },
   "dependencies": {
     "three": "^0.182.0"

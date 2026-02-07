@@ -29,30 +29,10 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import characterWeights from "../character-weights.json";
-import { getCharacterElement } from "./rating_algorithm.ts";
-import { getCharacterMainStatsWeights, getCharacterSubStatsWeights, getCharacterHighlightSubStats } from "./ManualEntryTab_Method_Library.ts";
+import { buildCharacterConfigs, CharacterConfig } from "./ManualEntryTab_Method_Library.ts";
 
-// 从 JSON 中提取配置
-const { CHARACTER_CONFIGS } = characterWeights;
-
-// 定义类型
-interface CharacterConfig {
-  element: string;
-  mainStats: {
-    [slot: string]: { [stat: string]: number };
-  };
-  subStats: { [stat: string]: number };
-  highlightSubStats: string[];
-}
-
-// 定义角色配置类型
-interface CharacterConfigs {
-  [key: string]: CharacterConfig;
-}
-
-// 类型断言
-const configs = CHARACTER_CONFIGS as CharacterConfigs;
+// 构建角色配置对象
+const configs = buildCharacterConfigs();
 
 const props = defineProps<{
   modelValue: string;
@@ -71,14 +51,7 @@ const currentCharacterName = computed({
 const characterNames = computed(() => Object.keys(configs));
 
 const currentCharacter = computed(() => {
-  const config = configs[currentCharacterName.value];
-  return {
-    ...config,
-    element: getCharacterElement(currentCharacterName.value),
-    mainStats: getCharacterMainStatsWeights(currentCharacterName.value),
-    subStats: getCharacterSubStatsWeights(currentCharacterName.value),
-    highlightSubStats: getCharacterHighlightSubStats(currentCharacterName.value)
-  };
+  return configs[currentCharacterName.value];
 });
 
 const handleCharacterChange = () => {

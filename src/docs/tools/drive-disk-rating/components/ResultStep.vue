@@ -65,6 +65,18 @@
               <strong>评分：</strong>{{ disc.score.toFixed(1) }}
             </div>
             
+            <div v-if="disc.details.gradeResult" class="disc-grade">
+              <div
+                class="inline-block mt-1.5 px-3 py-1 rounded font-bold text-2xl"
+                :class="disc.details.gradeResult.gradeClass"
+              >
+                {{ disc.details.gradeResult.grade }}
+              </div>
+              <div class="text-base dark:text-gray-500 mt-1.5">
+                {{ disc.details.gradeResult.gradeDesc }}
+              </div>
+            </div>
+            
             <div class="disc-properties">
               <div style="font-weight: 600; color: var(--main-color-1); margin-bottom: 12px;">📊 有效副词条</div>
               <div v-for="(prop, index) in disc.details.validProperties" :key="index" class="property-item">
@@ -138,7 +150,7 @@
               <div class="calc-row collapsible-row">
                 <span class="calc-label">最大权重总和:</span>
                 <span class="calc-value-with-toggle">
-                  <span class="calc-value">{{ disc.details.maxWeightSum.toFixed(4) }}</span>
+                  <span class="calc-value">{{ disc.details.maxWeightInfo.maxWeightSum.toFixed(4) }}</span>
                   <span class="collapse-toggle" @click="disc.showMaxWeightDetails = !disc.showMaxWeightDetails">
                     {{ disc.showMaxWeightDetails ? '▼' : '▶' }}
                   </span>
@@ -146,14 +158,14 @@
               </div>
               <div v-if="disc.showMaxWeightDetails" class="max-weight-details">
                 <div class="max-weight-formula">
-                  最理想的情况: {{ disc.details.maxWeightFormula || '计算中...' }}
+                  最理想的情况: {{ disc.details.maxWeightInfo.maxWeightFormula || '计算中...' }}
                 </div>
               </div>
               <div class="calc-row calc-formula">
                 <span class="calc-label">计算公式:</span>
                 <span class="calc-value">
                   ({{ disc.details.subPropertiesWeight.toFixed(4) }} + {{ disc.details.mainPropertyWeight.toFixed(4) }}) 
-                  × (55 ÷ {{ disc.details.maxWeightSum.toFixed(4) }}) 
+                  × (55 ÷ {{ disc.details.maxWeightInfo.maxWeightSum.toFixed(4) }}) 
                   × {{ disc.details.qualityWeight.toFixed(2) }}
                 </span>
               </div>
@@ -168,7 +180,7 @@
 <script setup lang="ts">
 import { ref, computed, getCurrentInstance } from 'vue'
 import { getCharacterAvatarUrl, getAvataredCharacters } from './character-avatar-map.ts'
-import { getConfiguredCharacters } from './rating_algorithm.ts'
+import { getConfiguredCharacters } from 'zzz-drive-disk-rating'
 
 interface Character {
   characterName: string
@@ -431,6 +443,57 @@ const handleCharacterChange = (event: Event) => {
   font-weight: 600;
   color: var(--vp-c-brand-1);
   text-align: center;
+}
+
+.disc-grade {
+  background: var(--vp-c-bg);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* 评级系统样式 */
+.grade-sssp {
+  color: #00eeff;
+  text-shadow: 0 0 10px rgba(107, 220, 255, 0.7);
+}
+
+.grade-sss {
+  color: #ff4444;
+  text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+}
+
+.grade-ss {
+  color: #ff8c00;
+}
+
+.grade-s {
+  color: #ffd700;
+}
+
+.grade-a {
+  color: #b711d8;
+}
+
+.grade-b {
+  color: #2d49c7;
+}
+
+.grade-c {
+  color: #a0a0a0;
+}
+
+.grade-d {
+  color: #808080;
+}
+
+.grade-e {
+  color: #606060;
+}
+
+.grade-f {
+  color: #404040;
 }
 
 .disc-properties {

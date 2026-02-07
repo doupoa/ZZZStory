@@ -121,11 +121,8 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import SubStatRow from "./SubStatRow.vue";
-import { SLOT_MAIN_POOLS } from "./rating_algorithm.ts";
-import characterWeights from "../character-weights.json";
-
-// 从 JSON 中提取配置
-const { ELEMENTS } = characterWeights;
+import { SLOT_MAIN_POOLS } from "zzz-drive-disk-rating";
+import { ELEMENTS, getMainStatOptions } from "./ManualEntryTab_Method_Library.ts";
 
 // 工具函数
 const getMaxUpgradesForLevel = (level: number) => {
@@ -187,17 +184,7 @@ const emit = defineEmits<{
 const isFixedSlot = computed(() => ["I", "II", "III"].includes(props.slotId));
 
 const mainStatOptions = computed(() => {
-  // 将罗马数字 slotId 转换为数字
-  const slotNumberMap: Record<string, number> = {
-    "I": 1,
-    "II": 2,
-    "III": 3,
-    "IV": 4,
-    "V": 5,
-    "VI": 6
-  };
-  const slotNumber = slotNumberMap[props.slotId] || 1;
-  return SLOT_MAIN_POOLS[slotNumber] || [];
+  return getMainStatOptions(props.slotId);
 });
 
 const selectedSubStats = computed(() => {
