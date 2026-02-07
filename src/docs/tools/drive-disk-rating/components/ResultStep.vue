@@ -150,7 +150,7 @@
               <div class="calc-row collapsible-row">
                 <span class="calc-label">最大权重总和:</span>
                 <span class="calc-value-with-toggle">
-                  <span class="calc-value">{{ disc.details.maxWeightSum.toFixed(4) }}</span>
+                  <span class="calc-value">{{ disc.details.maxWeightInfo.maxWeightSum.toFixed(4) }}</span>
                   <span class="collapse-toggle" @click="disc.showMaxWeightDetails = !disc.showMaxWeightDetails">
                     {{ disc.showMaxWeightDetails ? '▼' : '▶' }}
                   </span>
@@ -158,14 +158,14 @@
               </div>
               <div v-if="disc.showMaxWeightDetails" class="max-weight-details">
                 <div class="max-weight-formula">
-                  最理想的情况: {{ disc.details.maxWeightFormula || '计算中...' }}
+                  最理想的情况: {{ disc.details.maxWeightInfo.maxWeightFormula || '计算中...' }}
                 </div>
               </div>
               <div class="calc-row calc-formula">
                 <span class="calc-label">计算公式:</span>
                 <span class="calc-value">
                   ({{ disc.details.subPropertiesWeight.toFixed(4) }} + {{ disc.details.mainPropertyWeight.toFixed(4) }}) 
-                  × (55 ÷ {{ disc.details.maxWeightSum.toFixed(4) }}) 
+                  × (55 ÷ {{ disc.details.maxWeightInfo.maxWeightSum.toFixed(4) }}) 
                   × {{ disc.details.qualityWeight.toFixed(2) }}
                 </span>
               </div>
