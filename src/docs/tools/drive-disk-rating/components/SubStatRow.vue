@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import { SUB_STATS_POOL } from "./rating_algorithm.ts";
+import { SUB_STATS_POOL } from "zzz-drive-disk-rating";
 
 // 定义类型
 interface CharacterConfig {

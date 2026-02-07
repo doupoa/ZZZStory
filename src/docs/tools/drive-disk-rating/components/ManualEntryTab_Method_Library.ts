@@ -1,7 +1,5 @@
 // 手动录入标签页方法库
-import { characterWeights } from './rating_algorithm.ts';
-import { SLOT_MAIN_POOLS } from './rating_algorithm.ts';
-import { SUB_STATS_POOL } from './rating_algorithm.ts';
+import { characterWeights, SLOT_MAIN_POOLS, SUB_STATS_POOL } from 'zzz-drive-disk-rating';
 
 // 从 JSON 文件导入角色元素映射配置
 import characterElementMapping from './Character_Stat_Damage_Mapping_Table.json';

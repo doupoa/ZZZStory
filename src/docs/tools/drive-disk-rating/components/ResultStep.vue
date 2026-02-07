@@ -180,7 +180,7 @@
 <script setup lang="ts">
 import { ref, computed, getCurrentInstance } from 'vue'
 import { getCharacterAvatarUrl, getAvataredCharacters } from './character-avatar-map.ts'
-import { getConfiguredCharacters } from './rating_algorithm.ts'
+import { getConfiguredCharacters } from 'zzz-drive-disk-rating'
 
 interface Character {
   characterName: string

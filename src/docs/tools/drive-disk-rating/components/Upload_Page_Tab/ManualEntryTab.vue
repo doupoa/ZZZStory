@@ -74,7 +74,7 @@ import CharacterSelector from "../CharacterSelector.vue";
 import DriveCard from "../DriveCard.vue";
 import ResultPanel from "../ResultPanel.vue";
 import { getCharacterHighlightSubStats, getMainStatOptions, buildCharacterConfigs } from "../ManualEntryTab_Method_Library.ts";
-import { QUALITY_WEIGHTS } from "../rating_algorithm.ts";
+import { QUALITY_WEIGHTS } from "zzz-drive-disk-rating";
 
 // 定义类型
 interface CharacterConfig {

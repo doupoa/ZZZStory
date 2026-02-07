@@ -62,12 +62,12 @@ import {
 import {
   getCharacterWeights,
   getConfiguredCharacters,
-} from "./rating_algorithm.ts";
+  calculateCharacterTotalScore
+} from "zzz-drive-disk-rating";
 import AutoExtractTab from "./Upload_Page_Tab/AutoExtractTab.vue";
 import UploadFileTab from "./Upload_Page_Tab/UploadFileTab.vue";
 import ManualEntryTab from "./Upload_Page_Tab/ManualEntryTab.vue";
 import ResultStep from "./ResultStep.vue";
-import { calculateCharacterTotalScore } from "./rating_algorithm.ts";
 
 const currentMode = ref("auto-new");
 const characters = ref([]);

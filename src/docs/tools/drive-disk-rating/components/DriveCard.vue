@@ -121,7 +121,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import SubStatRow from "./SubStatRow.vue";
-import { SLOT_MAIN_POOLS } from "./rating_algorithm.ts";
+import { SLOT_MAIN_POOLS } from "zzz-drive-disk-rating";
 import { ELEMENTS, getMainStatOptions } from "./ManualEntryTab_Method_Library.ts";
 
 // 工具函数
