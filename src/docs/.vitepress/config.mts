@@ -226,6 +226,10 @@ export default defineConfig({
               text: "委托:逃出生天",
               link: "/main-line/chapter1/Assignment_Escape_from_Peril",
             },
+            {
+              text: "猫的失物(上)",
+              link: "/main-line/chapter1/Cat_s_Lost_Item_Part_1",
+            },
           ],
         },
         {

@@ -175,7 +175,7 @@ pageClass: Story
 
 <Dialogue role="Fairy">目标受困人员已全部获救，委托完成。</Dialogue>
 
-<Scene>铃摘下连接HDD系统的头盔，揉了揉有些酸痛的太阳穴。哲正在整理这次任务的数据，Fairy在屏幕上闪烁，显示着任务的详细报告</Scene>
+<Scene>铃结束HDD系统的空洞连接，摘下设备揉了揉因模拟空洞而有些酸痛的太阳穴。哲正在整理这次任务的数据，Fairy在屏幕上闪烁，显示着任务详细报告</Scene>
 
 <Dialogue role="铃">Fairy的力量果然超乎想象，在她的帮助下搜救行动以极高的效率完成了！</Dialogue>   
 <Dialogue role="铃">真希望这份力量能用到更多的地方...</Dialogue>

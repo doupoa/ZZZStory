@@ -11,5 +11,6 @@
 ## 第 1 章
 - [幕间](/main-line/chapter1/Interlude)
 - [委托:逃出生天](/main-line/chapter1/Assignment_Escape_from_Peril)
+- [猫的失物(上)](/main-line/chapter1/Cat_s_Lost_Item_Part_1)
 
 资料收集中，敬请期待！
